@@ -1,3 +1,4 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
 :root {
   --font-family-lato: 'Lato', sans-serif;
   --text-rgb-32-62-52: rgba(32, 62, 52, 1);
