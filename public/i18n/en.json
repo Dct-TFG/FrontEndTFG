@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "Exported Figma Design"
+  },
+  "nav": {
+    "howItWorks": "How it works",
+    "aboutUs": "About us",
+    "faq": "FAQ",
+    "createAccount": "Create account"
+  },
+  "hero": {
+    "tag": "THEIR STORY, ALWAYS CLOSE",
+    "title": "A lifetime together.\nTheir health, all in\none place.",
+    "subtitle": "Your pet's medical history, with you. Organize their care and share their information with caregivers.",
+    "footer": "For everything you have left to live."
+  },
+  "login": {
+    "welcome": "Great to have you here.",
+    "subtitle": "Log in to keep caring for your loved ones.",
+    "accessType": "How would you like to log in?",
+    "owner": "I am a pet owner",
+    "professional": "I am a professional",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@email.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "forgot": "Forgot your password?",
+    "submit": "Log in",
+    "firstTime": "Is this your first time?",
+    "createLink": "Create your account",
+    "privacy": "You decide who you share their history with."
+  },
+  "pets": {
+    "title": "Different pets. The same care.",
+    "dogs": "Dogs",
+    "cats": "Cats",
+    "birds": "Birds",
+    "mammals": "Small mammals"
+  },
+  "pillars": {
+    "tag": "LESS PAPERWORK, MORE PEACE OF MIND",
+    "title": "The essentials of their health,\nwithout losing track.",
+    "subtitle": "A space that connects their history, their family, and the professionals who accompany them.",
+    "item1Title": "A history that follows them",
+    "item1Desc": "Visits, diagnoses, treatments, vaccines, and results gathered in each pet's history, beyond a single clinic.",
+    "item1Sub": "Their history doesn't change when changing centers.",
+    "item2Title": "You choose who accesses",
+    "item2Desc": "Grant or revoke access to a specific vet or center. Decide if they can view the history or also update it.",
+    "item2Sub": "Read-only or edit permissions.",
+    "item3Title": "The care they need",
+    "item3Desc": "Find centers by specialty, proximity, and ratings in a curated directory.",
+    "item3Sub": "Curated data, not real-time availability."
+  },
+  "how": {
+    "tag": "IT'S THAT SIMPLE",
+    "title": "A first step.\nLots of care\nahead.",
+    "subtitle": "Start with their name. The rest of their story is built together.",
+    "vetTitle": "Are you a veterinary professional?",
+    "vetDesc": "Log in with your professional profile to view and update authorized histories.",
+    "step1Title": "Create their small universe",
+    "step1Desc": "Register your pets. Each one will have its own file and a history that will accompany it throughout its life.",
+    "step2Title": "Share with their caregiver",
+    "step2Desc": "Authorize the vet or center of your choice and assign access level. You can change or revoke it whenever you need.",
+    "step3Title": "Follow their story, visit by visit",
+    "step3Desc": "Check the entries added by authorized professionals, with the author's identity always visible."
+  },
+  "about": {
+    "quote": "Continuity of care begins with sharing what matters.",
+    "tag": "ABOUT US",
+    "title": "Technology at the service of a very real bond.",
+    "p1": "[Título del proyecto] was born as an academic project with a simple idea: that health information accompanies each pet, instead of being scattered among papers and centers.",
+    "p2": "We design a meeting point between families and professionals. A place to better understand their history, share it wisely, and give continuity to their care.",
+    "banner": "More context to care. More clarity to accompany."
+  },
+  "faq": {
+    "tag": "BEFORE YOU START",
+    "title": "Things clear,\nfrom the beginning.",
+    "subtitle": "Some answers to better understand this space and how information is shared.",
+    "disclaimer": "[Título del proyecto] organizes information. It does not replace the evaluation or care of a veterinary professional.",
+    "q1": "Who can see my pet's history?",
+    "a1": "You and the vets or centers you have given permission to. As an owner, you decide who can only view it and who can add or update information. You can revoke that access whenever you need.",
+    "q2": "Can I register more than one pet?",
+    "q3": "Who adds clinical information to the history?",
+    "q4": "Does it connect to my clinic's system?",
+    "q5": "What information will I find about the centers?"
+  },
+  "footer": {
+    "ctaTag": "THEIR STORY CONTINUES WITH YOU",
+    "ctaTitle": "A place for their health.\nMore time to be together.",
+    "btn": "Log in to my account",
+    "signupText": "Don't have an account yet?",
+    "signupLink": "Start here",
+    "desc": "A closer bond with their health.",
+    "col1Title": "Discover [Título del proyecto]",
+    "col2Title": "Your space",
+    "col3Title": "Legal information",
+    "privacy": "Privacy",
+    "terms": "Terms of use",
+    "cookies": "Cookies",
+    "copy": "© 2026 [Título del proyecto] · Academic project · Provisional name",
+    "design": "Designed to care for what unites you."
+  }
+}

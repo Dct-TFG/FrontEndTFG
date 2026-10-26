@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "Exported Figma Design"
+  },
+  "nav": {
+    "howItWorks": "Cómo funciona",
+    "aboutUs": "Quiénes somos",
+    "faq": "Preguntas frecuentes",
+    "createAccount": "Crear cuenta"
+  },
+  "hero": {
+    "tag": "SU HISTORIA, SIEMPRE CERCA",
+    "title": "Toda una vida juntos.\nSu salud, en un\nmismo lugar.",
+    "subtitle": "El historial de tu mascota, contigo. Organiza sus cuidados y comparte su información con quienes la cuidan.",
+    "footer": "Para todo lo que os queda por vivir."
+  },
+  "login": {
+    "welcome": "Qué bien tenerte aquí.",
+    "subtitle": "Entra para seguir cuidando de los tuyos.",
+    "accessType": "¿Cómo quieres acceder?",
+    "owner": "Soy propietario",
+    "professional": "Soy profesional",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@correo.com",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "Introduce tu contraseña",
+    "forgot": "¿Has olvidado tu contraseña?",
+    "submit": "Iniciar sesión",
+    "firstTime": "¿Es tu primera vez?",
+    "createLink": "Crea tu cuenta",
+    "privacy": "Tú decides con quién compartes su historial."
+  },
+  "pets": {
+    "title": "Distintas mascotas. El mismo cuidado.",
+    "dogs": "Perros",
+    "cats": "Gatos",
+    "birds": "Aves",
+    "mammals": "Pequeños mamíferos"
+  },
+  "pillars": {
+    "tag": "MENOS PAPELES, MÁS TRANQUILIDAD",
+    "title": "Lo importante de su salud,\nsin perder el hilo.",
+    "subtitle": "Un espacio que conecta su historia, a su familia y a los profesionales que la acompañan.",
+    "item1Title": "Una historia que les sigue",
+    "item1Desc": "Visitas, diagnósticos, tratamientos, vacunas y resultados reunidos en el historial de cada mascota, más allá de una clínica.",
+    "item1Sub": "Su historia no cambia al cambiar de centro.",
+    "item2Title": "Tú eliges quién accede",
+    "item2Desc": "Da o retira acceso a un veterinario o centro concreto. Decide si puede consultar el historial o también actualizarlo.",
+    "item2Sub": "Permisos de solo lectura o de edición.",
+    "item3Title": "El cuidado que necesitan",
+    "item3Desc": "Encuentra centros por especialidad, cercanía y valoraciones en un directorio con información seleccionada.",
+    "item3Sub": "Datos curados, no disponibilidad en tiempo real."
+  },
+  "how": {
+    "tag": "ASÍ DE SENCILLO",
+    "title": "Un primer paso.\nMuchos cuidados\npor delante.",
+    "subtitle": "Empieza por su nombre. El resto de su historia se construye entre todos.",
+    "vetTitle": "¿Eres profesional veterinario?",
+    "vetDesc": "Accede con tu perfil profesional para consultar y actualizar los historiales autorizados.",
+    "step1Title": "Crea su pequeño universo",
+    "step1Desc": "Registra a tus mascotas. Cada una tendrá su propia ficha y un historial que la acompañará a lo largo de su vida.",
+    "step2Title": "Comparte con quien la cuida",
+    "step2Desc": "Autoriza al veterinario o centro que elijas y asigna el nivel de acceso. Puedes cambiarlo o retirarlo cuando lo necesites.",
+    "step3Title": "Sigue su historia, visita a visita",
+    "step3Desc": "Consulta las entradas que añaden los profesionales autorizados, con la identidad de su autor siempre visible."
+  },
+  "about": {
+    "quote": "La continuidad del cuidado empieza por compartir lo importante.",
+    "tag": "QUIÉNES SOMOS",
+    "title": "La tecnología al servicio de un vínculo muy real.",
+    "p1": "[Título del proyecto] nace como un proyecto académico con una idea sencilla: que la información de salud acompañe a cada mascota, y no se quede dispersa entre papeles y centros.",
+    "p2": "Diseñamos un punto de encuentro entre familias y profesionales. Un lugar para entender mejor su historia, compartirla con criterio y dar continuidad a sus cuidados.",
+    "banner": "Más contexto para cuidar. Más claridad para acompañar."
+  },
+  "faq": {
+    "tag": "ANTES DE EMPEZAR",
+    "title": "Las cosas claras,\ndesde el principio.",
+    "subtitle": "Algunas respuestas para conocer mejor este espacio y cómo se comparte la información.",
+    "disclaimer": "[Título del proyecto] organiza información. No sustituye la valoración ni la atención de un profesional veterinario.",
+    "q1": "¿Quién puede ver el historial de mi mascota?",
+    "a1": "Tú y los veterinarios o centros a los que hayas dado permiso. Como propietario, decides quién puede solo consultarlo y quién puede añadir o actualizar información. Puedes revocar ese acceso cuando lo necesites.",
+    "q2": "¿Puedo registrar más de una mascota?",
+    "q3": "¿Quién añade la información clínica al historial?",
+    "q4": "¿Se conecta con el sistema de mi clínica?",
+    "q5": "¿Qué información encontraré sobre los centros?"
+  },
+  "footer": {
+    "ctaTag": "SU HISTORIA CONTINÚA CONTIGO",
+    "ctaTitle": "Un lugar para su salud.\nMás tiempo para estar juntos.",
+    "btn": "Entrar en mi cuenta",
+    "signupText": "¿Aún no tienes cuenta?",
+    "signupLink": "Empieza aquí",
+    "desc": "Un vínculo más cercano con su salud.",
+    "col1Title": "Conoce [Título del proyecto]",
+    "col2Title": "Tu espacio",
+    "col3Title": "Información legal",
+    "privacy": "Privacidad",
+    "terms": "Condiciones de uso",
+    "cookies": "Cookies",
+    "copy": "© 2026 [Título del proyecto] · Proyecto académico · Nombre provisional",
+    "design": "Diseñado para cuidar lo que os une."
+  }
+}

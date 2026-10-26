@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
+  imports: [TranslatePipe],
   templateUrl: './app.html',
+  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('FrontEndTFG');
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['es', 'ca', 'en']);
+    translate.use('es');
+  }
+
+  switchLang(event: Event) {
+    const lang = (event.target as HTMLSelectElement).value;
+    this.translate.use(lang);
+  }
 }
