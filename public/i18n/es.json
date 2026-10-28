@@ -30,6 +30,41 @@
     "createLink": "Crea tu cuenta",
     "privacy": "Tú decides con quién compartes su historial."
   },
+  "register": {
+    "title": "Crea tu cuenta",
+    "subtitle": "Únete para organizar y proteger la salud de tus mascotas.",
+    "nameLabel": "Nombre completo",
+    "namePlaceholder": "Tu nombre y apellidos",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@correo.com",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "Mínimo 6 caracteres",
+    "confirmPasswordLabel": "Confirmar contraseña",
+    "confirmPasswordPlaceholder": "Repite tu contraseña",
+    "submit": "Crear mi cuenta",
+    "haveAccount": "¿Ya tienes una cuenta?",
+    "loginLink": "Inicia sesión"
+  },
+  "forgot": {
+    "title": "¿Olvidaste tu contraseña?",
+    "subtitle": "Introduce tu correo y te enviaremos las instrucciones para restablecerla.",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@correo.com",
+    "submit": "Enviar enlace de recuperación",
+    "backToLogin": "Volver a iniciar sesión"
+  },
+  "auth": {
+    "sessionActive": "Sesión iniciada con éxito",
+    "welcome": "¡Hola de nuevo!",
+    "role": "Perfil",
+    "logout": "Cerrar sesión",
+    "errorEmptyFields": "Por favor, completa todos los campos requeridos.",
+    "errorPasswordMismatch": "Las contraseñas no coinciden.",
+    "errorShortPassword": "La contraseña debe tener al menos 6 caracteres.",
+    "resetSent": "Te hemos enviado un correo para restablecer la contraseña. Revisa tu bandeja de entrada.",
+    "registerSuccess": "¡Cuenta creada con éxito! Bienvenido a la plataforma.",
+    "loginSuccess": "¡Bienvenido de nuevo! Has iniciado sesión correctamente."
+  },
   "pets": {
     "title": "Distintas mascotas. El mismo cuidado.",
     "dogs": "Perros",
@@ -80,9 +115,13 @@
     "q1": "¿Quién puede ver el historial de mi mascota?",
     "a1": "Tú y los veterinarios o centros a los que hayas dado permiso. Como propietario, decides quién puede solo consultarlo y quién puede añadir o actualizar información. Puedes revocar ese acceso cuando lo necesites.",
     "q2": "¿Puedo registrar más de una mascota?",
+    "a2": "Sí, puedes registrar a todos tus compañeros (perros, gatos, aves, pequeños mamíferos, etc.) desde una sola cuenta y gestionar el historial de cada uno de forma individual.",
     "q3": "¿Quién añade la información clínica al historial?",
+    "a3": "Tanto los propietarios como los profesionales veterinarios autorizados pueden añadir información. Cada entrada clínica incluye la firma y verificación del profesional.",
     "q4": "¿Se conecta con el sistema de mi clínica?",
-    "q5": "¿Qué información encontraré sobre los centros?"
+    "a4": "Los profesionales pueden consultar y actualizar fichas de pacientes autorizados directamente desde la plataforma web sin necesidad de instalaciones complejas.",
+    "q5": "¿Qué información encontraré sobre los centros?",
+    "a5": "Información detallada sobre especialidades, servicios, localización, datos de contacto y acreditaciones para que elijas siempre el mejor cuidado."
   },
   "footer": {
     "ctaTag": "SU HISTORIA CONTINÚA CONTIGO",

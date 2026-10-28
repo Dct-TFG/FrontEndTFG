@@ -1,343 +1,658 @@
-<!-- Selector de idiomas flotante -->
 <div style="position: fixed; top: 20px; right: 20px; z-index: 99999; background: white; padding: 8px 12px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
   <label for="langSelect" style="font-family: 'Lato', sans-serif; font-size: 14px; margin-right: 6px; color: #333;">Idioma:</label>
-  <select id="langSelect" (change)="switchLang($event)" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc; font-family: 'Lato', sans-serif; cursor: pointer;">
-    <option value="es" selected>Castellano</option>
+  <select id="langSelect" [value]="currentLang" (change)="switchLang($event)" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc; font-family: 'Lato', sans-serif; cursor: pointer;">
+    <option value="es">Castellano</option>
     <option value="ca">Català</option>
     <option value="en">English</option>
   </select>
 </div>
 
-<!-- Contenido de tu landing page -->
 <div class="node-1">
-<div class="bienvenida-y-acceso-2">
-<div class="navegaci-n-3">
-<div class="marca-provisional-4">
-<div class="s-mbolo-5">
-<div class="paw-print-6">
-<img src="images/vector-7.svg" class="vector-7" alt="vector" />
-</div>
-</div>
-<p class="text-8"><span class="text-rgb-32-62-52">[Título del proyecto]</span></p>
-</div>
-<div class="enlaces-9">
-<p class="text-10"><span class="text-rgb-78-96-88">{{ 'nav.howItWorks' | translate }}</span></p>
-<p class="text-11"><span class="text-rgb-78-96-88">{{ 'nav.aboutUs' | translate }}</span></p>
-<p class="text-12"><span class="text-rgb-78-96-88">{{ 'nav.faq' | translate }}</span></p>
-<div class="crear-cuenta-13">
-<p class="text-14"><span class="text-rgb-36-91-70">{{ 'nav.createAccount' | translate }}</span></p>
-</div>
-</div>
-</div>
-<div class="node-15">
-<div class="presentaci-n-16">
-<p class="text-17"><span class="text-rgb-36-91-70">{{ 'hero.tag' | translate }}</span></p>
-<p class="text-18"><span class="text-rgb-32-62-52">{{ 'hero.title' | translate }}</span></p>
-<p class="text-19"><span class="text-rgb-78-96-88">{{ 'hero.subtitle' | translate }}</span></p>
-<div class="node-20">
-<img src="images/compa-a-cotidiana-21.png" class="compa-a-cotidiana-21" alt="compa-a-cotidiana" />
-<div class="pie-de-imagen-22">
-<div class="heart-23">
-<img src="images/vector-24.svg" class="vector-24" alt="vector" />
-</div>
-<p class="text-25"><span class="text-rgb-32-62-52">{{ 'hero.footer' | translate }}</span></p>
-</div>
-</div>
-</div>
-<div class="inicio-de-sesi-n-26">
-<div class="node-27">
-<p class="text-28"><span class="text-rgb-32-62-52">{{ 'login.welcome' | translate }}</span></p>
-<p class="text-29"><span class="text-rgb-78-96-88">{{ 'login.subtitle' | translate }}</span></p>
-</div>
-<div class="tipo-de-acceso-30">
-<p class="text-31"><span class="text-rgb-78-96-88">{{ 'login.accessType' | translate }}</span></p>
-<div class="selector-de-perfil-32">
-<div class="node-33">
-<div class="paw-print-34">
-<img src="images/vector-35.svg" class="vector-35" alt="vector" />
-</div>
-<p class="text-36"><span class="text-rgb-36-91-70">{{ 'login.owner' | translate }}</span></p>
-</div>
-<div class="profesional-37">
-<p class="text-38"><span class="text-rgb-78-96-88">{{ 'login.professional' | translate }}</span></p>
-</div>
-</div>
-</div>
-<div class="credenciales-39">
-<div class="campo-de-acceso-40">
-<p class="text-41"><span class="text-rgb-32-62-52">{{ 'login.emailLabel' | translate }}</span></p>
-<div class="entrada-42">
-<p class="text-43"><span class="text-rgb-113-128-120">{{ 'login.emailPlaceholder' | translate }}</span></p>
-</div>
-</div>
-<div class="campo-de-acceso-44">
-<p class="text-45"><span class="text-rgb-32-62-52">{{ 'login.passwordLabel' | translate }}</span></p>
-<div class="entrada-46">
-<p class="text-47"><span class="text-rgb-113-128-120">{{ 'login.passwordPlaceholder' | translate }}</span></p>
-<div class="eye-48">
-<img src="images/vector-49.svg" class="vector-49" alt="vector" />
-</div>
-</div>
-</div>
-<p class="text-50"><span class="text-rgb-36-91-70">{{ 'login.forgot' | translate }}</span></p>
-</div>
-<div class="acci-n-principal-51">
-<p class="text-52"><span class="text-white">{{ 'login.submit' | translate }}</span></p>
-<div class="arrow-right-53">
-<img src="images/vector-54.svg" class="vector-54" alt="vector" />
-</div>
-</div>
-<p class="text-55"><span class="text-rgb-78-96-88">{{ 'login.firstTime' | translate }} </span><span class="text-rgb-36-91-70">{{ 'login.createLink' | translate }}</span></p>
-<div class="privacidad-56">
-<div class="lock-keyhole-57">
-<img src="images/vector-58.svg" class="vector-58" alt="vector" />
-</div>
-<p class="text-59"><span class="text-rgb-113-128-120">{{ 'login.privacy' | translate }}</span></p>
-</div>
-</div>
-</div>
-<div class="especies-acompa-adas-60">
-<p class="text-61"><span class="text-rgb-78-96-88">{{ 'pets.title' | translate }}</span></p>
-<div class="especies-62">
-<div class="especie-63">
-<div class="dog-64">
-<img src="images/vector-65.svg" class="vector-65" alt="vector" />
-</div>
-<p class="text-66"><span class="text-rgb-32-62-52">{{ 'pets.dogs' | translate }}</span></p>
-</div>
-<div class="especie-67">
-<div class="cat-68">
-<img src="images/vector-69.svg" class="vector-69" alt="vector" />
-</div>
-<p class="text-70"><span class="text-rgb-32-62-52">{{ 'pets.cats' | translate }}</span></p>
-</div>
-<div class="especie-71">
-<div class="bird-72">
-<img src="images/vector-73.svg" class="vector-73" alt="vector" />
-</div>
-<p class="text-74"><span class="text-rgb-32-62-52">{{ 'pets.birds' | translate }}</span></p>
-</div>
-<div class="especie-75">
-<div class="rabbit-76">
-<img src="images/vector-77.svg" class="vector-77" alt="vector" />
-</div>
-<p class="text-78"><span class="text-rgb-32-62-52">{{ 'pets.mammals' | translate }}</span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="node-79">
-<div class="introducci-n-80">
-<div class="encabezado-81">
-<p class="text-82"><span class="text-rgb-36-91-70">{{ 'pillars.tag' | translate }}</span></p>
-<p class="text-83"><span class="text-rgb-32-62-52">{{ 'pillars.title' | translate }}</span></p>
-</div>
-<p class="text-84"><span class="text-rgb-78-96-88">{{ 'pillars.subtitle' | translate }}</span></p>
-</div>
-<div class="tres-pilares-85">
-<div class="node-86">
-<div class="s-mbolo-87">
-<div class="clipboard-plus-88">
-<img src="images/vector-89.svg" class="vector-89" alt="vector" />
-</div>
-</div>
-<div class="contenido-90">
-<p class="text-91"><span class="text-rgb-32-62-52">{{ 'pillars.item1Title' | translate }}</span></p>
-<p class="text-92"><span class="text-rgb-78-96-88">{{ 'pillars.item1Desc' | translate }}</span></p>
-</div>
-<p class="text-93"><span class="text-rgb-36-91-70">{{ 'pillars.item1Sub' | translate }}</span></p>
-</div>
-<div class="node-94">
-<div class="s-mbolo-95">
-<div class="shield-check-96">
-<img src="images/vector-97.svg" class="vector-97" alt="vector" />
-</div>
-</div>
-<div class="contenido-98">
-<p class="text-99"><span class="text-rgb-32-62-52">{{ 'pillars.item2Title' | translate }}</span></p>
-<p class="text-100"><span class="text-rgb-78-96-88">{{ 'pillars.item2Desc' | translate }}</span></p>
-</div>
-<p class="text-101"><span class="text-rgb-36-91-70">{{ 'pillars.item2Sub' | translate }}</span></p>
-</div>
-<div class="node-102">
-<div class="s-mbolo-103">
-<div class="map-pin-104">
-<img src="images/vector-105.svg" class="vector-105" alt="vector" />
-</div>
-</div>
-<div class="contenido-106">
-<p class="text-107"><span class="text-rgb-32-62-52">{{ 'pillars.item3Title' | translate }}</span></p>
-<p class="text-108"><span class="text-rgb-78-96-88">{{ 'pillars.item3Desc' | translate }}</span></p>
-</div>
-<p class="text-109"><span class="text-rgb-36-91-70">{{ 'pillars.item3Sub' | translate }}</span></p>
-</div>
-</div>
-</div>
-<div class="c-mo-funciona-110">
-<div class="introducci-n-111">
-<p class="text-112"><span class="text-rgb-36-91-70">{{ 'how.tag' | translate }}</span></p>
-<p class="text-113"><span class="text-rgb-32-62-52">{{ 'how.title' | translate }}</span></p>
-<p class="text-114"><span class="text-rgb-78-96-88">{{ 'how.subtitle' | translate }}</span></p>
-<div class="node-115">
-<div class="stethoscope-116">
-<img src="images/vector-117.svg" class="vector-117" alt="vector" />
-</div>
-<div class="contenido-118">
-<p class="text-119"><span class="text-rgb-32-62-52">{{ 'how.vetTitle' | translate }}</span></p>
-<p class="text-120"><span class="text-rgb-78-96-88">{{ 'how.vetDesc' | translate }}</span></p>
-</div>
-</div>
-</div>
-<div class="pasos-121">
-<div class="paso-122">
-<p class="text-123"><span class="text-rgb-36-91-70">01</span></p>
-<div class="explicaci-n-124">
-<p class="text-125"><span class="text-rgb-32-62-52">{{ 'how.step1Title' | translate }}</span></p>
-<p class="text-126"><span class="text-rgb-78-96-88">{{ 'how.step1Desc' | translate }}</span></p>
-</div>
-</div>
-<div class="paso-127">
-<p class="text-128"><span class="text-rgb-36-91-70">02</span></p>
-<div class="explicaci-n-129">
-<p class="text-130"><span class="text-rgb-32-62-52">{{ 'how.step2Title' | translate }}</span></p>
-<p class="text-131"><span class="text-rgb-78-96-88">{{ 'how.step2Desc' | translate }}</span></p>
-</div>
-</div>
-<div class="paso-132">
-<p class="text-133"><span class="text-rgb-36-91-70">03</span></p>
-<div class="explicaci-n-134">
-<p class="text-135"><span class="text-rgb-32-62-52">{{ 'how.step3Title' | translate }}</span></p>
-<p class="text-136"><span class="text-rgb-78-96-88">{{ 'how.step3Desc' | translate }}</span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="qui-nes-somos-137">
-<div class="cuidado-compartido-138">
-<img src="images/una-consulta-cercana-139.png" class="una-consulta-cercana-139" alt="una-consulta-cercana" />
-<p class="text-140"><span class="text-rgb-113-128-120">{{ 'about.quote' | translate }}</span></p>
-</div>
-<div class="nuestra-raz-n-de-ser-141">
-<p class="text-142"><span class="text-rgb-36-91-70">{{ 'about.tag' | translate }}</span></p>
-<p class="text-143"><span class="text-rgb-32-62-52">{{ 'about.title' | translate }}</span></p>
-<p class="text-144"><span class="text-rgb-78-96-88">{{ 'about.p1' | translate }}</span></p>
-<p class="text-145"><span class="text-rgb-78-96-88">{{ 'about.p2' | translate }}</span></p>
-<div class="principio-146">
-<div class="heart-handshake-147">
-<img src="images/vector-148.svg" class="vector-148" alt="vector" />
-</div>
-<p class="text-149"><span class="text-rgb-36-91-70">{{ 'about.banner' | translate }}</span></p>
-</div>
-</div>
-</div>
-<div class="preguntas-frecuentes-150">
-<div class="introducci-n-151">
-<p class="text-152"><span class="text-rgb-36-91-70">{{ 'faq.tag' | translate }}</span></p>
-<p class="text-153"><span class="text-rgb-32-62-52">{{ 'faq.title' | translate }}</span></p>
-<p class="text-154"><span class="text-rgb-78-96-88">{{ 'faq.subtitle' | translate }}</span></p>
-<div class="nota-de-cuidado-155">
-<div class="info-156">
-<img src="images/vector-157.svg" class="vector-157" alt="vector" />
-</div>
-<p class="text-158"><span class="text-rgb-78-96-88">{{ 'faq.disclaimer' | translate }}</span></p>
-</div>
-</div>
-<div class="respuestas-159">
-<div class="pregunta-frecuente-160">
-<div class="pregunta-161">
-<p class="text-162"><span class="text-rgb-32-62-52">{{ 'faq.q1' | translate }}</span></p>
-<div class="minus-163">
-<img src="images/vector-164.svg" class="vector-164" alt="vector" />
-</div>
-</div>
-<p class="text-165"><span class="text-rgb-78-96-88">{{ 'faq.a1' | translate }}</span></p>
-</div>
-<div class="pregunta-frecuente-166">
-<div class="pregunta-167">
-<p class="text-168"><span class="text-rgb-32-62-52">{{ 'faq.q2' | translate }}</span></p>
-<div class="plus-169">
-<img src="images/vector-170.svg" class="vector-170" alt="vector" />
-</div>
-</div>
-</div>
-<div class="pregunta-frecuente-171">
-<div class="pregunta-172">
-<p class="text-173"><span class="text-rgb-32-62-52">{{ 'faq.q3' | translate }}</span></p>
-<div class="plus-174">
-<img src="images/vector-175.svg" class="vector-175" alt="vector" />
-</div>
-</div>
-</div>
-<div class="pregunta-frecuente-176">
-<div class="pregunta-177">
-<p class="text-178"><span class="text-rgb-32-62-52">{{ 'faq.q4' | translate }}</span></p>
-<div class="plus-179">
-<img src="images/vector-180.svg" class="vector-180" alt="vector" />
-</div>
-</div>
-</div>
-<div class="pregunta-frecuente-181">
-<div class="pregunta-182">
-<p class="text-183"><span class="text-rgb-32-62-52">{{ 'faq.q5' | translate }}</span></p>
-<div class="plus-184">
-<img src="images/vector-185.svg" class="vector-185" alt="vector" />
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="node-186">
-<div class="invitaci-n-a-entrar-187">
-<div class="mensaje-de-cierre-188">
-<p class="text-189"><span class="text-rgb-225-234-223">{{ 'footer.ctaTag' | translate }}</span></p>
-<p class="text-190"><span class="text-white">{{ 'footer.ctaTitle' | translate }}</span></p>
-</div>
-<div class="acciones-191">
-<div class="acci-n-principal-192">
-<p class="text-193"><span class="text-rgb-36-91-70">{{ 'footer.btn' | translate }}</span></p>
-<div class="arrow-right-194">
-<img src="images/vector-195.svg" class="vector-195" alt="vector" />
-</div>
-</div>
-<p class="text-196"><span class="text-rgb-225-234-223">{{ 'footer.signupText' | translate }} </span><span class="text-white">{{ 'footer.signupLink' | translate }}</span></p>
-</div>
-</div>
-<div class="pie-de-p-gina-197">
-<div class="identidad-y-enlaces-198">
-<div class="identidad-199">
-<div class="marca-provisional-200">
-<div class="s-mbolo-201">
-<div class="paw-print-202">
-<img src="images/vector-203.svg" class="vector-203" alt="vector" />
-</div>
-</div>
-<p class="text-204"><span class="text-rgb-32-62-52">[Título del proyecto]</span></p>
-</div>
-<p class="text-205"><span class="text-rgb-78-96-88">{{ 'footer.desc' | translate }}</span></p>
-</div>
-<div class="plataforma-206">
-<p class="text-207"><span class="text-rgb-32-62-52">{{ 'footer.col1Title' | translate }}</span></p>
-<p class="text-208"><span class="text-rgb-78-96-88">{{ 'nav.howItWorks' | translate }}</span></p>
-<p class="text-209"><span class="text-rgb-78-96-88">{{ 'nav.aboutUs' | translate }}</span></p>
-<p class="text-210"><span class="text-rgb-78-96-88">{{ 'nav.faq' | translate }}</span></p>
-</div>
-<div class="acceso-211">
-<p class="text-212"><span class="text-rgb-32-62-52">{{ 'footer.col2Title' | translate }}</span></p>
-<p class="text-213"><span class="text-rgb-78-96-88">{{ 'login.owner' | translate }}</span></p>
-<p class="text-214"><span class="text-rgb-78-96-88">{{ 'login.professional' | translate }}</span></p>
-<p class="text-215"><span class="text-rgb-78-96-88">{{ 'nav.createAccount' | translate }}</span></p>
-</div>
-<div class="legal-216">
-<p class="text-217"><span class="text-rgb-32-62-52">{{ 'footer.col3Title' | translate }}</span></p>
-<p class="text-218"><span class="text-rgb-78-96-88">{{ 'footer.privacy' | translate }}</span></p>
-<p class="text-219"><span class="text-rgb-78-96-88">{{ 'footer.terms' | translate }}</span></p>
-<p class="text-220"><span class="text-rgb-78-96-88">{{ 'footer.cookies' | translate }}</span></p>
-</div>
-</div>
-<div class="nota-de-proyecto-221">
-<p class="text-222"><span class="text-rgb-113-128-120">{{ 'footer.copy' | translate }}</span></p>
-<p class="text-223"><span class="text-rgb-113-128-120">{{ 'footer.design' | translate }}</span></p>
-</div>
-</div>
-</div>
+  <div class="bienvenida-y-acceso-2">
+    <div class="navegaci-n-3">
+      <div class="marca-provisional-4" (click)="scrollTo('hero-section')" style="cursor: pointer;">
+        <div class="s-mbolo-5">
+          <div class="paw-print-6">
+            <img src="images/vector-7.svg" class="vector-7" alt="vector" />
+          </div>
+        </div>
+        <p class="text-8"><span class="text-rgb-32-62-52">[Título del proyecto]</span></p>
+      </div>
+      <div class="enlaces-9">
+        <p class="text-10 nav-anchor-link" (click)="scrollTo('como-funciona')"><span class="text-rgb-78-96-88">{{ 'nav.howItWorks' | translate }}</span></p>
+        <p class="text-11 nav-anchor-link" (click)="scrollTo('quienes-somos')"><span class="text-rgb-78-96-88">{{ 'nav.aboutUs' | translate }}</span></p>
+        <p class="text-12 nav-anchor-link" (click)="scrollTo('faq-section')"><span class="text-rgb-78-96-88">{{ 'nav.faq' | translate }}</span></p>
+        <div class="crear-cuenta-13" (click)="goToAuth('register')">
+          <p class="text-14"><span class="text-rgb-36-91-70">{{ 'nav.createAccount' | translate }}</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="node-15" id="hero-section">
+      <div class="presentaci-n-16">
+        <p class="text-17"><span class="text-rgb-36-91-70">{{ 'hero.tag' | translate }}</span></p>
+        <p class="text-18"><span class="text-rgb-32-62-52">{{ 'hero.title' | translate }}</span></p>
+        <p class="text-19"><span class="text-rgb-78-96-88">{{ 'hero.subtitle' | translate }}</span></p>
+        <div class="node-20">
+          <img src="images/compa-a-cotidiana-21.png" class="compa-a-cotidiana-21" alt="compa-a-cotidiana" />
+          <div class="pie-de-imagen-22">
+            <div class="heart-23">
+              <img src="images/vector-24.svg" class="vector-24" alt="vector" />
+            </div>
+            <p class="text-25"><span class="text-rgb-32-62-52">{{ 'hero.footer' | translate }}</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="inicio-de-sesi-n-26" id="auth-form-card">
+        <div class="node-27">
+          @if (currentUser) {
+            <p class="text-28"><span class="text-rgb-32-62-52">{{ 'auth.welcome' | translate }}</span></p>
+            <p class="text-29"><span class="text-rgb-78-96-88">{{ 'auth.sessionActive' | translate }}</span></p>
+          } @else if (authMode === 'login') {
+            <p class="text-28"><span class="text-rgb-32-62-52">{{ 'login.welcome' | translate }}</span></p>
+            <p class="text-29"><span class="text-rgb-78-96-88">{{ 'login.subtitle' | translate }}</span></p>
+          } @else if (authMode === 'register') {
+            <p class="text-28"><span class="text-rgb-32-62-52">{{ 'register.title' | translate }}</span></p>
+            <p class="text-29"><span class="text-rgb-78-96-88">{{ 'register.subtitle' | translate }}</span></p>
+          } @else {
+            <p class="text-28"><span class="text-rgb-32-62-52">{{ 'forgot.title' | translate }}</span></p>
+            <p class="text-29"><span class="text-rgb-78-96-88">{{ 'forgot.subtitle' | translate }}</span></p>
+          }
+        </div>
+
+        @if (statusMessage) {
+          <div class="auth-alert" [ngClass]="statusMessage.type === 'success' ? 'auth-alert-success' : 'auth-alert-error'">
+            <span>{{ statusMessage.text }}</span>
+          </div>
+        }
+
+        @if (currentUser) {
+          <div class="logged-in-profile-box">
+            <div class="logged-in-header">
+              <div class="logged-in-avatar">
+                {{ (currentUser.displayName || currentUser.email || 'U').charAt(0).toUpperCase() }}
+              </div>
+              <div>
+                <p style="font-weight: 700; color: var(--text-rgb-32-62-52); margin: 0;">
+                  {{ currentUser.displayName || currentUser.email }}
+                </p>
+                <span class="user-badge">
+                  {{ selectedRole === 'owner' ? ('login.owner' | translate) : ('login.professional' | translate) }}
+                </span>
+              </div>
+            </div>
+            <p style="font-size: 13px; color: var(--text-rgb-78-96-88); margin: 0;">
+              Tu cuenta de Firebase está sincronizada y lista para gestionar historiales.
+            </p>
+            <button type="button" class="logout-action-btn" (click)="onLogout()">
+              {{ 'auth.logout' | translate }}
+            </button>
+          </div>
+        } @else {
+          @if (authMode !== 'forgot') {
+            <div class="tipo-de-acceso-30" style="width: 100%;">
+              <p class="text-31"><span class="text-rgb-78-96-88">{{ 'login.accessType' | translate }}</span></p>
+              <div class="selector-de-perfil-32">
+                <button
+                  type="button"
+                  class="role-tab-btn"
+                  [class.active]="selectedRole === 'owner'"
+                  (click)="selectRole('owner')"
+                >
+                  <div class="paw-print-34">
+                    <img src="images/vector-35.svg" class="vector-35" alt="paw" />
+                  </div>
+                  <span class="role-label">{{ 'login.owner' | translate }}</span>
+                </button>
+                <button
+                  type="button"
+                  class="role-tab-btn"
+                  [class.active]="selectedRole === 'professional'"
+                  (click)="selectRole('professional')"
+                >
+                  <span class="role-label">{{ 'login.professional' | translate }}</span>
+                </button>
+              </div>
+            </div>
+          }
+
+          @if (authMode === 'login') {
+            <form (ngSubmit)="onLogin($event)" class="auth-form-wrapper">
+              <div class="credenciales-39">
+                <div class="campo-de-acceso-40">
+                  <label for="loginEmail" class="text-41">
+                    <span class="text-rgb-32-62-52">{{ 'login.emailLabel' | translate }}</span>
+                  </label>
+                  <div class="entrada-42">
+                    <input
+                      id="loginEmail"
+                      type="email"
+                      name="email"
+                      [(ngModel)]="emailInput"
+                      [placeholder]="'login.emailPlaceholder' | translate"
+                      required
+                      autocomplete="email"
+                      class="form-input-field"
+                    />
+                  </div>
+                </div>
+
+                <div class="campo-de-acceso-44">
+                  <label for="loginPassword" class="text-45">
+                    <span class="text-rgb-32-62-52">{{ 'login.passwordLabel' | translate }}</span>
+                  </label>
+                  <div class="entrada-46">
+                    <input
+                      id="loginPassword"
+                      [type]="showPassword ? 'text' : 'password'"
+                      name="password"
+                      [(ngModel)]="passwordInput"
+                      [placeholder]="'login.passwordPlaceholder' | translate"
+                      required
+                      autocomplete="current-password"
+                      class="form-input-field"
+                    />
+                    <button
+                      type="button"
+                      class="eye-toggle-btn"
+                      (click)="togglePasswordVisibility()"
+                      [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Ver contraseña'"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        @if (showPassword) {
+                          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                          <line x1="1" y1="1" x2="23" y2="23"></line>
+                        } @else {
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        }
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="link-action text-50"
+                  style="align-self: flex-end;"
+                  (click)="setAuthMode('forgot')"
+                >
+                  <span class="text-rgb-36-91-70">{{ 'login.forgot' | translate }}</span>
+                </button>
+              </div>
+
+              <button type="submit" [disabled]="isLoading" class="acci-n-principal-51">
+                @if (isLoading) {
+                  <span class="spinner-border-sm"></span>
+                }
+                <span class="text-white">{{ 'login.submit' | translate }}</span>
+                <div class="arrow-right-53">
+                  <img src="images/vector-54.svg" class="vector-54" alt="vector" />
+                </div>
+              </button>
+
+              <p class="text-55" style="text-align: center; width: 100%;">
+                <span class="text-rgb-78-96-88">{{ 'login.firstTime' | translate }} </span>
+                <button type="button" class="link-action" (click)="setAuthMode('register')">
+                  <span class="text-rgb-36-91-70">{{ 'login.createLink' | translate }}</span>
+                </button>
+              </p>
+            </form>
+          }
+
+          @if (authMode === 'register') {
+            <form (ngSubmit)="onRegister($event)" class="auth-form-wrapper">
+              <div class="credenciales-39">
+                <div class="campo-de-acceso-40">
+                  <label for="regName" class="text-41">
+                    <span class="text-rgb-32-62-52">{{ 'register.nameLabel' | translate }}</span>
+                  </label>
+                  <div class="entrada-42">
+                    <input
+                      id="regName"
+                      type="text"
+                      name="name"
+                      [(ngModel)]="nameInput"
+                      [placeholder]="'register.namePlaceholder' | translate"
+                      autocomplete="name"
+                      class="form-input-field"
+                    />
+                  </div>
+                </div>
+
+                <div class="campo-de-acceso-40">
+                  <label for="regEmail" class="text-41">
+                    <span class="text-rgb-32-62-52">{{ 'register.emailLabel' | translate }}</span>
+                  </label>
+                  <div class="entrada-42">
+                    <input
+                      id="regEmail"
+                      type="email"
+                      name="regEmail"
+                      [(ngModel)]="emailInput"
+                      [placeholder]="'register.emailPlaceholder' | translate"
+                      required
+                      autocomplete="email"
+                      class="form-input-field"
+                    />
+                  </div>
+                </div>
+
+                <div class="campo-de-acceso-44">
+                  <label for="regPassword" class="text-45">
+                    <span class="text-rgb-32-62-52">{{ 'register.passwordLabel' | translate }}</span>
+                  </label>
+                  <div class="entrada-46">
+                    <input
+                      id="regPassword"
+                      [type]="showPassword ? 'text' : 'password'"
+                      name="regPassword"
+                      [(ngModel)]="passwordInput"
+                      [placeholder]="'register.passwordPlaceholder' | translate"
+                      required
+                      autocomplete="new-password"
+                      class="form-input-field"
+                    />
+                    <button
+                      type="button"
+                      class="eye-toggle-btn"
+                      (click)="togglePasswordVisibility()"
+                      [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Ver contraseña'"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        @if (showPassword) {
+                          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                          <line x1="1" y1="1" x2="23" y2="23"></line>
+                        } @else {
+                          <path d="M1 y12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        }
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="campo-de-acceso-44">
+                  <label for="regConfirmPassword" class="text-45">
+                    <span class="text-rgb-32-62-52">{{ 'register.confirmPasswordLabel' | translate }}</span>
+                  </label>
+                  <div class="entrada-46">
+                    <input
+                      id="regConfirmPassword"
+                      [type]="showConfirmPassword ? 'text' : 'password'"
+                      name="regConfirmPassword"
+                      [(ngModel)]="confirmPasswordInput"
+                      [placeholder]="'register.confirmPasswordPlaceholder' | translate"
+                      required
+                      autocomplete="new-password"
+                      class="form-input-field"
+                    />
+                    <button
+                      type="button"
+                      class="eye-toggle-btn"
+                      (click)="toggleConfirmPasswordVisibility()"
+                      [attr.aria-label]="showConfirmPassword ? 'Ocultar contraseña' : 'Ver contraseña'"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        @if (showConfirmPassword) {
+                          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                          <line x1="1" y1="1" x2="23" y2="23"></line>
+                        } @else {
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        }
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" [disabled]="isLoading" class="acci-n-principal-51">
+                @if (isLoading) {
+                  <span class="spinner-border-sm"></span>
+                }
+                <span class="text-white">{{ 'register.submit' | translate }}</span>
+                <div class="arrow-right-53">
+                  <img src="images/vector-54.svg" class="vector-54" alt="vector" />
+                </div>
+              </button>
+
+              <p class="text-55" style="text-align: center; width: 100%;">
+                <span class="text-rgb-78-96-88">{{ 'register.haveAccount' | translate }} </span>
+                <button type="button" class="link-action" (click)="setAuthMode('login')">
+                  <span class="text-rgb-36-91-70">{{ 'register.loginLink' | translate }}</span>
+                </button>
+              </p>
+            </form>
+          }
+
+          @if (authMode === 'forgot') {
+            <form (ngSubmit)="onForgotPassword($event)" class="auth-form-wrapper">
+              <div class="credenciales-39">
+                <div class="campo-de-acceso-40">
+                  <label for="forgotEmail" class="text-41">
+                    <span class="text-rgb-32-62-52">{{ 'forgot.emailLabel' | translate }}</span>
+                  </label>
+                  <div class="entrada-42">
+                    <input
+                      id="forgotEmail"
+                      type="email"
+                      name="forgotEmail"
+                      [(ngModel)]="emailInput"
+                      [placeholder]="'forgot.emailPlaceholder' | translate"
+                      required
+                      autocomplete="email"
+                      class="form-input-field"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" [disabled]="isLoading" class="acci-n-principal-51">
+                @if (isLoading) {
+                  <span class="spinner-border-sm"></span>
+                }
+                <span class="text-white">{{ 'forgot.submit' | translate }}</span>
+              </button>
+
+              <p class="text-55" style="text-align: center; width: 100%;">
+                <button type="button" class="link-action" (click)="setAuthMode('login')">
+                  <span class="text-rgb-36-91-70">{{ 'forgot.backToLogin' | translate }}</span>
+                </button>
+              </p>
+            </form>
+          }
+
+          <div class="privacidad-56">
+            <div class="lock-keyhole-57">
+              <img src="images/vector-58.svg" class="vector-58" alt="vector" />
+            </div>
+            <p class="text-59"><span class="text-rgb-113-128-120">{{ 'login.privacy' | translate }}</span></p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="especies-acompa-adas-60">
+      <p class="text-61"><span class="text-rgb-78-96-88">{{ 'pets.title' | translate }}</span></p>
+      <div class="especies-62">
+        <div class="especie-63">
+          <div class="dog-64">
+            <img src="images/vector-65.svg" class="vector-65" alt="vector" />
+          </div>
+          <p class="text-66"><span class="text-rgb-32-62-52">{{ 'pets.dogs' | translate }}</span></p>
+        </div>
+        <div class="especie-67">
+          <div class="cat-68">
+            <img src="images/vector-69.svg" class="vector-69" alt="vector" />
+          </div>
+          <p class="text-70"><span class="text-rgb-32-62-52">{{ 'pets.cats' | translate }}</span></p>
+        </div>
+        <div class="especie-71">
+          <div class="bird-72">
+            <img src="images/vector-73.svg" class="vector-73" alt="vector" />
+          </div>
+          <p class="text-74"><span class="text-rgb-32-62-52">{{ 'pets.birds' | translate }}</span></p>
+        </div>
+        <div class="especie-75">
+          <div class="rabbit-76">
+            <img src="images/vector-77.svg" class="vector-77" alt="vector" />
+          </div>
+          <p class="text-78"><span class="text-rgb-32-62-52">{{ 'pets.mammals' | translate }}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="node-79">
+    <div class="introducci-n-80">
+      <div class="encabezado-81">
+        <p class="text-82"><span class="text-rgb-36-91-70">{{ 'pillars.tag' | translate }}</span></p>
+        <p class="text-83"><span class="text-rgb-32-62-52">{{ 'pillars.title' | translate }}</span></p>
+      </div>
+      <p class="text-84"><span class="text-rgb-78-96-88">{{ 'pillars.subtitle' | translate }}</span></p>
+    </div>
+    <div class="tres-pilares-85">
+      <div class="node-86">
+        <div class="s-mbolo-87">
+          <div class="clipboard-plus-88">
+            <img src="images/vector-89.svg" class="vector-89" alt="vector" />
+          </div>
+        </div>
+        <div class="contenido-90">
+          <p class="text-91"><span class="text-rgb-32-62-52">{{ 'pillars.item1Title' | translate }}</span></p>
+          <p class="text-92"><span class="text-rgb-78-96-88">{{ 'pillars.item1Desc' | translate }}</span></p>
+        </div>
+        <p class="text-93"><span class="text-rgb-36-91-70">{{ 'pillars.item1Sub' | translate }}</span></p>
+      </div>
+      <div class="node-94">
+        <div class="s-mbolo-95">
+          <div class="shield-check-96">
+            <img src="images/vector-97.svg" class="vector-97" alt="vector" />
+          </div>
+        </div>
+        <div class="contenido-98">
+          <p class="text-99"><span class="text-rgb-32-62-52">{{ 'pillars.item2Title' | translate }}</span></p>
+          <p class="text-100"><span class="text-rgb-78-96-88">{{ 'pillars.item2Desc' | translate }}</span></p>
+        </div>
+        <p class="text-101"><span class="text-rgb-36-91-70">{{ 'pillars.item2Sub' | translate }}</span></p>
+      </div>
+      <div class="node-102">
+        <div class="s-mbolo-103">
+          <div class="map-pin-104">
+            <img src="images/vector-105.svg" class="vector-105" alt="vector" />
+          </div>
+        </div>
+        <div class="contenido-106">
+          <p class="text-107"><span class="text-rgb-32-62-52">{{ 'pillars.item3Title' | translate }}</span></p>
+          <p class="text-108"><span class="text-rgb-78-96-88">{{ 'pillars.item3Desc' | translate }}</span></p>
+        </div>
+        <p class="text-109"><span class="text-rgb-36-91-70">{{ 'pillars.item3Sub' | translate }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-mo-funciona-110" id="como-funciona">
+    <div class="introducci-n-111">
+      <p class="text-112"><span class="text-rgb-36-91-70">{{ 'how.tag' | translate }}</span></p>
+      <p class="text-113"><span class="text-rgb-32-62-52">{{ 'how.title' | translate }}</span></p>
+      <p class="text-114"><span class="text-rgb-78-96-88">{{ 'how.subtitle' | translate }}</span></p>
+      <div class="node-115">
+        <div class="stethoscope-116">
+          <img src="images/vector-117.svg" class="vector-117" alt="vector" />
+        </div>
+        <div class="contenido-118">
+          <p class="text-119"><span class="text-rgb-32-62-52">{{ 'how.vetTitle' | translate }}</span></p>
+          <p class="text-120"><span class="text-rgb-78-96-88">{{ 'how.vetDesc' | translate }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="pasos-121">
+      <div class="paso-122">
+        <p class="text-123"><span class="text-rgb-36-91-70">01</span></p>
+        <div class="explicaci-n-124">
+          <p class="text-125"><span class="text-rgb-32-62-52">{{ 'how.step1Title' | translate }}</span></p>
+          <p class="text-126"><span class="text-rgb-78-96-88">{{ 'how.step1Desc' | translate }}</span></p>
+        </div>
+      </div>
+      <div class="paso-127">
+        <p class="text-128"><span class="text-rgb-36-91-70">02</span></p>
+        <div class="explicaci-n-129">
+          <p class="text-130"><span class="text-rgb-32-62-52">{{ 'how.step2Title' | translate }}</span></p>
+          <p class="text-131"><span class="text-rgb-78-96-88">{{ 'how.step2Desc' | translate }}</span></p>
+        </div>
+      </div>
+      <div class="paso-132">
+        <p class="text-133"><span class="text-rgb-36-91-70">03</span></p>
+        <div class="explicaci-n-134">
+          <p class="text-135"><span class="text-rgb-32-62-52">{{ 'how.step3Title' | translate }}</span></p>
+          <p class="text-136"><span class="text-rgb-78-96-88">{{ 'how.step3Desc' | translate }}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qui-nes-somos-137" id="quienes-somos">
+    <div class="cuidado-compartido-138">
+      <img src="images/una-consulta-cercana-139.png" class="una-consulta-cercana-139" alt="una-consulta-cercana" />
+      <p class="text-140"><span class="text-rgb-113-128-120">{{ 'about.quote' | translate }}</span></p>
+    </div>
+    <div class="nuestra-raz-n-de-ser-141">
+      <p class="text-142"><span class="text-rgb-36-91-70">{{ 'about.tag' | translate }}</span></p>
+      <p class="text-143"><span class="text-rgb-32-62-52">{{ 'about.title' | translate }}</span></p>
+      <p class="text-144"><span class="text-rgb-78-96-88">{{ 'about.p1' | translate }}</span></p>
+      <p class="text-145"><span class="text-rgb-78-96-88">{{ 'about.p2' | translate }}</span></p>
+      <div class="principio-146">
+        <div class="heart-handshake-147">
+          <img src="images/vector-148.svg" class="vector-148" alt="vector" />
+        </div>
+        <p class="text-149"><span class="text-rgb-36-91-70">{{ 'about.banner' | translate }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="preguntas-frecuentes-150" id="faq-section">
+    <div class="introducci-n-151">
+      <p class="text-152"><span class="text-rgb-36-91-70">{{ 'faq.tag' | translate }}</span></p>
+      <p class="text-153"><span class="text-rgb-32-62-52">{{ 'faq.title' | translate }}</span></p>
+      <p class="text-154"><span class="text-rgb-78-96-88">{{ 'faq.subtitle' | translate }}</span></p>
+      <div class="nota-de-cuidado-155">
+        <div class="info-156">
+          <img src="images/vector-157.svg" class="vector-157" alt="vector" />
+        </div>
+        <p class="text-158"><span class="text-rgb-78-96-88">{{ 'faq.disclaimer' | translate }}</span></p>
+      </div>
+    </div>
+    <div class="respuestas-159">
+      <div class="pregunta-frecuente-interactive" [class.is-open]="openFaqIndex === 0" (click)="toggleFaq(0)">
+        <div class="pregunta-161" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <p class="text-162" style="margin: 0;"><span class="text-rgb-32-62-52">{{ 'faq.q1' | translate }}</span></p>
+          <div class="faq-icon">
+            {{ openFaqIndex === 0 ? '−' : '+' }}
+          </div>
+        </div>
+        @if (openFaqIndex === 0) {
+          <div class="faq-answer-block">
+            <p class="text-165" style="margin: 0;"><span class="text-rgb-78-96-88">{{ 'faq.a1' | translate }}</span></p>
+          </div>
+        }
+      </div>
+
+      <div class="pregunta-frecuente-interactive" [class.is-open]="openFaqIndex === 1" (click)="toggleFaq(1)">
+        <div class="pregunta-161" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <p class="text-168" style="margin: 0;"><span class="text-rgb-32-62-52">{{ 'faq.q2' | translate }}</span></p>
+          <div class="faq-icon">
+            {{ openFaqIndex === 1 ? '−' : '+' }}
+          </div>
+        </div>
+        @if (openFaqIndex === 1) {
+          <div class="faq-answer-block">
+            <p class="text-165" style="margin: 0;"><span class="text-rgb-78-96-88">{{ 'faq.a2' | translate }}</span></p>
+          </div>
+        }
+      </div>
+
+      <div class="pregunta-frecuente-interactive" [class.is-open]="openFaqIndex === 2" (click)="toggleFaq(2)">
+        <div class="pregunta-161" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <p class="text-173" style="margin: 0;"><span class="text-rgb-32-62-52">{{ 'faq.q3' | translate }}</span></p>
+          <div class="faq-icon">
+            {{ openFaqIndex === 2 ? '−' : '+' }}
+          </div>
+        </div>
+        @if (openFaqIndex === 2) {
+          <div class="faq-answer-block">
+            <p class="text-165" style="margin: 0;"><span class="text-rgb-78-96-88">{{ 'faq.a3' | translate }}</span></p>
+          </div>
+        }
+      </div>
+
+      <div class="pregunta-frecuente-interactive" [class.is-open]="openFaqIndex === 3" (click)="toggleFaq(3)">
+        <div class="pregunta-161" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <p class="text-178" style="margin: 0;"><span class="text-rgb-32-62-52">{{ 'faq.q4' | translate }}</span></p>
+          <div class="faq-icon">
+            {{ openFaqIndex === 3 ? '−' : '+' }}
+          </div>
+        </div>
+        @if (openFaqIndex === 3) {
+          <div class="faq-answer-block">
+            <p class="text-165" style="margin: 0;"><span class="text-rgb-78-96-88">{{ 'faq.a4' | translate }}</span></p>
+          </div>
+        }
+      </div>
+
+      <div class="pregunta-frecuente-interactive" [class.is-open]="openFaqIndex === 4" (click)="toggleFaq(4)">
+        <div class="pregunta-161" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <p class="text-183" style="margin: 0;"><span class="text-rgb-32-62-52">{{ 'faq.q5' | translate }}</span></p>
+          <div class="faq-icon">
+            {{ openFaqIndex === 4 ? '−' : '+' }}
+          </div>
+        </div>
+        @if (openFaqIndex === 4) {
+          <div class="faq-answer-block">
+            <p class="text-165" style="margin: 0;"><span class="text-rgb-78-96-88">{{ 'faq.a5' | translate }}</span></p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="node-186">
+    <div class="invitaci-n-a-entrar-187">
+      <div class="mensaje-de-cierre-188">
+        <p class="text-189"><span class="text-rgb-225-234-223">{{ 'footer.ctaTag' | translate }}</span></p>
+        <p class="text-190"><span class="text-white">{{ 'footer.ctaTitle' | translate }}</span></p>
+      </div>
+      <div class="acciones-191">
+        <div class="acci-n-principal-192" (click)="goToAuth('login')">
+          <p class="text-193"><span class="text-rgb-36-91-70">{{ 'footer.btn' | translate }}</span></p>
+          <div class="arrow-right-194">
+            <img src="images/vector-195.svg" class="vector-195" alt="vector" />
+          </div>
+        </div>
+        <p class="text-196">
+          <span class="text-rgb-225-234-223">{{ 'footer.signupText' | translate }} </span>
+          <span class="text-white" style="cursor: pointer; text-decoration: underline;" (click)="goToAuth('register')">{{ 'footer.signupLink' | translate }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pie-de-p-gina-197">
+    <div class="identidad-y-enlaces-198">
+      <div class="identidad-199">
+        <div class="marca-provisional-200" (click)="scrollTo('hero-section')" style="cursor: pointer;">
+          <div class="s-mbolo-201">
+            <div class="paw-print-202">
+              <img src="images/vector-203.svg" class="vector-203" alt="vector" />
+            </div>
+          </div>
+          <p class="text-204"><span class="text-rgb-32-62-52">[Título del proyecto]</span></p>
+        </div>
+        <p class="text-205"><span class="text-rgb-78-96-88">{{ 'footer.desc' | translate }}</span></p>
+      </div>
+      <div class="plataforma-206">
+        <p class="text-207"><span class="text-rgb-32-62-52">{{ 'footer.col1Title' | translate }}</span></p>
+        <p class="text-208 nav-anchor-link" (click)="scrollTo('como-funciona')"><span class="text-rgb-78-96-88">{{ 'nav.howItWorks' | translate }}</span></p>
+        <p class="text-209 nav-anchor-link" (click)="scrollTo('quienes-somos')"><span class="text-rgb-78-96-88">{{ 'nav.aboutUs' | translate }}</span></p>
+        <p class="text-210 nav-anchor-link" (click)="scrollTo('faq-section')"><span class="text-rgb-78-96-88">{{ 'nav.faq' | translate }}</span></p>
+      </div>
+      <div class="acceso-211">
+        <p class="text-212"><span class="text-rgb-32-62-52">{{ 'footer.col2Title' | translate }}</span></p>
+        <p class="text-213 nav-anchor-link" (click)="selectRole('owner'); goToAuth('login')"><span class="text-rgb-78-96-88">{{ 'login.owner' | translate }}</span></p>
+        <p class="text-214 nav-anchor-link" (click)="selectRole('professional'); goToAuth('login')"><span class="text-rgb-78-96-88">{{ 'login.professional' | translate }}</span></p>
+        <p class="text-215 nav-anchor-link" (click)="goToAuth('register')"><span class="text-rgb-78-96-88">{{ 'nav.createAccount' | translate }}</span></p>
+      </div>
+      <div class="legal-216">
+        <p class="text-217"><span class="text-rgb-32-62-52">{{ 'footer.col3Title' | translate }}</span></p>
+        <p class="text-218"><span class="text-rgb-78-96-88">{{ 'footer.privacy' | translate }}</span></p>
+        <p class="text-219"><span class="text-rgb-78-96-88">{{ 'footer.terms' | translate }}</span></p>
+        <p class="text-220"><span class="text-rgb-78-96-88">{{ 'footer.cookies' | translate }}</span></p>
+      </div>
+    </div>
+    <div class="nota-de-proyecto-221">
+      <p class="text-222"><span class="text-rgb-113-128-120">{{ 'footer.copy' | translate }}</span></p>
+      <p class="text-223"><span class="text-rgb-113-128-120">{{ 'footer.design' | translate }}</span></p>
+    </div>
+  </div>
 </div>

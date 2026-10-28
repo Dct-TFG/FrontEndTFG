@@ -30,6 +30,41 @@
     "createLink": "Crea el teu compte",
     "privacy": "Tu decideixes amb qui comparteixes el seu historial."
   },
+  "register": {
+    "title": "Crea el teu compte",
+    "subtitle": "Uneix-te per organitzar i protegir la salut de les teves mascotes.",
+    "nameLabel": "Nom complet",
+    "namePlaceholder": "El teu nom i cognoms",
+    "emailLabel": "Correu electrònic",
+    "emailPlaceholder": "tu@correu.com",
+    "passwordLabel": "Contrasenya",
+    "passwordPlaceholder": "Mínim 6 caràcters",
+    "confirmPasswordLabel": "Confirmar contrasenya",
+    "confirmPasswordPlaceholder": "Repeteix la contrasenya",
+    "submit": "Crear el meu compte",
+    "haveAccount": "Ja tens un compte?",
+    "loginLink": "Inicia sessió"
+  },
+  "forgot": {
+    "title": "Has oblidat la contrasenya?",
+    "subtitle": "Introdueix el teu correu i t'enviarem les instruccions per restablir-la.",
+    "emailLabel": "Correu electrònic",
+    "emailPlaceholder": "tu@correu.com",
+    "submit": "Enviar enllaç de recuperació",
+    "backToLogin": "Tornar a iniciar sessió"
+  },
+  "auth": {
+    "sessionActive": "Sessió iniciada amb èxit",
+    "welcome": "Hola de nou!",
+    "role": "Perfil",
+    "logout": "Tancar sessió",
+    "errorEmptyFields": "Si us plau, emplena tots els camps requerits.",
+    "errorPasswordMismatch": "Les contrasenyes no coincideixen.",
+    "errorShortPassword": "La contrasenya ha de tenir com a mínim 6 caràcters.",
+    "resetSent": "T'hem enviat un correu per restablir la contrasenya. Revisa la teva safata d'entrada.",
+    "registerSuccess": "Compte creat amb èxit! Benvingut/da a la plataforma.",
+    "loginSuccess": "Benvingut/da de nou! Has iniciat sessió correctament."
+  },
   "pets": {
     "title": "Diferents mascotes. La mateixa cura.",
     "dogs": "Gossos",
@@ -49,40 +84,44 @@
     "item2Sub": "Permisos de només lectura o d'edició.",
     "item3Title": "La cura que necessiten",
     "item3Desc": "Troba centres per especialitat, proximitat i valoracions en un directori amb informació seleccionada.",
-    "item3Sub": "Dades curades, no disponibilitat en temps real."
+    "item3Sub": "Dades seleccionades, no disponibilitat en temps real."
   },
   "how": {
     "tag": "AIXÍ DE SENZILL",
-    "title": "Un primer pas.\nMoltes cures\nper endavant.",
+    "title": "Un primer pas.\nMoltes cures\nper davant.",
     "subtitle": "Comença pel seu nom. La resta de la seva història es construeix entre tots.",
     "vetTitle": "Ets professional veterinari?",
     "vetDesc": "Accedeix amb el teu perfil professional per consultar i actualitzar els historials autoritzats.",
     "step1Title": "Crea el seu petit univers",
-    "step1Desc": "Registra les teves mascotes. Cada una tindrà la seva pròpia fitxa i un historial que l'acompanyarà al llarg de la seva vida.",
+    "step1Desc": "Registra les teves mascotes. Cadascuna tindrà la seva pròpia fitxa i un historial que l'acompanyarà durant la seva vida.",
     "step2Title": "Comparteix amb qui la cuida",
     "step2Desc": "Autoritza el veterinari o centre que triïs i assigna el nivell d'accés. Pots canviar-lo o retirar-lo quan ho necessitis.",
     "step3Title": "Segueix la seva història, visita a visita",
-    "step3Desc": "Consulta les entrades que afegeixen els professionals autoritzats, amb la identitat del seu autor sempre visible."
+    "step3Desc": "Consulta les entrades que afegeixen els professionals autoritzats, amb la identitat de l'autor sempre visible."
   },
   "about": {
-    "quote": "La continuïtat de la cura comença per compartir el que importa.",
+    "quote": "La continuïtat de la cura comença per compartir allò important.",
     "tag": "QUI SOM",
     "title": "La tecnologia al servei d'un vincle molt real.",
-    "p1": "[Título del proyecto] neix com un projecte acadèmic amb una idea senzilla: que la informació de salut acompanyi a cada mascota, i no es quedi dispersa entre papers i centres.",
+    "p1": "[Títol del projecte] neix com un projecte acadèmic amb una idea senzilla: que la informació de salut acompanyi a cada mascota, i no es quedi dispersa entre papers i centres.",
     "p2": "Dissenyem un punt de trobada entre famílies i professionals. Un lloc per entendre millor la seva història, compartir-la amb criteri i donar continuïtat a les seves cures.",
     "banner": "Més context per cuidar. Més claredat per acompanyar."
   },
   "faq": {
     "tag": "ABANS DE COMENÇAR",
-    "title": "Les coses clares,\ndesde el principi.",
+    "title": "Les coses clares,\ndes del principi.",
     "subtitle": "Algunes respostes per conèixer millor aquest espai i com es comparteix la informació.",
-    "disclaimer": "[Título del proyecto] organitza informació. No substitueix la valoració ni l'atenció d'un professional veterinari.",
+    "disclaimer": "[Títol del projecte] organitza informació. No substitueix la valoració ni l'atenció d'un professional veterinari.",
     "q1": "Qui pot veure l'historial de la meva mascota?",
     "a1": "Tu i els veterinaris o centres als quals hagis donat permís. Com a propietari, decideixes qui pot només consultar-lo i qui pot afegir o actualitzar informació. Pots revocar aquest accés quan ho necessitis.",
     "q2": "Puc registrar més d'una mascota?",
+    "a2": "Sí, pots registrar tots els teus companys (gossos, gats, ocells, petits mamífers, etc.) des d'un sol compte i gestionar l'historial de cadascun de manera individual.",
     "q3": "Qui afegeix la informació clínica a l'historial?",
+    "a3": "Tant els propietaris com els professionals veterinaris autoritzats poden afegir informació. Cada entrada clínica inclou la signatura i verificació del professional.",
     "q4": "Es connecta amb el sistema de la meva clínica?",
-    "q5": "Quina informació trobaré sobre els centres?"
+    "a4": "Els professionals poden consultar i actualitzar fitxes de pacients autoritzats directament des de la plataforma web sense instal·lacions complexes.",
+    "q5": "Quina informació trobaré sobre els centres?",
+    "a5": "Informació detallada sobre especialitats, serveis, localització, dades de contacte i acreditacions perquè triïs sempre la millor atenció."
   },
   "footer": {
     "ctaTag": "LA SEVA HISTÒRIA CONTINUA AMB TU",
@@ -91,13 +130,13 @@
     "signupText": "Encara no tens compte?",
     "signupLink": "Comença aquí",
     "desc": "Un vincle més proper amb la seva salut.",
-    "col1Title": "Coneix [Título del proyecto]",
+    "col1Title": "Coneix [Títol del projecte]",
     "col2Title": "El teu espai",
     "col3Title": "Informació legal",
-    "privacy": "Privadesa",
+    "privacy": "Privacitat",
     "terms": "Condicions d'ús",
-    "cookies": "Cookies",
-    "copy": "© 2026 [Título del proyecto] · Projecte acadèmic · Nom provisional",
-    "design": "Dissenyat per cuidar el que us uneix."
+    "cookies": "Galetes",
+    "copy": "© 2026 [Títol del projecte] · Projecte acadèmic · Nom provisional",
+    "design": "Dissenyat per cuidar allò que us uneix."
   }
 }
