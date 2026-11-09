@@ -1,0 +1,286 @@
+<div class="floating-lang-switcher">
+  <label for="langSelect">{{ 'dashboard.lang.label' | translate }}:</label>
+  <select id="langSelect" [value]="currentLang" (change)="switchLang($event)">
+    <option value="es">{{ 'dashboard.lang.es' | translate }}</option>
+    <option value="ca">{{ 'dashboard.lang.ca' | translate }}</option>
+    <option value="en">{{ 'dashboard.lang.en' | translate }}</option>
+  </select>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="javascript:void(0)" (click)="navigate('home')" aria-label="PetKeepers, ir al inicio">
+      <span class="brand-icon">
+        <img src="images/vector-7.svg" alt="PetKeepers" />
+      </span>
+      <span class="brand-name">PetKeepers</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <p class="nav-label">{{ 'dashboard.sidebar.mySpace' | translate }}</p>
+      <ul class="nav-list">
+        <li>
+          <a class="nav-link" [class.is-active]="activeNav === 'home'" (click)="setActiveNav('home')" href="javascript:void(0)" aria-current="page">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>{{ 'dashboard.sidebar.home' | translate }}</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" [class.is-active]="activeNav === 'pets'" (click)="setActiveNav('pets')" href="javascript:void(0)">
+            <img class="icon" src="images/vector-35.svg" alt="" />
+            <span>{{ 'dashboard.sidebar.myPets' | translate }}</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" [class.is-active]="activeNav === 'vets'" (click)="setActiveNav('vets')" href="javascript:void(0)">
+            <img class="icon" src="images/vector-117.svg" alt="" />
+            <span>{{ 'dashboard.sidebar.findVets' | translate }}</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" [class.is-active]="activeNav === 'permissions'" (click)="setActiveNav('permissions')" href="javascript:void(0)">
+            <img class="icon" src="images/vector-97.svg" alt="" />
+            <span>{{ 'dashboard.sidebar.permissions' | translate }}</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" [class.is-active]="activeNav === 'profile'" (click)="setActiveNav('profile')" href="javascript:void(0)">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>{{ 'dashboard.sidebar.myProfile' | translate }}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-note">
+      <img class="icon icon-lg" src="images/vector-148.svg" alt="" />
+      <p class="sidebar-note-title">{{ 'dashboard.sidebar.noteTitle' | translate }}</p>
+      <p class="sidebar-note-text">{{ 'dashboard.sidebar.noteText' | translate }}</p>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="topbar">
+      <p class="topbar-title">
+        {{ selectedRole === 'professional' ? ('dashboard.topbar.proSpace' | translate) : ('dashboard.topbar.ownerSpace' | translate) }}
+      </p>
+
+      <div class="topbar-actions">
+        <div class="lang-switcher-wrapper">
+          <button 
+            class="lang-popup-trigger" 
+            type="button" 
+            (click)="toggleLangPopup($event)" 
+            [attr.aria-expanded]="isLangPopupOpen"
+            title="{{ 'dashboard.lang.change' | translate }}"
+          >
+            <svg class="icon-globe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span class="lang-current-label">{{ getLangDisplayName(currentLang) }}</span>
+            <svg class="icon-chevron" [class.is-open]="isLangPopupOpen" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          @if (isLangPopupOpen) {
+            <div class="lang-dropdown-popup" role="menu">
+              <div class="lang-popup-header">
+                <span>{{ 'dashboard.lang.select' | translate }}</span>
+              </div>
+              <button type="button" class="lang-popup-item" [class.selected]="currentLang === 'es'" (click)="selectLanguage('es')">
+                <span class="lang-flag">🇪🇸</span>
+                <span class="lang-name">{{ 'dashboard.lang.es' | translate }}</span>
+                @if (currentLang === 'es') {
+                  <svg class="check-mark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                }
+              </button>
+              <button type="button" class="lang-popup-item" [class.selected]="currentLang === 'ca'" (click)="selectLanguage('ca')">
+                <span class="lang-flag">🏴</span>
+                <span class="lang-name">{{ 'dashboard.lang.ca' | translate }}</span>
+                @if (currentLang === 'ca') {
+                  <svg class="check-mark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                }
+              </button>
+              <button type="button" class="lang-popup-item" [class.selected]="currentLang === 'en'" (click)="selectLanguage('en')">
+                <span class="lang-flag">🇬🇧</span>
+                <span class="lang-name">{{ 'dashboard.lang.en' | translate }}</span>
+                @if (currentLang === 'en') {
+                  <svg class="check-mark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                }
+              </button>
+            </div>
+          }
+        </div>
+
+        <div class="user-menu-wrapper">
+          <button 
+            class="user-menu" 
+            type="button" 
+            (click)="toggleUserMenu($event)"
+            [attr.aria-expanded]="isUserMenuOpen" 
+            id="user-menu-button"
+          >
+            <span class="avatar" aria-hidden="true">{{ userInitials }}</span>
+            <span class="user-name">{{ userName }}</span>
+            <svg class="icon-chevron" [class.is-open]="isUserMenuOpen" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          @if (isUserMenuOpen) {
+            <div class="user-dropdown-popup" role="menu">
+              <div class="user-dropdown-info">
+                <p class="user-dropdown-name">{{ userName }}</p>
+                <p class="user-dropdown-email">{{ userEmail }}</p>
+                <span class="user-role-badge">
+                  {{ selectedRole === 'owner' ? ('login.owner' | translate) : ('login.professional' | translate) }}
+                </span>
+              </div>
+              <div class="dropdown-divider"></div>
+              <button type="button" class="user-dropdown-action" (click)="toggleLangPopup($event); isUserMenuOpen = false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <span>{{ 'dashboard.lang.change' | translate }}</span>
+              </button>
+              <button type="button" class="user-dropdown-action logout-action" (click)="onLogout()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <span>{{ 'dashboard.user.logout' | translate }}</span>
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="welcome" aria-labelledby="welcome-title">
+        <div>
+          <h1 id="welcome-title">{{ 'dashboard.welcome.greeting' | translate:{ name: userName } }}</h1>
+          <p class="welcome-sub">{{ 'dashboard.welcome.subtitle' | translate }}</p>
+        </div>
+        <time class="welcome-date" [attr.datetime]="currentDateIso">{{ currentDateFormatted }}</time>
+      </section>
+
+      <section class="pets" aria-labelledby="pets-title">
+        <div class="section-head">
+          <h2 id="pets-title">{{ 'dashboard.pets.title' | translate }}</h2>
+          <button class="btn btn-secondary" type="button" (click)="addPet()">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>{{ 'dashboard.pets.addPet' | translate }}</span>
+          </button>
+        </div>
+
+        <div class="pets-grid">
+          <article class="card pet-card">
+            <div class="pet-main">
+              <img class="pet-photo" src="images/v9_1737.png" alt="Luna" />
+              <div class="pet-info">
+                <h3>Luna</h3>
+                <p>{{ 'dashboard.pets.lunaInfo' | translate }}</p>
+                <span class="tag">{{ 'dashboard.pets.lunaBreed' | translate }}</span>
+              </div>
+            </div>
+            <p class="pet-last">{{ 'dashboard.pets.lastEntry' | translate }} <time datetime="2026-10-20">20 oct 2026</time></p>
+            <a class="link-action" href="javascript:void(0)" (click)="viewHistory('luna')">
+              <span>{{ 'dashboard.pets.viewHistory' | translate }}</span>
+              <img class="icon icon-sm" src="images/vector-54.svg" alt="" />
+            </a>
+          </article>
+
+          <article class="card pet-card">
+            <div class="pet-main">
+              <img class="pet-photo" src="images/v9_1749.png" alt="Milo" />
+              <div class="pet-info">
+                <h3>Milo</h3>
+                <p>{{ 'dashboard.pets.miloInfo' | translate }}</p>
+                <span class="tag">{{ 'dashboard.pets.miloBreed' | translate }}</span>
+              </div>
+            </div>
+            <p class="pet-last">{{ 'dashboard.pets.lastEntry' | translate }} <time datetime="2026-10-12">12 oct 2026</time></p>
+            <a class="link-action" href="javascript:void(0)" (click)="viewHistory('milo')">
+              <span>{{ 'dashboard.pets.viewHistory' | translate }}</span>
+              <img class="icon icon-sm" src="images/vector-54.svg" alt="" />
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <div class="dashboard-row">
+        <section class="card recent" aria-labelledby="recent-title">
+          <h2 id="recent-title">{{ 'dashboard.recent.title' | translate }}</h2>
+          <ul class="recent-list">
+            <li class="recent-item">
+              <time class="recent-date" datetime="2026-10-20">20 OCT</time>
+              <div class="recent-body">
+                <p class="recent-type">{{ 'dashboard.recent.item1Type' | translate }}</p>
+                <p class="recent-title">{{ 'dashboard.recent.item1Title' | translate }}</p>
+                <p class="recent-meta">{{ 'dashboard.recent.item1Meta' | translate }}</p>
+              </div>
+            </li>
+            <li class="recent-item">
+              <time class="recent-date" datetime="2026-10-12">12 OCT</time>
+              <div class="recent-body">
+                <p class="recent-type">{{ 'dashboard.recent.item2Type' | translate }}</p>
+                <p class="recent-title">{{ 'dashboard.recent.item2Title' | translate }}</p>
+                <p class="recent-meta">{{ 'dashboard.recent.item2Meta' | translate }}</p>
+              </div>
+            </li>
+            <li class="recent-item">
+              <time class="recent-date" datetime="2026-09-18">18 SEP</time>
+              <div class="recent-body">
+                <p class="recent-type">{{ 'dashboard.recent.item3Type' | translate }}</p>
+                <p class="recent-title">{{ 'dashboard.recent.item3Title' | translate }}</p>
+                <p class="recent-meta">{{ 'dashboard.recent.item3Meta' | translate }}</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <div class="side-cards">
+          <section class="card quick" aria-labelledby="perm-title">
+            <h2 id="perm-title">{{ 'dashboard.quick.permTitle' | translate }}</h2>
+            <p>{{ 'dashboard.quick.permDesc' | translate }}</p>
+            <button class="btn btn-secondary" type="button" (click)="setActiveNav('permissions')">
+              <img class="icon icon-sm" src="images/vector-97.svg" alt="" />
+              <span>{{ 'dashboard.quick.permBtn' | translate }}</span>
+            </button>
+          </section>
+
+          <section class="card quick" aria-labelledby="find-title">
+            <h2 id="find-title">{{ 'dashboard.quick.vetTitle' | translate }}</h2>
+            <p>{{ 'dashboard.quick.vetDesc' | translate }}</p>
+            <button class="btn btn-primary" type="button" (click)="setActiveNav('vets')">
+              <img class="icon icon-sm" src="images/vector-105.svg" alt="" />
+              <span>{{ 'dashboard.quick.vetBtn' | translate }}</span>
+            </button>
+          </section>
+        </div>
+      </div>
+
+      <aside class="banner">
+        <img class="icon icon-lg" src="images/vector-148.svg" alt="" />
+        <div>
+          <p class="banner-title">{{ 'dashboard.banner.title' | translate }}</p>
+          <p class="banner-text">{{ 'dashboard.banner.text' | translate }}</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>{{ 'dashboard.footer.tagline' | translate }}</p>
+      <nav aria-label="Enlaces del pie">
+        <a href="javascript:void(0)">{{ 'dashboard.footer.help' | translate }}</a>
+        <span aria-hidden="true">·</span>
+        <a href="javascript:void(0)">{{ 'dashboard.footer.privacy' | translate }}</a>
+      </nav>
+    </footer>
+  </div>
+</div>

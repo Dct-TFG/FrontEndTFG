@@ -43,7 +43,11 @@
     "confirmPasswordPlaceholder": "Repeteix la contrasenya",
     "submit": "Crear el meu compte",
     "haveAccount": "Ja tens un compte?",
-    "loginLink": "Inicia sessió"
+    "loginLink": "Inicia sessió",
+    "licenseLabel": "Número de col·legiat",
+    "licensePlaceholder": "El teu número de col·legiat",
+    "specialtyLabel": "Especialitat",
+    "specialtyPlaceholder": "Ex. Medicina general"
   },
   "forgot": {
     "title": "Has oblidat la contrasenya?",
@@ -63,7 +67,8 @@
     "errorShortPassword": "La contrasenya ha de tenir com a mínim 6 caràcters.",
     "resetSent": "T'hem enviat un correu per restablir la contrasenya. Revisa la teva safata d'entrada.",
     "registerSuccess": "Compte creat amb èxit! Benvingut/da a la plataforma.",
-    "loginSuccess": "Benvingut/da de nou! Has iniciat sessió correctament."
+    "loginSuccess": "Benvingut/da de nou! Has iniciat sessió correctament.",
+    "goToDashboard": "Anar al meu espai"
   },
   "pets": {
     "title": "Diferents mascotes. La mateixa cura.",
@@ -136,7 +141,79 @@
     "privacy": "Privacitat",
     "terms": "Condicions d'ús",
     "cookies": "Galetes",
-    "copy": "© 2026 [Títol del projecte] · Projecte acadèmic · Nom provisional",
+    "copy": "© 2026 PetKeepers · Projecte acadèmic · Nom provisional",
     "design": "Dissenyat per cuidar allò que us uneix."
+  },
+  "dashboard": {
+    "sidebar": {
+      "mySpace": "EL MEU ESPAI",
+      "home": "Inici",
+      "myPets": "Les meves mascotes",
+      "findVets": "Cercar veterinaris",
+      "permissions": "Permisos",
+      "myProfile": "El meu perfil",
+      "noteTitle": "La seva història, sempre a prop.",
+      "noteText": "Un mateix lloc, més enllà d'una clínica."
+    },
+    "topbar": {
+      "ownerSpace": "El teu espai de propietari",
+      "proSpace": "El teu espai professional",
+      "defaultUserName": "Clara Ruiz"
+    },
+    "lang": {
+      "label": "Idioma",
+      "change": "Canviar idioma",
+      "select": "Seleccionar idioma",
+      "es": "Castellà",
+      "ca": "Català",
+      "en": "English"
+    },
+    "user": {
+      "logout": "Tancar sessió",
+      "profile": "El meu perfil"
+    },
+    "welcome": {
+      "greeting": "Que bé veure't, {{name}}.",
+      "subtitle": "Així segueix la història de la Luna i en Milo."
+    },
+    "pets": {
+      "title": "Les teves mascotes",
+      "addPet": "Afegir mascota",
+      "lunaInfo": "Gossa · 4 anys · Femella",
+      "lunaBreed": "Golden retriever",
+      "miloInfo": "Gat · 2 anys · Mascle",
+      "miloBreed": "Comú europeu",
+      "lastEntry": "Última entrada:",
+      "viewHistory": "Veure historial"
+    },
+    "recent": {
+      "title": "L'últim en els seus historials",
+      "item1Type": "Luna · Visita i diagnòstic",
+      "item1Title": "Consulta per pruïja · Dermatitis lleu",
+      "item1Meta": "Dra. Ana Martín · Clínica Veterinària Gràcia",
+      "item2Type": "Milo · Revisió",
+      "item2Title": "Revisió anual · Sense troballes rellevants",
+      "item2Meta": "Dr. Pablo Serra · Centre Veterinari Eixample",
+      "item3Type": "Luna · Vacuna",
+      "item3Title": "Vacuna polivalent administrada",
+      "item3Meta": "Dra. Ana Martín · Clínica Veterinària Gràcia"
+    },
+    "quick": {
+      "permTitle": "Tu decideixes qui accedeix",
+      "permDesc": "Revisa qui pot consultar o actualitzar l'historial de cada mascota.",
+      "permBtn": "Gestionar permisos",
+      "vetTitle": "Troba el seu centre",
+      "vetDesc": "Cerca veterinaris per especialitat, proximitat i valoracions.",
+      "vetBtn": "Cercar veterinaris"
+    },
+    "banner": {
+      "title": "Un historial que els acompanya",
+      "text": "Consulta les entrades dels professionals autoritzats, encara que canviïs de centre. Tu controles amb qui es comparteixen."
+    },
+    "footer": {
+      "tagline": "PetKeepers · Cuidem el que us uneix.",
+      "help": "Ajuda",
+      "privacy": "Privacitat"
+    }
   }
 }

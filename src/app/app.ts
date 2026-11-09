@@ -1,15 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { AuthService, UserRole } from './services/auth.service';
+import { MainPage } from './mainPage/mainPage';
 
 export type AuthMode = 'login' | 'register' | 'forgot';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslatePipe],
+  imports: [CommonModule, FormsModule, TranslatePipe, RouterOutlet, MainPage],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -18,15 +20,16 @@ export class App {
   readonly translate = inject(TranslateService);
 
   currentLang = 'es';
+  currentView: 'landing' | 'main' = 'landing';
   authMode: AuthMode = 'login';
 
-  // Form model fields
   emailInput = '';
   passwordInput = '';
   confirmPasswordInput = '';
   nameInput = '';
+  licenseInput = '';
+  specialtyInput = '';
 
-  // UI state
   showPassword = false;
   showConfirmPassword = false;
   isLoading = false;
@@ -122,7 +125,17 @@ export class App {
     if (event) event.preventDefault();
     this.statusMessage = null;
 
-    if (!this.emailInput || !this.passwordInput || !this.confirmPasswordInput) {
+    const missingProfessional =
+      this.selectedRole === 'professional' &&
+      (!this.licenseInput.trim() || !this.specialtyInput.trim());
+
+    if (
+      !this.nameInput.trim() ||
+      !this.emailInput ||
+      !this.passwordInput ||
+      !this.confirmPasswordInput ||
+      missingProfessional
+    ) {
       this.statusMessage = {
         type: 'error',
         text: this.translate.instant('auth.errorEmptyFields')
@@ -152,7 +165,10 @@ export class App {
         this.emailInput,
         this.passwordInput,
         this.nameInput,
-        this.selectedRole
+        this.selectedRole,
+        this.selectedRole === 'professional'
+          ? { licenseNumber: this.licenseInput.trim(), specialty: this.specialtyInput.trim() }
+          : undefined
       );
       this.statusMessage = {
         type: 'success',
@@ -199,6 +215,14 @@ export class App {
     }
   }
 
+  showMainPage(): void {
+    this.currentView = 'main';
+  }
+
+  showLandingPage(): void {
+    this.currentView = 'landing';
+  }
+
   async onLogout(): Promise<void> {
     try {
       await this.authService.logout();
@@ -207,6 +231,7 @@ export class App {
       this.passwordInput = '';
       this.confirmPasswordInput = '';
       this.authMode = 'login';
+      this.currentView = 'landing';
     } catch (error: any) {
       this.statusMessage = {
         type: 'error',

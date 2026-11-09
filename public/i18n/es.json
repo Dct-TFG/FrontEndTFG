@@ -63,7 +63,8 @@
     "errorShortPassword": "La contraseña debe tener al menos 6 caracteres.",
     "resetSent": "Te hemos enviado un correo para restablecer la contraseña. Revisa tu bandeja de entrada.",
     "registerSuccess": "¡Cuenta creada con éxito! Bienvenido a la plataforma.",
-    "loginSuccess": "¡Bienvenido de nuevo! Has iniciado sesión correctamente."
+    "loginSuccess": "¡Bienvenido de nuevo! Has iniciado sesión correctamente.",
+    "goToDashboard": "Ir a mi espacio"
   },
   "pets": {
     "title": "Distintas mascotas. El mismo cuidado.",
@@ -103,7 +104,7 @@
     "quote": "La continuidad del cuidado empieza por compartir lo importante.",
     "tag": "QUIÉNES SOMOS",
     "title": "La tecnología al servicio de un vínculo muy real.",
-    "p1": "[Título del proyecto] nace como un proyecto académico con una idea sencilla: que la información de salud acompañe a cada mascota, y no se quede dispersa entre papeles y centros.",
+    "p1": "PetKeepers nace como un proyecto académico con una idea sencilla: que la información de salud acompañe a cada mascota, y no se quede dispersa entre papeles y centros.",
     "p2": "Diseñamos un punto de encuentro entre familias y profesionales. Un lugar para entender mejor su historia, compartirla con criterio y dar continuidad a sus cuidados.",
     "banner": "Más contexto para cuidar. Más claridad para acompañar."
   },
@@ -111,7 +112,7 @@
     "tag": "ANTES DE EMPEZAR",
     "title": "Las cosas claras,\ndesde el principio.",
     "subtitle": "Algunas respuestas para conocer mejor este espacio y cómo se comparte la información.",
-    "disclaimer": "[Título del proyecto] organiza información. No sustituye la valoración ni la atención de un profesional veterinario.",
+    "disclaimer": "PetKeepers organiza información. No sustituye la valoración ni la atención de un profesional veterinario.",
     "q1": "¿Quién puede ver el historial de mi mascota?",
     "a1": "Tú y los veterinarios o centros a los que hayas dado permiso. Como propietario, decides quién puede solo consultarlo y quién puede añadir o actualizar información. Puedes revocar ese acceso cuando lo necesites.",
     "q2": "¿Puedo registrar más de una mascota?",
@@ -130,13 +131,85 @@
     "signupText": "¿Aún no tienes cuenta?",
     "signupLink": "Empieza aquí",
     "desc": "Un vínculo más cercano con su salud.",
-    "col1Title": "Conoce [Título del proyecto]",
+    "col1Title": "Conoce PetKeepers",
     "col2Title": "Tu espacio",
     "col3Title": "Información legal",
     "privacy": "Privacidad",
     "terms": "Condiciones de uso",
     "cookies": "Cookies",
-    "copy": "© 2026 [Título del proyecto] · Proyecto académico · Nombre provisional",
+    "copy": "© 2026 PetKeepers · Proyecto académico · Nombre provisional",
     "design": "Diseñado para cuidar lo que os une."
+  },
+  "dashboard": {
+    "sidebar": {
+      "mySpace": "MI ESPACIO",
+      "home": "Inicio",
+      "myPets": "Mis mascotas",
+      "findVets": "Buscar veterinarios",
+      "permissions": "Permisos",
+      "myProfile": "Mi perfil",
+      "noteTitle": "Su historia, siempre cerca.",
+      "noteText": "Un mismo lugar, más allá de una clínica."
+    },
+    "topbar": {
+      "ownerSpace": "Tu espacio de propietario",
+      "proSpace": "Tu espacio profesional",
+      "defaultUserName": "Clara Ruiz"
+    },
+    "lang": {
+      "label": "Idioma",
+      "change": "Cambiar idioma",
+      "select": "Seleccionar idioma",
+      "es": "Castellano",
+      "ca": "Català",
+      "en": "English"
+    },
+    "user": {
+      "logout": "Cerrar sesión",
+      "profile": "Mi perfil"
+    },
+    "welcome": {
+      "greeting": "Qué bien verte, {{name}}.",
+      "subtitle": "Así sigue la historia de Luna y Milo."
+    },
+    "pets": {
+      "title": "Tus mascotas",
+      "addPet": "Añadir mascota",
+      "lunaInfo": "Perra · 4 años · Hembra",
+      "lunaBreed": "Golden retriever",
+      "miloInfo": "Gato · 2 años · Macho",
+      "miloBreed": "Común europeo",
+      "lastEntry": "Última entrada:",
+      "viewHistory": "Ver historial"
+    },
+    "recent": {
+      "title": "Lo último en sus historiales",
+      "item1Type": "Luna · Visita y diagnóstico",
+      "item1Title": "Consulta por picor · Dermatitis leve",
+      "item1Meta": "Dra. Ana Martín · Clínica Veterinaria Gràcia",
+      "item2Type": "Milo · Revisión",
+      "item2Title": "Revisión anual · Sin hallazgos relevantes",
+      "item2Meta": "Dr. Pablo Serra · Centre Veterinari Eixample",
+      "item3Type": "Luna · Vacuna",
+      "item3Title": "Vacuna polivalente administrada",
+      "item3Meta": "Dra. Ana Martín · Clínica Veterinaria Gràcia"
+    },
+    "quick": {
+      "permTitle": "Tú decides quién accede",
+      "permDesc": "Revisa quién puede consultar o actualizar el historial de cada mascota.",
+      "permBtn": "Gestionar permisos",
+      "vetTitle": "Encuentra su centro",
+      "vetDesc": "Busca veterinarios por especialidad, cercanía y valoraciones.",
+      "vetBtn": "Buscar veterinarios"
+    },
+    "banner": {
+      "title": "Un historial que les acompaña",
+      "text": "Consulta las entradas de los profesionales autorizados, aunque cambies de centro. Tú controlas con quién se comparten."
+    },
+    "footer": {
+      "tagline": "PetKeepers · Cuidamos lo que os une.",
+      "help": "Ayuda",
+      "privacy": "Privacidad"
+    }
   }
 }

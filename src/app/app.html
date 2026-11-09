@@ -1,13 +1,16 @@
-<div style="position: fixed; top: 20px; right: 20px; z-index: 99999; background: white; padding: 8px 12px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-  <label for="langSelect" style="font-family: 'Lato', sans-serif; font-size: 14px; margin-right: 6px; color: #333;">Idioma:</label>
-  <select id="langSelect" [value]="currentLang" (change)="switchLang($event)" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc; font-family: 'Lato', sans-serif; cursor: pointer;">
-    <option value="es">Castellano</option>
-    <option value="ca">Català</option>
-    <option value="en">English</option>
-  </select>
-</div>
+@if (currentView === 'main') {
+  <app-main-page (logout)="onLogout()" (backToLanding)="showLandingPage()"></app-main-page>
+} @else {
+  <div style="position: fixed; top: 20px; right: 20px; z-index: 99999; background: white; padding: 8px 12px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+    <label for="langSelect" style="font-family: 'Lato', sans-serif; font-size: 14px; margin-right: 6px; color: #333;">Idioma:</label>
+    <select id="langSelect" [value]="currentLang" (change)="switchLang($event)" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc; font-family: 'Lato', sans-serif; cursor: pointer;">
+      <option value="es">Castellano</option>
+      <option value="ca">Català</option>
+      <option value="en">English</option>
+    </select>
+  </div>
 
-<div class="node-1">
+  <div class="node-1">
   <div class="bienvenida-y-acceso-2">
     <div class="navegaci-n-3">
       <div class="marca-provisional-4" (click)="scrollTo('hero-section')" style="cursor: pointer;">
@@ -16,7 +19,7 @@
             <img src="images/vector-7.svg" class="vector-7" alt="vector" />
           </div>
         </div>
-        <p class="text-8"><span class="text-rgb-32-62-52">[Título del proyecto]</span></p>
+        <p class="text-8"><span class="text-rgb-32-62-52">PetKeepers</span></p>
       </div>
       <div class="enlaces-9">
         <p class="text-10 nav-anchor-link" (click)="scrollTo('como-funciona')"><span class="text-rgb-78-96-88">{{ 'nav.howItWorks' | translate }}</span></p>
@@ -85,6 +88,9 @@
             <p style="font-size: 13px; color: var(--text-rgb-78-96-88); margin: 0;">
               Tu cuenta de Firebase está sincronizada y lista para gestionar historiales.
             </p>
+            <button type="button" class="logout-action-btn" (click)="showMainPage()" style="background: var(--text-rgb-36-91-70); color: white; margin-bottom: 8px;">
+              {{ 'auth.goToDashboard' | translate }}
+            </button>
             <button type="button" class="logout-action-btn" (click)="onLogout()">
               {{ 'auth.logout' | translate }}
             </button>
@@ -221,6 +227,40 @@
                   </div>
                 </div>
 
+                @if (selectedRole === 'professional') {
+                  <div class="campo-de-acceso-40">
+                    <label for="regLicense" class="text-41">
+                      <span class="text-rgb-32-62-52">{{ 'register.licenseLabel' | translate }}</span>
+                    </label>
+                    <div class="entrada-42">
+                      <input
+                        id="regLicense"
+                        type="text"
+                        name="license"
+                        [(ngModel)]="licenseInput"
+                        [placeholder]="'register.licensePlaceholder' | translate"
+                        class="form-input-field"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="campo-de-acceso-40">
+                    <label for="regSpecialty" class="text-41">
+                      <span class="text-rgb-32-62-52">{{ 'register.specialtyLabel' | translate }}</span>
+                    </label>
+                    <div class="entrada-42">
+                      <input
+                        id="regSpecialty"
+                        type="text"
+                        name="specialty"
+                        [(ngModel)]="specialtyInput"
+                        [placeholder]="'register.specialtyPlaceholder' | translate"
+                        class="form-input-field"
+                      />
+                    </div>
+                  </div>
+                }
+
                 <div class="campo-de-acceso-40">
                   <label for="regEmail" class="text-41">
                     <span class="text-rgb-32-62-52">{{ 'register.emailLabel' | translate }}</span>
@@ -265,7 +305,7 @@
                           <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
                           <line x1="1" y1="1" x2="23" y2="23"></line>
                         } @else {
-                          <path d="M1 y12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                           <circle cx="12" cy="12" r="3"></circle>
                         }
                       </svg>
@@ -627,7 +667,7 @@
               <img src="images/vector-203.svg" class="vector-203" alt="vector" />
             </div>
           </div>
-          <p class="text-204"><span class="text-rgb-32-62-52">[Título del proyecto]</span></p>
+          <p class="text-204"><span class="text-rgb-32-62-52">PetKeepers</span></p>
         </div>
         <p class="text-205"><span class="text-rgb-78-96-88">{{ 'footer.desc' | translate }}</span></p>
       </div>
@@ -656,3 +696,6 @@
     </div>
   </div>
 </div>
+}
+
+<router-outlet></router-outlet>

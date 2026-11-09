@@ -43,7 +43,11 @@
     "confirmPasswordPlaceholder": "Repeat your password",
     "submit": "Create my account",
     "haveAccount": "Already have an account?",
-    "loginLink": "Log in"
+    "loginLink": "Log in",
+    "licenseLabel": "License number",
+    "licensePlaceholder": "Your professional license number",
+    "specialtyLabel": "Specialty",
+    "specialtyPlaceholder": "E.g. General practice"
   },
   "forgot": {
     "title": "Forgot your password?",
@@ -63,7 +67,8 @@
     "errorShortPassword": "Password must be at least 6 characters.",
     "resetSent": "We have sent password reset instructions to your email.",
     "registerSuccess": "Account created successfully! Welcome aboard.",
-    "loginSuccess": "Welcome back! You have logged in successfully."
+    "loginSuccess": "Welcome back! You have logged in successfully.",
+    "goToDashboard": "Go to my dashboard"
   },
   "pets": {
     "title": "Different pets. The same care.",
@@ -136,7 +141,79 @@
     "privacy": "Privacy policy",
     "terms": "Terms of service",
     "cookies": "Cookie policy",
-    "copy": "© 2026 [Project Title] · Academic Project · Working Title",
+    "copy": "© 2026 PetKeepers · Academic Project · Working Title",
     "design": "Designed to care for what unites you."
+  },
+  "dashboard": {
+    "sidebar": {
+      "mySpace": "MY SPACE",
+      "home": "Home",
+      "myPets": "My pets",
+      "findVets": "Find veterinarians",
+      "permissions": "Permissions",
+      "myProfile": "My profile",
+      "noteTitle": "Their story, always close.",
+      "noteText": "One place, beyond a single clinic."
+    },
+    "topbar": {
+      "ownerSpace": "Your owner space",
+      "proSpace": "Your professional space",
+      "defaultUserName": "Clara Ruiz"
+    },
+    "lang": {
+      "label": "Language",
+      "change": "Change language",
+      "select": "Select language",
+      "es": "Spanish",
+      "ca": "Catalan",
+      "en": "English"
+    },
+    "user": {
+      "logout": "Log out",
+      "profile": "My profile"
+    },
+    "welcome": {
+      "greeting": "Great to see you, {{name}}.",
+      "subtitle": "Here is how Luna and Milo's story continues."
+    },
+    "pets": {
+      "title": "Your pets",
+      "addPet": "Add pet",
+      "lunaInfo": "Dog · 4 years · Female",
+      "lunaBreed": "Golden retriever",
+      "miloInfo": "Cat · 2 years · Male",
+      "miloBreed": "European shorthair",
+      "lastEntry": "Last entry:",
+      "viewHistory": "View history"
+    },
+    "recent": {
+      "title": "Latest in their medical records",
+      "item1Type": "Luna · Visit & diagnosis",
+      "item1Title": "Itching consultation · Mild dermatitis",
+      "item1Meta": "Dr. Ana Martín · Gràcia Veterinary Clinic",
+      "item2Type": "Milo · Check-up",
+      "item2Title": "Annual check-up · No relevant findings",
+      "item2Meta": "Dr. Pablo Serra · Eixample Veterinary Centre",
+      "item3Type": "Luna · Vaccine",
+      "item3Title": "Polyvalent vaccine administered",
+      "item3Meta": "Dr. Ana Martín · Gràcia Veterinary Clinic"
+    },
+    "quick": {
+      "permTitle": "You decide who has access",
+      "permDesc": "Review who can view or update each pet's health records.",
+      "permBtn": "Manage permissions",
+      "vetTitle": "Find their clinic",
+      "vetDesc": "Search veterinarians by specialty, proximity, and reviews.",
+      "vetBtn": "Search veterinarians"
+    },
+    "banner": {
+      "title": "A medical history that travels with them",
+      "text": "Access entries from authorized professionals, even if you switch clinics. You control who they are shared with."
+    },
+    "footer": {
+      "tagline": "PetKeepers · Caring for what unites you.",
+      "help": "Help",
+      "privacy": "Privacy"
+    }
   }
 }
