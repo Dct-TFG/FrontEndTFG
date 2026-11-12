@@ -64,7 +64,20 @@
     "resetSent": "We have sent password reset instructions to your email.",
     "registerSuccess": "Account created successfully! Welcome aboard.",
     "loginSuccess": "Welcome back! You have logged in successfully.",
-    "goToDashboard": "Go to my dashboard"
+    "goToDashboard": "Go to my dashboard",
+    "accountSynced": "Your account is synced and ready to manage records.",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "errors": {
+      "invalidCredential": "Incorrect email or password.",
+      "emailInUse": "This email is already in use. Try logging in.",
+      "weakPassword": "Password must be at least 6 characters.",
+      "invalidEmail": "Invalid email address format.",
+      "missingPassword": "Please enter your password.",
+      "tooManyRequests": "Too many attempts. Please try again later.",
+      "network": "Network error. Please check your internet connection.",
+      "generic": "An unexpected error occurred."
+    }
   },
   "pets": {
     "title": "Different pets. The same care.",
@@ -74,7 +87,6 @@
     "mammals": "Small mammals"
   },
   "pillars": {
-    "tag": "LESS PAPERWORK, MORE PEACE OF MIND",
     "title": "The essentials of their health,\nwithout losing track.",
     "subtitle": "A space that connects their history, their family, and the professionals who accompany them.",
     "item1Title": "A history that follows them",
@@ -88,7 +100,6 @@
     "item3Sub": "Curated data, not real-time availability."
   },
   "how": {
-    "tag": "AS SIMPLE AS THAT",
     "title": "A first step.\nMuch care\nahead.",
     "subtitle": "Start with their name. The rest of their journey is built together.",
     "vetTitle": "Are you a veterinary professional?",
@@ -102,14 +113,12 @@
   },
   "about": {
     "quote": "Continuity of care begins by sharing what matters.",
-    "tag": "ABOUT US",
     "title": "Technology serving a genuine bond.",
     "p1": "[Project Title] was born as an academic project with a simple premise: medical records should follow the pet, not remain scattered across papers and clinics.",
     "p2": "We provide a meeting place between families and veterinarians—a place to understand their health story, share it thoughtfully, and ensure continuous care.",
     "banner": "More context to care. More clarity to accompany."
   },
   "faq": {
-    "tag": "BEFORE YOU START",
     "title": "Clear answers,\nright from the start.",
     "subtitle": "Everything you need to know about our platform and how your pet's data is shared.",
     "disclaimer": "[Project Title] organizes health information. It does not replace the professional diagnosis or care of a licensed veterinarian.",
@@ -125,7 +134,6 @@
     "a5": "Verified details including specialties, services, location, contact channels, and certifications to help you make informed decisions."
   },
   "footer": {
-    "ctaTag": "THEIR STORY CONTINUES WITH YOU",
     "ctaTitle": "A place for their health.\nMore quality time together.",
     "btn": "Access my account",
     "signupText": "Don't have an account yet?",
@@ -170,29 +178,36 @@
     },
     "welcome": {
       "greeting": "Great to see you, {{name}}.",
-      "subtitle": "Here is how Luna and Milo's story continues."
+      "subtitleWithPets": "Here is how the story of {{names}} is going.",
+      "subtitleEmpty": "Add your first pet to start their record.",
+      "subtitlePro": "Here you will see the records that owners share with you."
     },
     "pets": {
       "title": "Your pets",
       "addPet": "Add pet",
-      "lunaInfo": "Dog · 4 years · Female",
-      "lunaBreed": "Golden retriever",
-      "miloInfo": "Cat · 2 years · Male",
-      "miloBreed": "European shorthair",
       "lastEntry": "Last entry:",
-      "viewHistory": "View history"
+      "viewHistory": "View history",
+      "noEntries": "No entries yet",
+      "emptyTitle": "You have no pets yet",
+      "emptyText": "Add one to start their clinical record.",
+      "species": {
+        "DOG": "Dog",
+        "CAT": "Cat",
+        "BIRD": "Bird",
+        "SMALL_MAMMAL": "Small mammal",
+        "OTHER": "Other"
+      },
+      "age": {
+        "newborn": "Under 1 month",
+        "month": "{{count}} month",
+        "months": "{{count}} months",
+        "year": "{{count}} year",
+        "years": "{{count}} years"
+      }
     },
     "recent": {
       "title": "Latest in their medical records",
-      "item1Type": "Luna · Visit & diagnosis",
-      "item1Title": "Itching consultation · Mild dermatitis",
-      "item1Meta": "Dr. Ana Martín · Gràcia Veterinary Clinic",
-      "item2Type": "Milo · Check-up",
-      "item2Title": "Annual check-up · No relevant findings",
-      "item2Meta": "Dr. Pablo Serra · Eixample Veterinary Centre",
-      "item3Type": "Luna · Vaccine",
-      "item3Title": "Polyvalent vaccine administered",
-      "item3Meta": "Dr. Ana Martín · Gràcia Veterinary Clinic"
+      "empty": "There are no entries in their records yet."
     },
     "quick": {
       "permTitle": "You decide who has access",
@@ -210,6 +225,35 @@
       "tagline": "PetKeepers · Caring for what unites you.",
       "help": "Help",
       "privacy": "Privacy"
+    },
+    "entryTypes": {
+      "DIAGNOSIS": "Diagnosis",
+      "TREATMENT": "Treatment",
+      "VACCINATION": "Vaccination",
+      "VISIT": "Visit",
+      "LAB_RESULT": "Lab result"
+    },
+    "state": {
+      "loading": "Loading...",
+      "loadError": "We could not load your data.",
+      "retry": "Try again"
+    },
+    "petForm": {
+      "title": "Add pet",
+      "name": "Name",
+      "namePlaceholder": "What is their name?",
+      "species": "Species",
+      "breed": "Breed",
+      "breedPlaceholder": "E.g. Mixed breed",
+      "birthDate": "Date of birth",
+      "cancel": "Cancel",
+      "save": "Save pet",
+      "saving": "Saving...",
+      "errorRequired": "Please fill in all fields."
+    },
+    "pro": {
+      "title": "Professional space",
+      "text": "Here you will see the pets that owners share with you. We are working on it."
     }
   }
 }

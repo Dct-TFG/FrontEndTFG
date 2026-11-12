@@ -1,77 +1,19 @@
-<div class="floating-lang-switcher">
-  <label for="langSelect">{{ 'dashboard.lang.label' | translate }}:</label>
-  <select id="langSelect" [value]="currentLang" (change)="switchLang($event)">
-    <option value="es">{{ 'dashboard.lang.es' | translate }}</option>
-    <option value="ca">{{ 'dashboard.lang.ca' | translate }}</option>
-    <option value="en">{{ 'dashboard.lang.en' | translate }}</option>
-  </select>
-</div>
+<div class="dashboard-page">
+  <!-- Top Navigation Header -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="brand-group" (click)="navigate('landing')" role="button" tabindex="0" title="Volver al inicio">
+        <div class="brand-icon">
+          <img src="images/vector-7.svg" alt="PetKeepers" />
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">PetKeepers</span>
+          <span class="brand-badge">{{ selectedRole === 'professional' ? ('dashboard.topbar.proSpace' | translate) : ('dashboard.topbar.ownerSpace' | translate) }}</span>
+        </div>
+      </div>
 
-<div class="layout">
-  <aside class="sidebar">
-    <a class="brand" href="javascript:void(0)" (click)="navigate('home')" aria-label="PetKeepers, ir al inicio">
-      <span class="brand-icon">
-        <img src="images/vector-7.svg" alt="PetKeepers" />
-      </span>
-      <span class="brand-name">PetKeepers</span>
-    </a>
-
-    <nav class="nav" aria-label="Navegación principal">
-      <p class="nav-label">{{ 'dashboard.sidebar.mySpace' | translate }}</p>
-      <ul class="nav-list">
-        <li>
-          <a class="nav-link" [class.is-active]="activeNav === 'home'" (click)="setActiveNav('home')" href="javascript:void(0)" aria-current="page">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span>{{ 'dashboard.sidebar.home' | translate }}</span>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" [class.is-active]="activeNav === 'pets'" (click)="setActiveNav('pets')" href="javascript:void(0)">
-            <img class="icon" src="images/vector-35.svg" alt="" />
-            <span>{{ 'dashboard.sidebar.myPets' | translate }}</span>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" [class.is-active]="activeNav === 'vets'" (click)="setActiveNav('vets')" href="javascript:void(0)">
-            <img class="icon" src="images/vector-117.svg" alt="" />
-            <span>{{ 'dashboard.sidebar.findVets' | translate }}</span>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" [class.is-active]="activeNav === 'permissions'" (click)="setActiveNav('permissions')" href="javascript:void(0)">
-            <img class="icon" src="images/vector-97.svg" alt="" />
-            <span>{{ 'dashboard.sidebar.permissions' | translate }}</span>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" [class.is-active]="activeNav === 'profile'" (click)="setActiveNav('profile')" href="javascript:void(0)">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>{{ 'dashboard.sidebar.myProfile' | translate }}</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="sidebar-note">
-      <img class="icon icon-lg" src="images/vector-148.svg" alt="" />
-      <p class="sidebar-note-title">{{ 'dashboard.sidebar.noteTitle' | translate }}</p>
-      <p class="sidebar-note-text">{{ 'dashboard.sidebar.noteText' | translate }}</p>
-    </div>
-  </aside>
-
-  <div class="main-wrap">
-    <header class="topbar">
-      <p class="topbar-title">
-        {{ selectedRole === 'professional' ? ('dashboard.topbar.proSpace' | translate) : ('dashboard.topbar.ownerSpace' | translate) }}
-      </p>
-
-      <div class="topbar-actions">
+      <div class="nav-actions">
+        <!-- Language Switcher Popup Trigger & Dropdown -->
         <div class="lang-switcher-wrapper">
           <button 
             class="lang-popup-trigger" 
@@ -121,24 +63,25 @@
           }
         </div>
 
+        <!-- User Profile Menu -->
         <div class="user-menu-wrapper">
           <button 
-            class="user-menu" 
+            class="user-menu-btn" 
             type="button" 
             (click)="toggleUserMenu($event)"
             [attr.aria-expanded]="isUserMenuOpen" 
             id="user-menu-button"
           >
-            <span class="avatar" aria-hidden="true">{{ userInitials }}</span>
+            <span class="avatar-circle" aria-hidden="true">{{ userInitials }}</span>
             <span class="user-name">{{ userName }}</span>
-            <svg class="icon-chevron" [class.is-open]="isUserMenuOpen" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="icon-chevron" [class.is-open]="isUserMenuOpen" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
 
           @if (isUserMenuOpen) {
             <div class="user-dropdown-popup" role="menu">
-              <div class="user-dropdown-info">
+              <div class="user-dropdown-header">
                 <p class="user-dropdown-name">{{ userName }}</p>
                 <p class="user-dropdown-email">{{ userEmail }}</p>
                 <span class="user-role-badge">
@@ -146,10 +89,15 @@
                 </span>
               </div>
               <div class="dropdown-divider"></div>
+              <button type="button" class="user-dropdown-action" (click)="navigate('landing'); isUserMenuOpen = false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span>Inicio</span>
+              </button>
               <button type="button" class="user-dropdown-action" (click)="toggleLangPopup($event); isUserMenuOpen = false">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                 <span>{{ 'dashboard.lang.change' | translate }}</span>
               </button>
+              <div class="dropdown-divider"></div>
               <button type="button" class="user-dropdown-action logout-action" (click)="onLogout()">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                 <span>{{ 'dashboard.user.logout' | translate }}</span>
@@ -158,129 +106,321 @@
           }
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main class="content">
-      <section class="welcome" aria-labelledby="welcome-title">
-        <div>
-          <h1 id="welcome-title">{{ 'dashboard.welcome.greeting' | translate:{ name: userName } }}</h1>
-          <p class="welcome-sub">{{ 'dashboard.welcome.subtitle' | translate }}</p>
+  <!-- Main Content Flow (Natural scrolling, one unified canvas) -->
+  <main class="page-content">
+    <div class="content-container">
+
+      <!-- Hero Welcome Section -->
+      <section class="welcome-hero">
+        <div class="welcome-info">
+          <span class="welcome-tag">{{ 'hero.tag' | translate }}</span>
+          <h1 class="welcome-title">{{ 'dashboard.welcome.greeting' | translate:{ name: userName } }}</h1>
+          <p class="welcome-subtitle">
+            @if (isOwner() && pets().length > 0) {
+              {{ 'dashboard.welcome.subtitleWithPets' | translate: { names: petNames() } }}
+            } @else if (isOwner()) {
+              {{ 'dashboard.welcome.subtitleEmpty' | translate }}
+            } @else {
+              {{ 'dashboard.welcome.subtitlePro' | translate }}
+            }
+          </p>
         </div>
-        <time class="welcome-date" [attr.datetime]="currentDateIso">{{ currentDateFormatted }}</time>
-      </section>
-
-      <section class="pets" aria-labelledby="pets-title">
-        <div class="section-head">
-          <h2 id="pets-title">{{ 'dashboard.pets.title' | translate }}</h2>
-          <button class="btn btn-secondary" type="button" (click)="addPet()">
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>{{ 'dashboard.pets.addPet' | translate }}</span>
-          </button>
-        </div>
-
-        <div class="pets-grid">
-          <article class="card pet-card">
-            <div class="pet-main">
-              <img class="pet-photo" src="images/v9_1737.png" alt="Luna" />
-              <div class="pet-info">
-                <h3>Luna</h3>
-                <p>{{ 'dashboard.pets.lunaInfo' | translate }}</p>
-                <span class="tag">{{ 'dashboard.pets.lunaBreed' | translate }}</span>
-              </div>
-            </div>
-            <p class="pet-last">{{ 'dashboard.pets.lastEntry' | translate }} <time datetime="2026-10-20">20 oct 2026</time></p>
-            <a class="link-action" href="javascript:void(0)" (click)="viewHistory('luna')">
-              <span>{{ 'dashboard.pets.viewHistory' | translate }}</span>
-              <img class="icon icon-sm" src="images/vector-54.svg" alt="" />
-            </a>
-          </article>
-
-          <article class="card pet-card">
-            <div class="pet-main">
-              <img class="pet-photo" src="images/v9_1749.png" alt="Milo" />
-              <div class="pet-info">
-                <h3>Milo</h3>
-                <p>{{ 'dashboard.pets.miloInfo' | translate }}</p>
-                <span class="tag">{{ 'dashboard.pets.miloBreed' | translate }}</span>
-              </div>
-            </div>
-            <p class="pet-last">{{ 'dashboard.pets.lastEntry' | translate }} <time datetime="2026-10-12">12 oct 2026</time></p>
-            <a class="link-action" href="javascript:void(0)" (click)="viewHistory('milo')">
-              <span>{{ 'dashboard.pets.viewHistory' | translate }}</span>
-              <img class="icon icon-sm" src="images/vector-54.svg" alt="" />
-            </a>
-          </article>
+        <div class="welcome-date-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <time [attr.datetime]="currentDateIso">{{ currentDateFormatted }}</time>
         </div>
       </section>
 
-      <div class="dashboard-row">
-        <section class="card recent" aria-labelledby="recent-title">
-          <h2 id="recent-title">{{ 'dashboard.recent.title' | translate }}</h2>
-          <ul class="recent-list">
-            <li class="recent-item">
-              <time class="recent-date" datetime="2026-10-20">20 OCT</time>
-              <div class="recent-body">
-                <p class="recent-type">{{ 'dashboard.recent.item1Type' | translate }}</p>
-                <p class="recent-title">{{ 'dashboard.recent.item1Title' | translate }}</p>
-                <p class="recent-meta">{{ 'dashboard.recent.item1Meta' | translate }}</p>
+      <!-- Principal Section: The User's Pets -->
+      @if (isOwner()) {
+        <section class="pets-section" aria-labelledby="pets-section-title">
+          <div class="section-header">
+            <div class="header-title-wrap">
+              <h2 id="pets-section-title" class="section-title">{{ 'dashboard.pets.title' | translate }}</h2>
+              @if (pets().length > 0) {
+                <span class="count-badge">{{ pets().length }}</span>
+              }
+            </div>
+            <button class="btn btn-primary" type="button" (click)="openPetModal()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>{{ 'dashboard.pets.addPet' | translate }}</span>
+            </button>
+          </div>
+
+          <!-- Loading State -->
+          @if (loading()) {
+            <div class="state-card loading-state">
+              <div class="spinner"></div>
+              <p>{{ 'dashboard.state.loading' | translate }}</p>
+            </div>
+          }
+          <!-- Error State -->
+          @else if (loadError()) {
+            <div class="state-card error-state" role="alert">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>{{ 'dashboard.state.loadError' | translate }}</span>
+              <button class="btn btn-secondary" type="button" (click)="loadData()">
+                {{ 'dashboard.state.retry' | translate }}
+              </button>
+            </div>
+          }
+          <!-- Empty State (No pets registered yet) -->
+          @else if (pets().length === 0) {
+            <div class="empty-pets-card">
+              <div class="empty-pets-icon">
+                <img src="images/vector-7.svg" alt="Mascota" />
               </div>
-            </li>
-            <li class="recent-item">
-              <time class="recent-date" datetime="2026-10-12">12 OCT</time>
-              <div class="recent-body">
-                <p class="recent-type">{{ 'dashboard.recent.item2Type' | translate }}</p>
-                <p class="recent-title">{{ 'dashboard.recent.item2Title' | translate }}</p>
-                <p class="recent-meta">{{ 'dashboard.recent.item2Meta' | translate }}</p>
-              </div>
-            </li>
-            <li class="recent-item">
-              <time class="recent-date" datetime="2026-09-18">18 SEP</time>
-              <div class="recent-body">
-                <p class="recent-type">{{ 'dashboard.recent.item3Type' | translate }}</p>
-                <p class="recent-title">{{ 'dashboard.recent.item3Title' | translate }}</p>
-                <p class="recent-meta">{{ 'dashboard.recent.item3Meta' | translate }}</p>
-              </div>
-            </li>
-          </ul>
+              <h3 class="empty-pets-title">{{ 'dashboard.pets.emptyTitle' | translate }}</h3>
+              <p class="empty-pets-desc">{{ 'dashboard.pets.emptyText' | translate }}</p>
+              <button class="btn btn-primary btn-lg" type="button" (click)="openPetModal()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>{{ 'dashboard.pets.addPet' | translate }}</span>
+              </button>
+            </div>
+          }
+          <!-- Pet Cards Grid -->
+          @else {
+            <div class="pets-grid">
+              @for (pet of pets(); track pet.id) {
+                @let age = ageOf(pet);
+                <article class="pet-card">
+                  <div class="pet-card-top">
+                    <div class="pet-avatar-wrap">
+                      @if (isPetPhoto(pet)) {
+                        <img class="pet-photo" [src]="getPetImage(pet)" [alt]="pet.name" />
+                      } @else {
+                        <div class="pet-species-icon">
+                          <img [src]="getPetImage(pet)" [alt]="pet.species" />
+                        </div>
+                      }
+                    </div>
+                    <div class="pet-info-wrap">
+                      <div class="pet-title-row">
+                        <h3 class="pet-name">{{ pet.name }}</h3>
+                        <span class="breed-badge">{{ pet.breed }}</span>
+                      </div>
+                      <p class="pet-species-age">
+                        {{ 'dashboard.pets.species.' + pet.species | translate }} · {{ age.key | translate: { count: age.count } }}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="pet-card-divider"></div>
+
+                  <div class="pet-card-bottom">
+                    <div class="last-entry-info">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      @if (pet.lastEntryDate) {
+                        <span>{{ 'dashboard.pets.lastEntry' | translate }} <strong>{{ formatDate(pet.lastEntryDate) }}</strong></span>
+                      } @else {
+                        <span class="text-muted">{{ 'dashboard.pets.noEntries' | translate }}</span>
+                      }
+                    </div>
+                    <button class="pet-action-btn" type="button" (click)="viewHistory(pet)">
+                      <span>{{ 'dashboard.pets.viewHistory' | translate }}</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </article>
+              }
+            </div>
+          }
         </section>
 
-        <div class="side-cards">
-          <section class="card quick" aria-labelledby="perm-title">
-            <h2 id="perm-title">{{ 'dashboard.quick.permTitle' | translate }}</h2>
-            <p>{{ 'dashboard.quick.permDesc' | translate }}</p>
-            <button class="btn btn-secondary" type="button" (click)="setActiveNav('permissions')">
-              <img class="icon icon-sm" src="images/vector-97.svg" alt="" />
-              <span>{{ 'dashboard.quick.permBtn' | translate }}</span>
-            </button>
-          </section>
+        <!-- Recent Entries Timeline Section (Lo último en sus historiales) -->
+        <section class="recent-section" aria-labelledby="recent-section-title">
+          <div class="section-header">
+            <h2 id="recent-section-title" class="section-title">{{ 'dashboard.recent.title' | translate }}</h2>
+          </div>
 
-          <section class="card quick" aria-labelledby="find-title">
-            <h2 id="find-title">{{ 'dashboard.quick.vetTitle' | translate }}</h2>
-            <p>{{ 'dashboard.quick.vetDesc' | translate }}</p>
-            <button class="btn btn-primary" type="button" (click)="setActiveNav('vets')">
-              <img class="icon icon-sm" src="images/vector-105.svg" alt="" />
-              <span>{{ 'dashboard.quick.vetBtn' | translate }}</span>
-            </button>
-          </section>
+          <div class="recent-card">
+            @if (loading()) {
+              <div class="recent-loading">
+                <div class="spinner-sm"></div>
+                <span>{{ 'dashboard.state.loading' | translate }}</span>
+              </div>
+            } @else if (recentEntries().length === 0) {
+              <div class="recent-empty">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <p>{{ 'dashboard.recent.empty' | translate }}</p>
+              </div>
+            } @else {
+              <ul class="recent-timeline">
+                @for (entry of recentEntries(); track entry.id) {
+                  <li class="timeline-item">
+                    <div class="date-chip">
+                      <span>{{ formatDay(entry.date) }}</span>
+                    </div>
+                    <div class="entry-body">
+                      <div class="entry-header">
+                        <span class="entry-pet">{{ entry.petName }}</span>
+                        <span class="entry-type-pill">{{ 'dashboard.entryTypes.' + entry.type | translate }}</span>
+                      </div>
+                      <p class="entry-desc">{{ entry.description }}</p>
+                      <p class="entry-vet-meta">
+                        {{ entry.veterinarianName }}@if (entry.centerName) { · {{ entry.centerName }} }
+                      </p>
+                    </div>
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+        </section>
+      } @else {
+        <section class="pro-welcome-card" aria-labelledby="pro-title">
+          <h2 id="pro-title" class="section-title">{{ 'dashboard.pro.title' | translate }}</h2>
+          <p class="pro-text">{{ 'dashboard.pro.text' | translate }}</p>
+        </section>
+      }
+
+    </div>
+  </main>
+
+  <!-- Clean Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <p class="footer-tagline">{{ 'dashboard.footer.tagline' | translate }}</p>
+      <div class="footer-links">
+        <a href="javascript:void(0)">{{ 'dashboard.footer.help' | translate }}</a>
+        <span class="dot-separator">·</span>
+        <a href="javascript:void(0)">{{ 'dashboard.footer.privacy' | translate }}</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- Modal for Adding a New Pet -->
+@if (isPetModalOpen()) {
+  <div class="modal-backdrop" (click)="closePetModal()">
+    <div
+      class="modal-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pet-modal-title"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="modal-header">
+        <div class="modal-header-icon">
+          <img src="images/vector-7.svg" alt="" />
+        </div>
+        <div>
+          <h2 id="pet-modal-title" class="modal-title">{{ 'dashboard.petForm.title' | translate }}</h2>
+          <p class="modal-subtitle">Registra una nueva mascota en tu espacio familiar</p>
         </div>
       </div>
 
-      <aside class="banner">
-        <img class="icon icon-lg" src="images/vector-148.svg" alt="" />
-        <div>
-          <p class="banner-title">{{ 'dashboard.banner.title' | translate }}</p>
-          <p class="banner-text">{{ 'dashboard.banner.text' | translate }}</p>
+      <form class="pet-form" (ngSubmit)="submitPet($event)">
+        <div class="form-group">
+          <label for="petName" class="form-label">{{ 'dashboard.petForm.name' | translate }}</label>
+          <div class="input-wrapper">
+            <input
+              id="petName"
+              name="petName"
+              type="text"
+              class="form-control-input"
+              [(ngModel)]="petForm.name"
+              [placeholder]="'dashboard.petForm.namePlaceholder' | translate"
+              autocomplete="off"
+              required
+            />
+          </div>
         </div>
-      </aside>
-    </main>
 
-    <footer class="footer">
-      <p>{{ 'dashboard.footer.tagline' | translate }}</p>
-      <nav aria-label="Enlaces del pie">
-        <a href="javascript:void(0)">{{ 'dashboard.footer.help' | translate }}</a>
-        <span aria-hidden="true">·</span>
-        <a href="javascript:void(0)">{{ 'dashboard.footer.privacy' | translate }}</a>
-      </nav>
-    </footer>
+        <div class="form-group">
+          <label for="petSpecies" class="form-label">{{ 'dashboard.petForm.species' | translate }}</label>
+          <div class="input-wrapper">
+            <select id="petSpecies" name="petSpecies" class="form-control-select" [(ngModel)]="petForm.species">
+              @for (option of speciesOptions; track option) {
+                <option [value]="option">{{ 'dashboard.pets.species.' + option | translate }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="petBreed" class="form-label">{{ 'dashboard.petForm.breed' | translate }}</label>
+          <div class="input-wrapper">
+            <input
+              id="petBreed"
+              name="petBreed"
+              type="text"
+              class="form-control-input"
+              [(ngModel)]="petForm.breed"
+              [placeholder]="'dashboard.petForm.breedPlaceholder' | translate"
+              autocomplete="off"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="petBirthDate" class="form-label">{{ 'dashboard.petForm.birthDate' | translate }}</label>
+          <div class="input-wrapper">
+            <input
+              id="petBirthDate"
+              name="petBirthDate"
+              type="date"
+              class="form-control-input"
+              [(ngModel)]="petForm.birthDate"
+              [max]="maxBirthDate"
+              required
+            />
+          </div>
+        </div>
+
+        @if (petFormError()) {
+          <div class="form-error-alert" role="alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>{{ petFormError() }}</span>
+          </div>
+        }
+
+        <div class="modal-actions">
+          <button class="btn btn-secondary" type="button" (click)="closePetModal()" [disabled]="savingPet()">
+            {{ 'dashboard.petForm.cancel' | translate }}
+          </button>
+          <button class="btn btn-primary" type="submit" [disabled]="savingPet()">
+            @if (savingPet()) {
+              <span class="btn-spinner"></span>
+            }
+            <span>{{ (savingPet() ? 'dashboard.petForm.saving' : 'dashboard.petForm.save') | translate }}</span>
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+}

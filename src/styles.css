@@ -40,6 +40,17 @@
   box-sizing: border-box;
 }
 
+/* Bootstrap's reboot adds margin-bottom: 1rem to these elements, and an element
+   selector beats "*", so the reset above did not remove it. That margin pushed
+   every text up 16px next to its icon (navbar, "Crear cuenta", captions...). */
+p,
+h1, h2, h3, h4, h5, h6,
+ul, ol, dl,
+figure,
+label {
+  margin: 0;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
@@ -74,44 +85,91 @@ a.prototype-link {
 }
 
 .s-mbolo-5 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 0px;
-  flex-grow: 0;
-  flex-shrink: 1;
-  width: 34.04255319148936%;
-  background-color: rgba(234, 240, 232, 1);
-  border-radius: 10px;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   width: 42px;
+   height: 42px;
+   padding: 0px;
+   flex-grow: 0;
+   flex-shrink: 0;
+   background-color: rgba(234, 240, 232, 1);
+   border-radius: 10px;
+}
+
+.vector-7 {
+   width: 22px;
+   height: 22px;
+   object-fit: contain;
+   display: block;
 }
 
 .text-8 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: left;
-  font-family: var(--font-family-lato);
-  font-weight: 700;
-  font-size: 29px;
-  letter-spacing: -1px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-rgb-32-62-52);
+   display: flex;
+   align-items: center;
+   flex-grow: 0;
+   flex-shrink: 1;
+   flex-basis: auto;
+   text-align: left;
+   font-family: var(--font-family-lato);
+   font-weight: 700;
+   font-size: 29px;
+   letter-spacing: -1px;
+   text-decoration: none;
+   text-transform: none;
+   color: var(--text-rgb-32-62-52);
 }
 
 .marca-provisional-4 {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 9px;
-  padding: 0px;
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center;
+   gap: 10px;
+   padding: 0px;
+   flex-grow: 0;
+   flex-shrink: 0;
+   flex-basis: auto;
+   min-width: 0;
 }
 
+.header-tools {
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   gap: 20px;
+   flex-wrap: wrap;
+}
+
+.lang-switcher-inline {
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   padding: 8px 12px;
+   border: 1px solid rgba(220, 226, 217, 1);
+   border-radius: 999px;
+   background: #fff;
+   box-shadow: 0 2px 8px rgba(32, 62, 52, 0.04);
+}
+
+.lang-switcher-label {
+   font-family: var(--font-family-lato);
+   font-size: 12px;
+   font-weight: 700;
+   color: var(--text-rgb-78-96-88);
+}
+
+.lang-switcher-select {
+   border: 1px solid rgba(220, 226, 217, 1);
+   border-radius: 8px;
+   background: #fff;
+   padding: 4px 8px;
+   font-family: var(--font-family-lato);
+   font-size: 13px;
+   color: var(--text-rgb-32-62-52);
+   cursor: pointer;
+}
 .text-10 {
   flex-grow: 0;
   flex-shrink: 1;
@@ -201,19 +259,6 @@ a.prototype-link {
   border-bottom: 1px solid rgba(220, 226, 217, 1);
 }
 
-.text-17 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: left;
-  font-family: var(--font-family-lato);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.7999999523162842px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-rgb-36-91-70);
-}
 
 .text-18 {
   flex-grow: 0;
@@ -947,19 +992,6 @@ a.prototype-link {
   flex-basis: auto;
 }
 
-.text-82 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: left;
-  font-family: var(--font-family-lato);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.7999999523162842px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-rgb-36-91-70);
-}
 
 .text-83 {
   flex-grow: 0;
@@ -1329,19 +1361,6 @@ a.prototype-link {
   flex-basis: auto;
 }
 
-.text-112 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: left;
-  font-family: var(--font-family-lato);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.7999999523162842px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-rgb-36-91-70);
-}
 
 .text-113 {
   flex-grow: 0;
@@ -1707,19 +1726,6 @@ a.prototype-link {
   flex-basis: auto;
 }
 
-.text-142 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: left;
-  font-family: var(--font-family-lato);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.7999999523162842px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-rgb-36-91-70);
-}
 
 .text-143 {
   flex-grow: 0;
@@ -1829,19 +1835,6 @@ a.prototype-link {
   width: 100%;
 }
 
-.text-152 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: left;
-  font-family: var(--font-family-lato);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.7999999523162842px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-rgb-36-91-70);
-}
 
 .text-153 {
   flex-grow: 0;
@@ -2230,19 +2223,6 @@ a.prototype-link {
   background-color: rgba(244, 246, 240, 1);
 }
 
-.text-189 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: left;
-  font-family: var(--font-family-lato);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.7999999523162842px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-rgb-225-234-223);
-}
 
 .text-190 {
   flex-grow: 0;

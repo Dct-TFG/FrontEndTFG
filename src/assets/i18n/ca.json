@@ -43,11 +43,7 @@
     "confirmPasswordPlaceholder": "Repeteix la contrasenya",
     "submit": "Crear el meu compte",
     "haveAccount": "Ja tens un compte?",
-    "loginLink": "Inicia sessió",
-    "licenseLabel": "Número de col·legiat",
-    "licensePlaceholder": "El teu número de col·legiat",
-    "specialtyLabel": "Especialitat",
-    "specialtyPlaceholder": "Ex. Medicina general"
+    "loginLink": "Inicia sessió"
   },
   "forgot": {
     "title": "Has oblidat la contrasenya?",
@@ -68,7 +64,20 @@
     "resetSent": "T'hem enviat un correu per restablir la contrasenya. Revisa la teva safata d'entrada.",
     "registerSuccess": "Compte creat amb èxit! Benvingut/da a la plataforma.",
     "loginSuccess": "Benvingut/da de nou! Has iniciat sessió correctament.",
-    "goToDashboard": "Anar al meu espai"
+    "goToDashboard": "Anar al meu espai",
+    "accountSynced": "El teu compte està sincronitzat i a punt per gestionar historials.",
+    "showPassword": "Mostrar contrasenya",
+    "hidePassword": "Amagar contrasenya",
+    "errors": {
+      "invalidCredential": "Correu electrònic o contrasenya incorrectes.",
+      "emailInUse": "Aquest correu electrònic ja està registrat. Prova a iniciar sessió.",
+      "weakPassword": "La contrasenya ha de tenir com a mínim 6 caràcters.",
+      "invalidEmail": "El format de correu electrònic no és vàlid.",
+      "missingPassword": "Introdueix la teva contrasenya.",
+      "tooManyRequests": "Massa intents fallits. Si us plau, espera un moment.",
+      "network": "Error de connexió. Comprova la teva connexió a internet.",
+      "generic": "S'ha produït un error inesperat."
+    }
   },
   "pets": {
     "title": "Diferents mascotes. La mateixa cura.",
@@ -78,7 +87,6 @@
     "mammals": "Petits mamífers"
   },
   "pillars": {
-    "tag": "MENYS PAPERS, MÉS TRANQUIL·LITAT",
     "title": "El que importa de la seva salut,\nsense perdre el fil.",
     "subtitle": "Un espai que connecta la seva història, a la seva família i als professionals que l'acompanyen.",
     "item1Title": "Una història que els segueix",
@@ -92,7 +100,6 @@
     "item3Sub": "Dades seleccionades, no disponibilitat en temps real."
   },
   "how": {
-    "tag": "AIXÍ DE SENZILL",
     "title": "Un primer pas.\nMoltes cures\nper davant.",
     "subtitle": "Comença pel seu nom. La resta de la seva història es construeix entre tots.",
     "vetTitle": "Ets professional veterinari?",
@@ -106,14 +113,12 @@
   },
   "about": {
     "quote": "La continuïtat de la cura comença per compartir allò important.",
-    "tag": "QUI SOM",
     "title": "La tecnologia al servei d'un vincle molt real.",
     "p1": "[Títol del projecte] neix com un projecte acadèmic amb una idea senzilla: que la informació de salut acompanyi a cada mascota, i no es quedi dispersa entre papers i centres.",
     "p2": "Dissenyem un punt de trobada entre famílies i professionals. Un lloc per entendre millor la seva història, compartir-la amb criteri i donar continuïtat a les seves cures.",
     "banner": "Més context per cuidar. Més claredat per acompanyar."
   },
   "faq": {
-    "tag": "ABANS DE COMENÇAR",
     "title": "Les coses clares,\ndes del principi.",
     "subtitle": "Algunes respostes per conèixer millor aquest espai i com es comparteix la informació.",
     "disclaimer": "[Títol del projecte] organitza informació. No substitueix la valoració ni l'atenció d'un professional veterinari.",
@@ -129,7 +134,6 @@
     "a5": "Informació detallada sobre especialitats, serveis, localització, dades de contacte i acreditacions perquè triïs sempre la millor atenció."
   },
   "footer": {
-    "ctaTag": "LA SEVA HISTÒRIA CONTINUA AMB TU",
     "ctaTitle": "Un lloc per a la seva salut.\nMés temps per estar junts.",
     "btn": "Entrar al meu compte",
     "signupText": "Encara no tens compte?",
@@ -174,29 +178,36 @@
     },
     "welcome": {
       "greeting": "Que bé veure't, {{name}}.",
-      "subtitle": "Així segueix la història de la Luna i en Milo."
+      "subtitleWithPets": "Així continua la història de {{names}}.",
+      "subtitleEmpty": "Afegeix la teva primera mascota per començar el seu historial.",
+      "subtitlePro": "Aquí veuràs els historials que els propietaris comparteixin amb tu."
     },
     "pets": {
       "title": "Les teves mascotes",
       "addPet": "Afegir mascota",
-      "lunaInfo": "Gossa · 4 anys · Femella",
-      "lunaBreed": "Golden retriever",
-      "miloInfo": "Gat · 2 anys · Mascle",
-      "miloBreed": "Comú europeu",
       "lastEntry": "Última entrada:",
-      "viewHistory": "Veure historial"
+      "viewHistory": "Veure historial",
+      "noEntries": "Encara sense entrades",
+      "emptyTitle": "Encara no tens cap mascota",
+      "emptyText": "Afegeix-ne una per crear el seu historial clínic.",
+      "species": {
+        "DOG": "Gos",
+        "CAT": "Gat",
+        "BIRD": "Ocell",
+        "SMALL_MAMMAL": "Petit mamífer",
+        "OTHER": "Altres"
+      },
+      "age": {
+        "newborn": "Menys d'1 mes",
+        "month": "{{count}} mes",
+        "months": "{{count}} mesos",
+        "year": "{{count}} any",
+        "years": "{{count}} anys"
+      }
     },
     "recent": {
       "title": "L'últim en els seus historials",
-      "item1Type": "Luna · Visita i diagnòstic",
-      "item1Title": "Consulta per pruïja · Dermatitis lleu",
-      "item1Meta": "Dra. Ana Martín · Clínica Veterinària Gràcia",
-      "item2Type": "Milo · Revisió",
-      "item2Title": "Revisió anual · Sense troballes rellevants",
-      "item2Meta": "Dr. Pablo Serra · Centre Veterinari Eixample",
-      "item3Type": "Luna · Vacuna",
-      "item3Title": "Vacuna polivalent administrada",
-      "item3Meta": "Dra. Ana Martín · Clínica Veterinària Gràcia"
+      "empty": "Encara no hi ha entrades als seus historials."
     },
     "quick": {
       "permTitle": "Tu decideixes qui accedeix",
@@ -214,6 +225,35 @@
       "tagline": "PetKeepers · Cuidem el que us uneix.",
       "help": "Ajuda",
       "privacy": "Privacitat"
+    },
+    "entryTypes": {
+      "DIAGNOSIS": "Diagnòstic",
+      "TREATMENT": "Tractament",
+      "VACCINATION": "Vacunació",
+      "VISIT": "Visita",
+      "LAB_RESULT": "Resultat de laboratori"
+    },
+    "state": {
+      "loading": "Carregant...",
+      "loadError": "No s'han pogut carregar les dades.",
+      "retry": "Torna-ho a provar"
+    },
+    "petForm": {
+      "title": "Afegir mascota",
+      "name": "Nom",
+      "namePlaceholder": "Com es diu?",
+      "species": "Espècie",
+      "breed": "Raça",
+      "breedPlaceholder": "Ex. Mestís",
+      "birthDate": "Data de naixement",
+      "cancel": "Cancel·lar",
+      "save": "Desar mascota",
+      "saving": "Desant...",
+      "errorRequired": "Emplena tots els camps."
+    },
+    "pro": {
+      "title": "Espai professional",
+      "text": "Aquí veuràs les mascotes que els propietaris comparteixin amb tu. Hi estem treballant."
     }
   }
 }

@@ -43,11 +43,7 @@
     "confirmPasswordPlaceholder": "Repite tu contraseña",
     "submit": "Crear mi cuenta",
     "haveAccount": "¿Ya tienes una cuenta?",
-    "loginLink": "Inicia sesión",
-    "licenseLabel": "Número de colegiado",
-    "licensePlaceholder": "Tu número de colegiado",
-    "specialtyLabel": "Especialidad",
-    "specialtyPlaceholder": "Ej. Medicina general"
+    "loginLink": "Inicia sesión"
   },
   "forgot": {
     "title": "¿Olvidaste tu contraseña?",
@@ -68,7 +64,20 @@
     "resetSent": "Te hemos enviado un correo para restablecer la contraseña. Revisa tu bandeja de entrada.",
     "registerSuccess": "¡Cuenta creada con éxito! Bienvenido a la plataforma.",
     "loginSuccess": "¡Bienvenido de nuevo! Has iniciado sesión correctamente.",
-    "goToDashboard": "Ir a mi espacio"
+    "goToDashboard": "Ir a mi espacio",
+    "accountSynced": "Tu cuenta está sincronizada y lista para gestionar historiales.",
+    "showPassword": "Ver contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "errors": {
+      "invalidCredential": "Correo electrónico o contraseña incorrectos.",
+      "emailInUse": "Este correo electrónico ya está registrado. Prueba a iniciar sesión.",
+      "weakPassword": "La contraseña debe tener al menos 6 caracteres.",
+      "invalidEmail": "El formato de correo electrónico no es válido.",
+      "missingPassword": "Introduce tu contraseña.",
+      "tooManyRequests": "Demasiados intentos fallidos. Por favor, espera un momento.",
+      "network": "Error de conexión. Comprueba tu conexión a internet.",
+      "generic": "Ha ocurrido un error inesperado."
+    }
   },
   "pets": {
     "title": "Distintas mascotas. El mismo cuidado.",
@@ -78,7 +87,6 @@
     "mammals": "Pequeños mamíferos"
   },
   "pillars": {
-    "tag": "MENOS PAPELES, MÁS TRANQUILIDAD",
     "title": "Lo importante de su salud,\nsin perder el hilo.",
     "subtitle": "Un espacio que conecta su historia, a su familia y a los profesionales que la acompañan.",
     "item1Title": "Una historia que les sigue",
@@ -92,7 +100,6 @@
     "item3Sub": "Datos curados, no disponibilidad en tiempo real."
   },
   "how": {
-    "tag": "ASÍ DE SENCILLO",
     "title": "Un primer paso.\nMuchos cuidados\npor delante.",
     "subtitle": "Empieza por su nombre. El resto de su historia se construye entre todos.",
     "vetTitle": "¿Eres profesional veterinario?",
@@ -106,14 +113,12 @@
   },
   "about": {
     "quote": "La continuidad del cuidado empieza por compartir lo importante.",
-    "tag": "QUIÉNES SOMOS",
     "title": "La tecnología al servicio de un vínculo muy real.",
     "p1": "PetKeepers nace como un proyecto académico con una idea sencilla: que la información de salud acompañe a cada mascota, y no se quede dispersa entre papeles y centros.",
     "p2": "Diseñamos un punto de encuentro entre familias y profesionales. Un lugar para entender mejor su historia, compartirla con criterio y dar continuidad a sus cuidados.",
     "banner": "Más contexto para cuidar. Más claridad para acompañar."
   },
   "faq": {
-    "tag": "ANTES DE EMPEZAR",
     "title": "Las cosas claras,\ndesde el principio.",
     "subtitle": "Algunas respuestas para conocer mejor este espacio y cómo se comparte la información.",
     "disclaimer": "PetKeepers organiza información. No sustituye la valoración ni la atención de un profesional veterinario.",
@@ -129,7 +134,6 @@
     "a5": "Información detallada sobre especialidades, servicios, localización, datos de contacto y acreditaciones para que elijas siempre el mejor cuidado."
   },
   "footer": {
-    "ctaTag": "SU HISTORIA CONTINÚA CONTIGO",
     "ctaTitle": "Un lugar para su salud.\nMás tiempo para estar juntos.",
     "btn": "Entrar en mi cuenta",
     "signupText": "¿Aún no tienes cuenta?",
@@ -174,29 +178,36 @@
     },
     "welcome": {
       "greeting": "Qué bien verte, {{name}}.",
-      "subtitle": "Así sigue la historia de Luna y Milo."
+      "subtitleWithPets": "Así sigue la historia de {{names}}.",
+      "subtitleEmpty": "Añade a tu primera mascota para empezar su historial.",
+      "subtitlePro": "Aquí verás los historiales que los propietarios compartan contigo."
     },
     "pets": {
       "title": "Tus mascotas",
       "addPet": "Añadir mascota",
-      "lunaInfo": "Perra · 4 años · Hembra",
-      "lunaBreed": "Golden retriever",
-      "miloInfo": "Gato · 2 años · Macho",
-      "miloBreed": "Común europeo",
       "lastEntry": "Última entrada:",
-      "viewHistory": "Ver historial"
+      "viewHistory": "Ver historial",
+      "noEntries": "Aún sin entradas",
+      "emptyTitle": "Todavía no tienes mascotas",
+      "emptyText": "Añade una para crear su historial clínico.",
+      "species": {
+        "DOG": "Perro",
+        "CAT": "Gato",
+        "BIRD": "Ave",
+        "SMALL_MAMMAL": "Pequeño mamífero",
+        "OTHER": "Otro"
+      },
+      "age": {
+        "newborn": "Menos de 1 mes",
+        "month": "{{count}} mes",
+        "months": "{{count}} meses",
+        "year": "{{count}} año",
+        "years": "{{count}} años"
+      }
     },
     "recent": {
       "title": "Lo último en sus historiales",
-      "item1Type": "Luna · Visita y diagnóstico",
-      "item1Title": "Consulta por picor · Dermatitis leve",
-      "item1Meta": "Dra. Ana Martín · Clínica Veterinaria Gràcia",
-      "item2Type": "Milo · Revisión",
-      "item2Title": "Revisión anual · Sin hallazgos relevantes",
-      "item2Meta": "Dr. Pablo Serra · Centre Veterinari Eixample",
-      "item3Type": "Luna · Vacuna",
-      "item3Title": "Vacuna polivalente administrada",
-      "item3Meta": "Dra. Ana Martín · Clínica Veterinaria Gràcia"
+      "empty": "Todavía no hay entradas en sus historiales."
     },
     "quick": {
       "permTitle": "Tú decides quién accede",
@@ -214,6 +225,35 @@
       "tagline": "PetKeepers · Cuidamos lo que os une.",
       "help": "Ayuda",
       "privacy": "Privacidad"
+    },
+    "entryTypes": {
+      "DIAGNOSIS": "Diagnóstico",
+      "TREATMENT": "Tratamiento",
+      "VACCINATION": "Vacunación",
+      "VISIT": "Visita",
+      "LAB_RESULT": "Resultado de laboratorio"
+    },
+    "state": {
+      "loading": "Cargando...",
+      "loadError": "No se han podido cargar los datos.",
+      "retry": "Reintentar"
+    },
+    "petForm": {
+      "title": "Añadir mascota",
+      "name": "Nombre",
+      "namePlaceholder": "¿Cómo se llama?",
+      "species": "Especie",
+      "breed": "Raza",
+      "breedPlaceholder": "Ej. Mestizo",
+      "birthDate": "Fecha de nacimiento",
+      "cancel": "Cancelar",
+      "save": "Guardar mascota",
+      "saving": "Guardando...",
+      "errorRequired": "Completa todos los campos."
+    },
+    "pro": {
+      "title": "Espacio profesional",
+      "text": "Aquí verás las mascotas que los propietarios compartan contigo. Estamos trabajando en ello."
     }
   }
 }

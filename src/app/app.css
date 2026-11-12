@@ -378,3 +378,940 @@ html {
 .faq-answer-block {
   animation: fadeIn 0.25s ease;
 }
+
+/* =====================================================================
+   PREMIUM POLISH
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. Alineación vertical de iconos con el texto vecino
+   Bootstrap aplica `img { vertical-align: middle }` y `line-height: 1.5`
+   al body. Los contenedores de icono exportados de Figma son <div> en
+   bloque, así que su <img> se comporta como texto en línea y queda unos
+   2px más abajo que el texto. Se convierten en cajas flex centradas.
+   --------------------------------------------------------------------- */
+:is(
+  .paw-print-6,
+  .heart-23,
+  .paw-print-34,
+  .arrow-right-53,
+  .lock-keyhole-57,
+  .dog-64,
+  .cat-68,
+  .bird-72,
+  .rabbit-76,
+  .clipboard-plus-88,
+  .shield-check-96,
+  .map-pin-104,
+  .stethoscope-116,
+  .heart-handshake-147,
+  .info-156,
+  .arrow-right-194,
+  .paw-print-202
+) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+:is(
+  .paw-print-6,
+  .heart-23,
+  .paw-print-34,
+  .arrow-right-53,
+  .lock-keyhole-57,
+  .dog-64,
+  .cat-68,
+  .bird-72,
+  .rabbit-76,
+  .clipboard-plus-88,
+  .shield-check-96,
+  .map-pin-104,
+  .stethoscope-116,
+  .heart-handshake-147,
+  .info-156,
+  .arrow-right-194,
+  .paw-print-202
+) > img {
+  display: block;
+  vertical-align: baseline;
+}
+
+/* El icono de la nota de cuidado se alinea con la PRIMERA línea de texto
+   (14px de fuente x 150% de interlineado = 21px) */
+.info-156 {
+  height: 21px;
+}
+
+/* ---------------------------------------------------------------------
+   2. Preguntas frecuentes: acordeón suave
+   El bloque de respuesta ya no se crea y destruye con @if (eso provocaba
+   el salto de altura). Ahora siempre existe y se anima su altura con
+   grid-template-rows (0fr a 1fr), sin JavaScript.
+   --------------------------------------------------------------------- */
+.respuestas-159 {
+  gap: 14px;
+}
+
+.pregunta-frecuente-interactive {
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: default;
+  transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.3s ease;
+}
+
+.pregunta-frecuente-interactive:hover {
+  border-color: rgba(36, 91, 70, 0.4);
+}
+
+.pregunta-frecuente-interactive.is-open {
+  border-color: rgba(36, 91, 70, 1);
+  box-shadow: 0 10px 28px rgba(32, 62, 52, 0.08);
+}
+
+.faq-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  margin: 0;
+  padding: 24px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-trigger:focus-visible {
+  outline: 2px solid rgba(36, 91, 70, 0.55);
+  outline-offset: -4px;
+  border-radius: 12px;
+}
+
+.faq-question {
+  flex: 1;
+  text-align: left;
+  line-height: 1.35;
+}
+
+/* Icono + / x construido con CSS: la barra vertical gira y se funde con la horizontal */
+.faq-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(234, 240, 232, 1);
+  transition: background-color 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(36, 91, 70, 1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}
+
+.faq-icon::before {
+  transform: translate(-50%, -50%);
+}
+
+.faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.pregunta-frecuente-interactive.is-open .faq-icon {
+  background: rgba(36, 91, 70, 1);
+}
+
+.pregunta-frecuente-interactive.is-open .faq-icon::before,
+.pregunta-frecuente-interactive.is-open .faq-icon::after {
+  background: #ffffff;
+}
+
+.pregunta-frecuente-interactive.is-open .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease,
+    visibility 0s linear 0.45s;
+}
+
+.pregunta-frecuente-interactive.is-open .faq-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease 0.08s,
+    visibility 0s;
+}
+
+.faq-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 24px;
+}
+
+.faq-panel-inner > p {
+  padding: 0 56px 24px 0;
+}
+
+/* ---------------------------------------------------------------------
+   3. Micro-interacciones
+   --------------------------------------------------------------------- */
+.node-86,
+.node-94,
+.node-102 {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.node-86:hover,
+.node-94:hover,
+.node-102:hover {
+  transform: translateY(-4px);
+  border-color: rgba(36, 91, 70, 0.35);
+  box-shadow: 0 16px 36px rgba(32, 62, 52, 0.1);
+}
+
+.nav-anchor-link {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.crear-cuenta-13,
+.acci-n-principal-192 {
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.crear-cuenta-13:hover,
+.acci-n-principal-192:hover {
+  box-shadow: 0 8px 20px rgba(32, 62, 52, 0.16);
+}
+
+/* La flecha de los botones avanza un poco al pasar el ratón */
+.arrow-right-53,
+.arrow-right-194 {
+  transition: transform 0.25s ease;
+}
+
+.acci-n-principal-51:hover .arrow-right-53,
+.acci-n-principal-192:hover .arrow-right-194 {
+  transform: translateX(4px);
+}
+
+::selection {
+  background: rgba(36, 91, 70, 0.18);
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .faq-panel,
+  .faq-icon,
+  .faq-icon::before,
+  .faq-icon::after,
+  .pregunta-frecuente-interactive,
+  .node-86,
+  .node-94,
+  .node-102,
+  .arrow-right-53,
+  .arrow-right-194 {
+    transition: none !important;
+  }
+}
+
+/* =====================================================================
+   REDISEÑO GENERAL
+   ===================================================================== */
+
+:host {
+  --pk-green: #245b46;
+  --pk-green-dark: #1c4837;
+  --pk-ink: #203e34;
+  --pk-text: #4e6058;
+  --pk-muted: #718078;
+  --pk-soft: #eaf0e8;
+  --pk-border: #dce2d9;
+  --pk-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --pk-pad: max(clamp(20px, 5.5vw, 80px), calc((100% - 1280px) / 2));
+  display: block;
+}
+
+/* El contenido va a sangre; el margen lo da --pk-pad en cada sección */
+.node-1 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navegaci-n-3,
+.node-15,
+.especies-acompa-adas-60,
+.node-79,
+.c-mo-funciona-110,
+.qui-nes-somos-137,
+.preguntas-frecuentes-150,
+.invitaci-n-a-entrar-187,
+.pie-de-p-gina-197 {
+  padding-left: var(--pk-pad);
+  padding-right: var(--pk-pad);
+}
+
+#hero-section,
+#como-funciona,
+#quienes-somos,
+#faq-section {
+  scroll-margin-top: 84px;
+}
+
+/* ---------------------------------------------------------------------
+   Cabecera: fija, con efecto cristal
+   --------------------------------------------------------------------- */
+.bienvenida-y-acceso-2 {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  width: 100%;
+  background: rgba(250, 249, 245, 0.82);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
+  backdrop-filter: saturate(160%) blur(16px);
+}
+
+.navegaci-n-3 {
+  min-height: 76px;
+  gap: 16px;
+  border-bottom: 1px solid rgba(220, 226, 217, 0.75);
+}
+
+.s-mbolo-5 {
+  background: linear-gradient(135deg, #f3f8f1, #dce9d8);
+  box-shadow: inset 0 0 0 1px rgba(36, 91, 70, 0.08);
+  transition: transform 0.35s var(--pk-ease);
+}
+
+.marca-provisional-4:hover .s-mbolo-5 {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.header-tools {
+  flex-wrap: nowrap;
+  gap: 18px;
+}
+
+.enlaces-9 {
+  gap: 28px;
+}
+
+/* Enlaces con subrayado animado */
+.nav-anchor-link {
+  padding-bottom: 3px;
+  background-image: linear-gradient(var(--pk-green), var(--pk-green));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 2px;
+  transition: color 0.2s ease, background-size 0.35s var(--pk-ease);
+}
+
+.nav-anchor-link:hover {
+  background-size: 100% 2px;
+}
+
+/* "Crear cuenta": botón relleno */
+.crear-cuenta-13 {
+  min-height: 42px;
+  padding: 0 22px;
+  border-radius: 10px;
+  border-color: var(--pk-green);
+  background-color: var(--pk-green);
+  cursor: pointer;
+}
+
+.crear-cuenta-13 .text-14 span {
+  color: #ffffff;
+}
+
+.crear-cuenta-13:hover {
+  background-color: var(--pk-green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(36, 91, 70, 0.28);
+}
+
+/* ---------------------------------------------------------------------
+   Selector de idioma
+   --------------------------------------------------------------------- */
+.lang-menu {
+  position: relative;
+}
+
+.lang-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 12px 0 11px;
+  border: 1px solid var(--pk-border);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--pk-ink);
+  font: 700 13px/1 var(--font-family-lato, 'Lato', sans-serif);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease;
+}
+
+.lang-trigger:hover {
+  border-color: rgba(36, 91, 70, 0.45);
+  box-shadow: 0 6px 16px rgba(32, 62, 52, 0.08);
+}
+
+.lang-trigger[aria-expanded='true'] {
+  border-color: var(--pk-green);
+  box-shadow: 0 0 0 3px rgba(36, 91, 70, 0.12);
+}
+
+.lang-trigger:focus-visible,
+.lang-option:focus-visible {
+  outline: 2px solid var(--pk-green);
+  outline-offset: 2px;
+}
+
+.lang-globe {
+  width: 17px;
+  height: 17px;
+  color: var(--pk-green);
+}
+
+.lang-chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--pk-muted);
+  transition: transform 0.3s var(--pk-ease);
+}
+
+.lang-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.lang-popup {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 80;
+  min-width: 200px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid var(--pk-border);
+  border-radius: 14px;
+  box-shadow: 0 20px 44px rgba(32, 62, 52, 0.18);
+  transform-origin: top right;
+  animation: pkPop 0.24s var(--pk-ease) both;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--pk-text);
+  font: 400 14px/1 var(--font-family-lato, 'Lato', sans-serif);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.lang-option:hover {
+  background: #f4f6f0;
+  color: var(--pk-ink);
+}
+
+.lang-option.selected {
+  background: var(--pk-soft);
+  color: var(--pk-green);
+  font-weight: 700;
+}
+
+.lang-code {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 22px;
+  border-radius: 6px;
+  background: #eef2ea;
+  color: var(--pk-green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-option.selected .lang-code {
+  background: var(--pk-green);
+  color: #ffffff;
+}
+
+.lang-check {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--pk-green);
+}
+
+@keyframes pkPop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Titulares: escala fluida y reparto equilibrado */
+.text-18 {
+  font-size: clamp(38px, 5vw, 60px);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.text-19 {
+  max-width: 54ch;
+  font-size: clamp(17px, 1.5vw, 19px);
+}
+
+.text-83,
+.text-113,
+.text-143,
+.text-153,
+.text-190 {
+  font-size: clamp(30px, 3.6vw, 42px);
+  text-wrap: balance;
+}
+
+/* ---------------------------------------------------------------------
+   Hero
+   --------------------------------------------------------------------- */
+.node-15 {
+  position: relative;
+  isolation: isolate;
+  gap: clamp(40px, 6vw, 96px);
+  padding-top: clamp(40px, 6vw, 76px);
+  padding-bottom: clamp(48px, 6vw, 88px);
+}
+
+.node-15::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(55% 60% at 88% 6%, rgba(36, 91, 70, 0.13), transparent 70%),
+    radial-gradient(45% 50% at 0% 100%, rgba(234, 240, 232, 0.95), transparent 70%);
+}
+
+.node-20 {
+  position: relative;
+  border-radius: 24px;
+}
+
+.compa-a-cotidiana-21 {
+  display: block;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px -24px rgba(32, 62, 52, 0.4);
+}
+
+.pie-de-imagen-22 {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  background: rgba(250, 249, 245, 0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(32, 62, 52, 0.18);
+}
+
+/* Tarjeta de acceso */
+.inicio-de-sesi-n-26 {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.inicio-de-sesi-n-26::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #245b46, #6fa88e);
+}
+
+/* ---------------------------------------------------------------------
+   Franja de especies
+   --------------------------------------------------------------------- */
+.especies-acompa-adas-60 {
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(36, 91, 70, 0.08);
+  border-bottom: 1px solid rgba(36, 91, 70, 0.08);
+  background: linear-gradient(90deg, #eaf0e8, #f3f7f1 50%, #eaf0e8);
+}
+
+.especies-62 {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.especie-63,
+.especie-67,
+.especie-71,
+.especie-75 {
+  padding: 9px 18px 9px 13px;
+  border: 1px solid rgba(36, 91, 70, 0.12);
+  border-radius: 999px;
+  background: #ffffff;
+  transition: transform 0.3s var(--pk-ease), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.especie-63:hover,
+.especie-67:hover,
+.especie-71:hover,
+.especie-75:hover {
+  transform: translateY(-2px);
+  border-color: rgba(36, 91, 70, 0.3);
+  box-shadow: 0 8px 18px rgba(32, 62, 52, 0.1);
+}
+
+/* ---------------------------------------------------------------------
+   Tres pilares
+   --------------------------------------------------------------------- */
+.node-79 {
+  padding-top: clamp(56px, 8vw, 96px);
+  padding-bottom: clamp(56px, 8vw, 96px);
+}
+
+.introducci-n-80 {
+  width: 100%;
+  gap: clamp(24px, 6vw, 100px);
+}
+
+.tres-pilares-85 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.node-86,
+.node-94,
+.node-102 {
+  position: relative;
+  width: 100%;
+  padding: 32px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfa 100%);
+}
+
+.s-mbolo-87,
+.s-mbolo-95,
+.s-mbolo-103 {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f3f8f1, #dce9d8);
+  box-shadow: inset 0 0 0 1px rgba(36, 91, 70, 0.08);
+  transition: transform 0.4s var(--pk-ease);
+}
+
+.node-86:hover .s-mbolo-87,
+.node-94:hover .s-mbolo-95,
+.node-102:hover .s-mbolo-103 {
+  transform: scale(1.08) rotate(-5deg);
+}
+
+/* ---------------------------------------------------------------------
+   Cómo funciona
+   --------------------------------------------------------------------- */
+.c-mo-funciona-110,
+.qui-nes-somos-137,
+.preguntas-frecuentes-150 {
+  gap: clamp(40px, 7vw, 100px);
+}
+
+.c-mo-funciona-110 {
+  padding-top: clamp(56px, 8vw, 88px);
+  padding-bottom: clamp(56px, 8vw, 88px);
+}
+
+.introducci-n-111,
+.introducci-n-151 {
+  flex: 0 1 440px;
+}
+
+.pasos-121,
+.respuestas-159 {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.paso-122,
+.paso-127,
+.paso-132 {
+  transition: transform 0.35s var(--pk-ease);
+}
+
+.paso-122:hover,
+.paso-127:hover,
+.paso-132:hover {
+  transform: translateX(6px);
+}
+
+/* ---------------------------------------------------------------------
+   Quiénes somos
+   --------------------------------------------------------------------- */
+.qui-nes-somos-137 {
+  padding-top: clamp(56px, 8vw, 96px);
+  padding-bottom: clamp(56px, 8vw, 96px);
+}
+
+.cuidado-compartido-138,
+.nuestra-raz-n-de-ser-141 {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.una-consulta-cercana-139 {
+  display: block;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px -28px rgba(32, 62, 52, 0.35);
+}
+
+.principio-146 {
+  padding: 18px 20px;
+  border-top: 0;
+  border-radius: 14px;
+  background: var(--pk-soft);
+}
+
+/* ---------------------------------------------------------------------
+   Llamada final
+   --------------------------------------------------------------------- */
+.invitaci-n-a-entrar-187 {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  justify-content: space-between;
+  gap: clamp(32px, 6vw, 100px);
+  padding-top: clamp(56px, 7vw, 80px);
+  padding-bottom: clamp(56px, 7vw, 80px);
+  background-image:
+    radial-gradient(60% 130% at 100% 0%, rgba(255, 255, 255, 0.16), transparent 62%),
+    radial-gradient(40% 90% at 0% 100%, rgba(0, 0, 0, 0.2), transparent 70%);
+}
+
+.acciones-191 {
+  flex: 0 1 380px;
+}
+
+.acci-n-principal-192 {
+  min-height: 56px;
+  border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+}
+
+/* ---------------------------------------------------------------------
+   Pie de página
+   --------------------------------------------------------------------- */
+.pie-de-p-gina-197 {
+  padding-top: 56px;
+}
+
+.identidad-y-enlaces-198 {
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.s-mbolo-201 {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.nota-de-proyecto-221 {
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+/* ---------------------------------------------------------------------
+   Animaciones de entrada
+   --------------------------------------------------------------------- */
+@keyframes pkFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.presentaci-n-16 > * {
+  animation: pkFadeUp 0.85s var(--pk-ease) both;
+}
+
+.presentaci-n-16 > *:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.presentaci-n-16 > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.presentaci-n-16 > *:nth-child(4) {
+  animation-delay: 0.26s;
+}
+
+.inicio-de-sesi-n-26 {
+  animation: pkFadeUp 0.95s var(--pk-ease) 0.2s both;
+}
+
+/* Revelado al hacer scroll (solo en navegadores que lo soportan) */
+@keyframes pkReveal {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .introducci-n-80,
+  .tres-pilares-85,
+  .c-mo-funciona-110 > *,
+  .qui-nes-somos-137 > *,
+  .preguntas-frecuentes-150 > *,
+  .invitaci-n-a-entrar-187 > * {
+    animation: pkReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .presentaci-n-16 > *,
+  .inicio-de-sesi-n-26,
+  .lang-popup,
+  .introducci-n-80,
+  .tres-pilares-85,
+  .c-mo-funciona-110 > *,
+  .qui-nes-somos-137 > *,
+  .preguntas-frecuentes-150 > *,
+  .invitaci-n-a-entrar-187 > * {
+    animation: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .node-15,
+  .c-mo-funciona-110,
+  .qui-nes-somos-137,
+  .preguntas-frecuentes-150,
+  .invitaci-n-a-entrar-187 {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .presentaci-n-16 {
+    width: 100%;
+  }
+
+  .inicio-de-sesi-n-26 {
+    align-self: center;
+  }
+
+  .introducci-n-80 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .introducci-n-111,
+  .introducci-n-151,
+  .acciones-191 {
+    flex: 0 0 auto;
+  }
+
+  .acciones-191 {
+    align-items: flex-start;
+  }
+
+  .invitaci-n-a-entrar-187 {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  .tres-pilares-85 {
+    grid-template-columns: 1fr;
+  }
+
+  .enlaces-9 .nav-anchor-link {
+    display: none;
+  }
+
+  .identidad-y-enlaces-198 {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .text-8 {
+    font-size: 24px;
+  }
+
+  .crear-cuenta-13 {
+    padding: 0 16px;
+  }
+
+  .lang-trigger-label {
+    display: none;
+  }
+
+  .lang-trigger {
+    padding: 0 10px;
+  }
+}

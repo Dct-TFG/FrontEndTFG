@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
@@ -36,9 +36,29 @@ export class App {
   statusMessage: { type: 'success' | 'error'; text: string } | null = null;
   openFaqIndex: number | null = 0;
 
+  readonly languages = [
+    { code: 'es', short: 'ES', name: 'Castellano' },
+    { code: 'ca', short: 'CA', name: 'Català' },
+    { code: 'en', short: 'EN', name: 'English' }
+  ];
+  isLangMenuOpen = false;
+
   constructor() {
     this.translate.addLangs(['es', 'ca', 'en']);
-    this.translate.use('es');
+
+    // Recupera el idioma elegido la última vez (si lo hay)
+    const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('app_lang') : null;
+    const initial = saved && this.languages.some((l) => l.code === saved) ? saved : 'es';
+    this.currentLang = initial;
+    this.translate.use(initial);
+
+    // Mantiene el selector sincronizado (también si se cambia desde el panel) y recuerda la elección
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLang = event.lang;
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('app_lang', event.lang);
+      }
+    });
   }
 
   get currentUser() {
@@ -49,10 +69,30 @@ export class App {
     return this.authService.selectedRole();
   }
 
-  switchLang(event: Event): void {
-    const lang = (event.target as HTMLSelectElement).value;
-    this.currentLang = lang;
-    this.translate.use(lang);
+  get currentLangShort(): string {
+    return this.languages.find((l) => l.code === this.currentLang)?.short ?? 'ES';
+  }
+
+  toggleLangMenu(event: Event): void {
+    event.stopPropagation();
+    this.isLangMenuOpen = !this.isLangMenuOpen;
+  }
+
+  selectLanguage(code: string): void {
+    this.translate.use(code);
+    this.isLangMenuOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    if (!(event.target as HTMLElement).closest('.lang-menu')) {
+      this.isLangMenuOpen = false;
+    }
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.isLangMenuOpen = false;
   }
 
   selectRole(role: UserRole): void {
@@ -242,43 +282,20 @@ export class App {
 
   private formatErrorMessage(error: any): string {
     const raw = this.authService.getFriendlyErrorMessage(error);
-    const messages: Record<string, Record<string, string>> = {
-      'auth/invalid-credential': {
-        es: 'Correo electrónico o contraseña incorrectos.',
-        ca: 'Correu electrònic o contrasenya incorrectes.',
-        en: 'Incorrect email or password.'
-      },
-      'auth/email-already-in-use': {
-        es: 'Este correo electrónico ya está registrado. Prueba a iniciar sesión.',
-        ca: 'Aquest correu electrònic ja està registrat. Prova a iniciar sessió.',
-        en: 'This email is already in use. Try logging in.'
-      },
-      'auth/weak-password': {
-        es: 'La contraseña debe tener al menos 6 caracteres.',
-        ca: 'La contrasenya ha de tenir com a mínim 6 caràcters.',
-        en: 'Password must be at least 6 characters.'
-      },
-      'auth/invalid-email': {
-        es: 'El formato de correo electrónico no es válido.',
-        ca: 'El format de correu electrònic no és vàlid.',
-        en: 'Invalid email address format.'
-      },
-      'auth/too-many-requests': {
-        es: 'Demasiados intentos fallidos. Por favor, espera un momento.',
-        ca: 'Massa intents fallits. Si us plau, espera un moment.',
-        en: 'Too many attempts. Please try again later.'
-      },
-      'auth/network-request-failed': {
-        es: 'Error de conexión. Comprueba tu conexión a internet.',
-        ca: 'Error de connexió. Comprova la teva connexió.',
-        en: 'Network error. Please verify your connection.'
-      }
+    // Firebase error code -> key under "auth.errors" in public/i18n/*.json
+    const keys: Record<string, string> = {
+      'auth/invalid-credential': 'invalidCredential',
+      'auth/email-already-in-use': 'emailInUse',
+      'auth/weak-password': 'weakPassword',
+      'auth/invalid-email': 'invalidEmail',
+      'auth/missing-password': 'missingPassword',
+      'auth/too-many-requests': 'tooManyRequests',
+      'auth/network-request-failed': 'network'
     };
 
-    const lang = this.currentLang || 'es';
-    if (messages[raw] && messages[raw][lang]) {
-      return messages[raw][lang];
+    if (keys[raw]) {
+      return this.translate.instant(`auth.errors.${keys[raw]}`);
     }
-    return error?.message || 'Ha ocurrido un error inesperado.';
+    return error?.message || this.translate.instant('auth.errors.generic');
   }
 }
