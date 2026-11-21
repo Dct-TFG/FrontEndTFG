@@ -1,4 +1,4 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
@@ -18,6 +18,7 @@ export type AuthMode = 'login' | 'register' | 'forgot';
 export class App {
   readonly authService = inject(AuthService);
   readonly translate = inject(TranslateService);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   currentLang = 'es';
   currentView: 'landing' | 'main' = 'landing';
@@ -34,6 +35,7 @@ export class App {
   showConfirmPassword = false;
   isLoading = false;
   statusMessage: { type: 'success' | 'error'; text: string } | null = null;
+  emailTaken = false;
   openFaqIndex: number | null = 0;
 
   readonly languages = [
@@ -102,6 +104,11 @@ export class App {
   setAuthMode(mode: AuthMode): void {
     this.authMode = mode;
     this.statusMessage = null;
+    this.emailTaken = false;
+  }
+
+  onEmailChange(): void {
+    this.emailTaken = false;
   }
 
   togglePasswordVisibility(): void {
@@ -158,6 +165,7 @@ export class App {
       };
     } finally {
       this.isLoading = false;
+      this.cdr.markForCheck();
     }
   }
 
@@ -217,12 +225,17 @@ export class App {
       this.passwordInput = '';
       this.confirmPasswordInput = '';
     } catch (error: any) {
-      this.statusMessage = {
-        type: 'error',
-        text: this.formatErrorMessage(error)
-      };
+      if (error?.code === 'auth/email-already-in-use') {
+        this.emailTaken = true;
+      } else {
+        this.statusMessage = {
+          type: 'error',
+          text: this.formatErrorMessage(error)
+        };
+      }
     } finally {
       this.isLoading = false;
+      this.cdr.markForCheck();
     }
   }
 
@@ -252,6 +265,7 @@ export class App {
       };
     } finally {
       this.isLoading = false;
+      this.cdr.markForCheck();
     }
   }
 
@@ -277,12 +291,13 @@ export class App {
         type: 'error',
         text: this.formatErrorMessage(error)
       };
+    } finally {
+      this.cdr.markForCheck();
     }
   }
 
   private formatErrorMessage(error: any): string {
     const raw = this.authService.getFriendlyErrorMessage(error);
-    // Firebase error code -> key under "auth.errors" in public/i18n/*.json
     const keys: Record<string, string> = {
       'auth/invalid-credential': 'invalidCredential',
       'auth/email-already-in-use': 'emailInUse',
@@ -290,12 +305,12 @@ export class App {
       'auth/invalid-email': 'invalidEmail',
       'auth/missing-password': 'missingPassword',
       'auth/too-many-requests': 'tooManyRequests',
-      'auth/network-request-failed': 'network'
+      'auth/network-request-failed': 'network',
+      'auth/user-disabled': 'userDisabled',
+      'auth/profile-not-found': 'profileNotFound',
+      'auth/license-in-use': 'licenseInUse'
     };
 
-    if (keys[raw]) {
-      return this.translate.instant(`auth.errors.${keys[raw]}`);
-    }
-    return error?.message || this.translate.instant('auth.errors.generic');
+    return this.translate.instant(`auth.errors.${keys[raw] ?? 'generic'}`);
   }
 }

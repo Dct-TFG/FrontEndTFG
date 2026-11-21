@@ -60,6 +60,23 @@ html {
   box-shadow: 0 0 0 3px rgba(36, 91, 70, 0.15) !important;
 }
 
+.entrada-42.has-error,
+.entrada-42.has-error:focus-within {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12) !important;
+}
+
+.field-error {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #991b1b;
+}
+
+.field-error-link {
+  color: #991b1b;
+  margin-left: 4px;
+}
 .form-input-field {
   flex: 1;
   width: 100%;
@@ -1284,13 +1301,20 @@ html {
   }
 }
 
+.enlaces-9 .nav-anchor-link,
+.crear-cuenta-13 .text-14 {
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .enlaces-9 .nav-anchor-link {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   .tres-pilares-85 {
     grid-template-columns: 1fr;
-  }
-
-  .enlaces-9 .nav-anchor-link {
-    display: none;
   }
 
   .identidad-y-enlaces-198 {
@@ -1313,5 +1337,37 @@ html {
 
   .lang-trigger {
     padding: 0 10px;
+  }
+
+  .faq-panel-inner > p {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .navegaci-n-3,
+  .header-tools {
+    gap: 10px;
+  }
+
+  .text-8 {
+    font-size: 20px;
+  }
+
+  .crear-cuenta-13 {
+    min-height: 38px;
+    padding: 0 12px;
+  }
+
+  .crear-cuenta-13 .text-14 {
+    font-size: 14px;
+  }
+
+  .lang-trigger {
+    padding: 0 10px;
+  }
+
+  .lang-chevron {
+    display: none;
   }
 }

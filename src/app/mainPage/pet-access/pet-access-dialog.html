@@ -1,0 +1,148 @@
+<div class="access-backdrop" (click)="close()">
+  <div
+    class="access-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="access-title"
+    (click)="$event.stopPropagation()"
+  >
+    <header class="access-header">
+      <div>
+        <h2 id="access-title" class="access-title">
+          {{ 'dashboard.access.title' | translate: { pet: petName() } }}
+        </h2>
+        <p class="access-levels">
+          <strong>{{ 'dashboard.access.levelView' | translate }}:</strong> {{ 'dashboard.access.levelViewHelp' | translate }}
+          <br />
+          <strong>{{ 'dashboard.access.levelEdit' | translate }}:</strong> {{ 'dashboard.access.levelEditHelp' | translate }}
+        </p>
+      </div>
+      <button type="button" class="access-close" (click)="close()" [attr.aria-label]="'dashboard.access.close' | translate">×</button>
+    </header>
+
+    @if (feedback(); as fb) {
+      <p class="access-feedback" [class.is-error]="fb.type === 'error'" role="status">{{ fb.text }}</p>
+    }
+
+    <section aria-labelledby="access-current-title">
+      <h3 id="access-current-title" class="access-section-title">{{ 'dashboard.access.currentTitle' | translate }}</h3>
+
+      @if (loading()) {
+        <p class="access-muted">{{ 'dashboard.state.loading' | translate }}</p>
+      } @else if (loadError()) {
+        <p class="access-error" role="alert">
+          {{ 'dashboard.access.loadError' | translate }}
+          <button type="button" class="access-link" (click)="loadPermissions()">{{ 'dashboard.state.retry' | translate }}</button>
+        </p>
+      } @else if (permissions().length === 0) {
+        <p class="access-muted">{{ 'dashboard.access.empty' | translate: { pet: petName() } }}</p>
+      } @else {
+        <ul class="access-list">
+          @for (p of permissions(); track p.entityId) {
+            <li class="access-row">
+              <span class="access-type" [class.is-center]="p.type === 'CENTER'">
+                {{ (p.type === 'CENTER' ? 'dashboard.access.typeCenter' : 'dashboard.access.typeVet') | translate }}
+              </span>
+              <div class="access-who">
+                <span class="access-name">{{ p.name }}</span>
+                @if (p.detail) {
+                  <span class="access-detail">{{ p.detail }}</span>
+                }
+              </div>
+
+              @if (confirmingRevoke() === p.entityId) {
+                <div class="access-confirm" role="group" [attr.aria-label]="'dashboard.access.confirmRevoke' | translate: { name: p.name }">
+                  <span>{{ 'dashboard.access.confirmRevokeShort' | translate }}</span>
+                  <button type="button" class="access-btn danger" (click)="revoke(p)">{{ 'dashboard.access.yesRevoke' | translate }}</button>
+                  <button type="button" class="access-btn" (click)="confirmingRevoke.set(null)">{{ 'dashboard.petForm.cancel' | translate }}</button>
+                </div>
+              } @else {
+                <div class="access-actions">
+                  <select
+                    class="access-select"
+                    [ngModel]="p.level"
+                    (ngModelChange)="changeLevel(p, $event)"
+                    [disabled]="busyEntity() !== null"
+                    [attr.aria-label]="'dashboard.access.levelFor' | translate: { name: p.name }"
+                  >
+                    <option value="VIEW">{{ 'dashboard.access.levelView' | translate }}</option>
+                    <option value="EDIT">{{ 'dashboard.access.levelEdit' | translate }}</option>
+                  </select>
+                  <button
+                    type="button"
+                    class="access-btn"
+                    (click)="confirmingRevoke.set(p.entityId)"
+                    [disabled]="busyEntity() !== null"
+                  >
+                    {{ 'dashboard.access.revoke' | translate }}
+                  </button>
+                </div>
+              }
+            </li>
+          }
+        </ul>
+      }
+    </section>
+
+    <section aria-labelledby="access-add-title">
+      <h3 id="access-add-title" class="access-section-title">{{ 'dashboard.access.addTitle' | translate }}</h3>
+      <input
+        type="search"
+        class="access-search"
+        [ngModel]="query()"
+        (ngModelChange)="onQueryChange($event)"
+        [placeholder]="'dashboard.access.searchPlaceholder' | translate"
+        [attr.aria-label]="'dashboard.access.searchPlaceholder' | translate"
+        autocomplete="off"
+      />
+
+      @if (searchError()) {
+        <p class="access-error" role="alert">
+          {{ 'dashboard.access.searchError' | translate }}
+          <button type="button" class="access-link" (click)="runSearch(query())">{{ 'dashboard.state.retry' | translate }}</button>
+        </p>
+      } @else if (!searching() && results().length === 0) {
+        <p class="access-muted">{{ 'dashboard.access.noResults' | translate }}</p>
+      } @else {
+        <ul class="access-list access-results" [attr.aria-busy]="searching()">
+          @for (s of results(); track s.entityId) {
+            <li class="access-row">
+              <span class="access-type" [class.is-center]="s.type === 'CENTER'">
+                {{ (s.type === 'CENTER' ? 'dashboard.access.typeCenter' : 'dashboard.access.typeVet') | translate }}
+              </span>
+              <div class="access-who">
+                <span class="access-name">{{ s.name }}</span>
+                @if (s.detail) {
+                  <span class="access-detail">{{ s.detail }}</span>
+                }
+              </div>
+              <div class="access-actions">
+                @if (grantedIds().has(s.entityId)) {
+                  <span class="access-granted">{{ 'dashboard.access.alreadyGranted' | translate }}</span>
+                } @else {
+                  <select
+                    class="access-select"
+                    [ngModel]="levelFor(s.entityId)"
+                    (ngModelChange)="setPendingLevel(s.entityId, $event)"
+                    [attr.aria-label]="'dashboard.access.levelFor' | translate: { name: s.name }"
+                  >
+                    <option value="VIEW">{{ 'dashboard.access.levelView' | translate }}</option>
+                    <option value="EDIT">{{ 'dashboard.access.levelEdit' | translate }}</option>
+                  </select>
+                  <button
+                    type="button"
+                    class="access-btn primary"
+                    (click)="grant(s)"
+                    [disabled]="busyEntity() !== null"
+                  >
+                    {{ (busyEntity() === s.entityId ? 'dashboard.petForm.saving' : 'dashboard.access.grant') | translate }}
+                  </button>
+                }
+              </div>
+            </li>
+          }
+        </ul>
+      }
+    </section>
+  </div>
+</div>

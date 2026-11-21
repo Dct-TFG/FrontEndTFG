@@ -22,6 +22,7 @@ export interface Profile {
   fullName: string;
   email: string;
   role: 'OWNER' | 'VETERINARIAN';
+  centers: { id: string; name: string }[];
 }
 
 export interface ProfessionalData {
@@ -106,6 +107,14 @@ export class AuthService {
     return cred;
   }
 
+  async setWorkplace(centerId: string | null): Promise<Profile> {
+    const profile = await firstValueFrom(
+      this.http.put<Profile>(`${API_URL}/auth/me/workplace`, { centerId })
+    );
+    this.applyProfile(profile);
+    return profile;
+  }
+
   async resetPassword(email: string): Promise<void> {
     return await sendPasswordResetEmail(this.auth, email.trim());
   }
@@ -129,24 +138,27 @@ export class AuthService {
   }
 
   private toError(e: unknown, fallback: string): Error {
+    let code = 'auth/generic-error';
     if (e instanceof HttpErrorResponse) {
-      if (e.status === 0) {
-        return new Error('No se puede conectar con el servidor.');
-      }
-      const msg = e.error?.message;
-      if (Array.isArray(msg)) return new Error(msg.join('. '));
-      if (typeof msg === 'string') return new Error(msg);
+      if (e.status === 0) code = 'auth/network-request-failed';
+      else if (e.status === 404) code = 'auth/profile-not-found';
+      else if (e.status === 409) code = 'auth/license-in-use';
     }
-    return new Error(fallback);
+    return Object.assign(new Error(fallback), { code });
   }
 
   getFriendlyErrorMessage(err: any): string {
     const code = err?.code || '';
     switch (code) {
       case 'auth/invalid-credential':
+      case 'auth/invalid-login-credentials':
       case 'auth/wrong-password':
       case 'auth/user-not-found':
         return 'auth/invalid-credential';
+      case 'auth/user-disabled':
+      case 'auth/profile-not-found':
+      case 'auth/license-in-use':
+        return code;
       case 'auth/email-already-in-use':
         return 'auth/email-already-in-use';
       case 'auth/weak-password':
@@ -160,7 +172,7 @@ export class AuthService {
       case 'auth/network-request-failed':
         return 'auth/network-request-failed';
       default:
-        return err?.message || 'auth/generic-error';
+        return 'auth/generic-error';
     }
   }
 }

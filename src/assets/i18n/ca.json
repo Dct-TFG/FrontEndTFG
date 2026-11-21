@@ -9,7 +9,6 @@
     "createAccount": "Crear compte"
   },
   "hero": {
-    "tag": "LA SEVA HISTÒRIA, SEMPRE A PROP",
     "title": "Tota una vida junts.\nLa seva salut, en un\nmateix lloc.",
     "subtitle": "L'historial de la teva mascota, amb tu. Organitza les seves cures i comparteix la seva informació amb qui la cuida.",
     "footer": "Per tot el que us queda per viure."
@@ -43,7 +42,12 @@
     "confirmPasswordPlaceholder": "Repeteix la contrasenya",
     "submit": "Crear el meu compte",
     "haveAccount": "Ja tens un compte?",
-    "loginLink": "Inicia sessió"
+    "loginLink": "Inicia sessió",
+    "emailTaken": "Ja existeix un compte amb aquest correu.",
+    "licenseLabel": "Número de col·legiat",
+    "licensePlaceholder": "Ex. 08/1234",
+    "specialtyLabel": "Especialitat",
+    "specialtyPlaceholder": "Ex. Medicina general"
   },
   "forgot": {
     "title": "Has oblidat la contrasenya?",
@@ -76,7 +80,10 @@
       "missingPassword": "Introdueix la teva contrasenya.",
       "tooManyRequests": "Massa intents fallits. Si us plau, espera un moment.",
       "network": "Error de connexió. Comprova la teva connexió a internet.",
-      "generic": "S'ha produït un error inesperat."
+      "generic": "S'ha produït un error inesperat.",
+      "profileNotFound": "No hem trobat el perfil d'aquest compte. Contacta amb el suport per recuperar-lo.",
+      "licenseInUse": "Ja existeix un compte amb aquest número de col·legiat.",
+      "userDisabled": "Aquest compte està desactivat."
     }
   },
   "pets": {
@@ -125,13 +132,13 @@
     "q1": "Qui pot veure l'historial de la meva mascota?",
     "a1": "Tu i els veterinaris o centres als quals hagis donat permís. Com a propietari, decideixes qui pot només consultar-lo i qui pot afegir o actualitzar informació. Pots revocar aquest accés quan ho necessitis.",
     "q2": "Puc registrar més d'una mascota?",
-    "a2": "Sí, pots registrar tots els teus companys (gossos, gats, ocells, petits mamífers, etc.) des d'un sol compte i gestionar l'historial de cadascun de manera individual.",
+    "a2": "Sí. Des d'un sol compte pots registrar gossos, gats, ocells i petits mamífers, i cadascun tindrà el seu propi historial.",
     "q3": "Qui afegeix la informació clínica a l'historial?",
-    "a3": "Tant els propietaris com els professionals veterinaris autoritzats poden afegir informació. Cada entrada clínica inclou la signatura i verificació del professional.",
-    "q4": "Es connecta amb el sistema de la meva clínica?",
-    "a4": "Els professionals poden consultar i actualitzar fitxes de pacients autoritzats directament des de la plataforma web sense instal·lacions complexes.",
+    "a3": "Els veterinaris als quals hagis donat permís d'edició. Cada entrada queda registrada amb el nom del professional que la va crear o modificar, perquè sempre sàpigues qui ha escrit què.",
+    "q4": "Es connecta amb el programa de la meva clínica?",
+    "a4": "De moment no s'integra amb els programes de gestió de les clíniques. Els professionals treballen directament des del web, i la plataforma ofereix una API documentada perquè altres sistemes s'hi puguin connectar en el futur.",
     "q5": "Quina informació trobaré sobre els centres?",
-    "a5": "Informació detallada sobre especialitats, serveis, localització, dades de contacte i acreditacions perquè triïs sempre la millor atenció."
+    "a5": "La seva especialitat, la seva ubicació i les valoracions d'altres usuaris, perquè els puguis comparar. És un directori revisat a mà, així que no mostra la disponibilitat en temps real."
   },
   "footer": {
     "ctaTitle": "Un lloc per a la seva salut.\nMés temps per estar junts.",
@@ -162,7 +169,8 @@
     "topbar": {
       "ownerSpace": "El teu espai de propietari",
       "proSpace": "El teu espai professional",
-      "defaultUserName": "Clara Ruiz"
+      "defaultUserName": "Clara Ruiz",
+      "backHome": "Tornar a l'inici"
     },
     "lang": {
       "label": "Idioma",
@@ -207,7 +215,8 @@
     },
     "recent": {
       "title": "L'últim en els seus historials",
-      "empty": "Encara no hi ha entrades als seus historials."
+      "empty": "Encara no hi ha entrades als seus historials.",
+      "loadError": "No s'han pogut carregar les últimes entrades."
     },
     "quick": {
       "permTitle": "Tu decideixes qui accedeix",
@@ -236,7 +245,8 @@
     "state": {
       "loading": "Carregant...",
       "loadError": "No s'han pogut carregar les dades.",
-      "retry": "Torna-ho a provar"
+      "retry": "Torna-ho a provar",
+      "offline": "No es pot connectar amb el servidor. Comprova la teva connexió."
     },
     "petForm": {
       "title": "Afegir mascota",
@@ -249,11 +259,69 @@
       "cancel": "Cancel·lar",
       "save": "Desar mascota",
       "saving": "Desant...",
-      "errorRequired": "Emplena tots els camps."
+      "errorRequired": "Emplena tots els camps.",
+      "errorSave": "No s'ha pogut desar la mascota. Torna-ho a provar.",
+      "subtitle": "Crea la seva fitxa per començar el seu historial."
     },
     "pro": {
       "title": "Espai professional",
       "text": "Aquí veuràs les mascotes que els propietaris comparteixin amb tu. Hi estem treballant."
+    },
+    "photo": {
+      "label": "Foto (opcional)",
+      "hint": "JPG, PNG o WebP. Màxim 5 MB.",
+      "choose": "Triar foto",
+      "change": "Canviar foto",
+      "remove": "Treure",
+      "dismiss": "Tancar l'avís",
+      "errorType": "Format no admès. Fes servir una foto JPG, PNG o WebP.",
+      "errorSize": "La foto pesa massa. El màxim és 5 MB.",
+      "errorUpload": "No s'ha pogut pujar la foto. Torna-ho a provar.",
+      "errorAfterCreate": "La mascota s'ha creat, però no s'ha pogut pujar la foto. Pots afegir-la fent clic sobre la seva icona."
+    },
+    "workplace": {
+      "title": "Lloc de treball",
+      "atCenter": "Treballes a",
+      "independent": "Treballes pel teu compte (independent).",
+      "hint": "Si un propietari comparteix una mascota amb el teu centre, hi podràs accedir.",
+      "change": "Canviar",
+      "save": "Desar",
+      "selectLabel": "On treballes?",
+      "optionIndependent": "Pel meu compte (independent)",
+      "centersError": "No s'ha pogut carregar la llista de centres.",
+      "saved": "Lloc de treball actualitzat.",
+      "errorSave": "No s'ha pogut desar el lloc de treball."
+    },
+    "access": {
+      "open": "Accessos",
+      "title": "Qui pot accedir a {{pet}}",
+      "close": "Tancar",
+      "levelView": "Consulta",
+      "levelViewHelp": "pot veure la seva fitxa i el seu historial.",
+      "levelEdit": "Edició",
+      "levelEditHelp": "a més pot afegir i modificar entrades de l'historial.",
+      "currentTitle": "Amb accés ara",
+      "empty": "Ningú més té accés a {{pet}}. Només tu la pots veure.",
+      "loadError": "No s'han pogut carregar els accessos.",
+      "typeCenter": "Centre",
+      "typeVet": "Veterinari/ària",
+      "levelFor": "Nivell d'accés de {{name}}",
+      "revoke": "Treure l'accés",
+      "confirmRevoke": "Treure l'accés de {{name}}?",
+      "confirmRevokeShort": "Segur?",
+      "yesRevoke": "Sí, treure",
+      "addTitle": "Donar accés a un centre o veterinari",
+      "searchPlaceholder": "Cerca pel nom de la clínica o del veterinari",
+      "searchError": "No s'ha pogut fer la cerca.",
+      "noResults": "No hi ha resultats.",
+      "alreadyGranted": "Ja hi té accés",
+      "grant": "Donar accés",
+      "errorSave": "No s'ha pogut desar el canvi. Torna-ho a provar.",
+      "grantedView": "{{name}} ja pot consultar la informació de {{pet}}.",
+      "grantedEdit": "{{name}} ja pot consultar i editar l'historial de {{pet}}.",
+      "changedView": "{{name}} ara només pot consultar la informació de {{pet}}.",
+      "changedEdit": "{{name}} ara també pot editar l'historial de {{pet}}.",
+      "revoked": "{{name}} ja no té accés a {{pet}}."
     }
   }
 }

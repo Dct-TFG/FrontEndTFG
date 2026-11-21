@@ -30,9 +30,7 @@
   flex-direction: column;
 }
 
-/* ==========================================================================
-   TOP NAVIGATION
-   ========================================================================== */
+
 .top-nav {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -108,7 +106,6 @@
   gap: 14px;
 }
 
-/* Language Switcher */
 .lang-switcher-wrapper {
   position: relative;
 }
@@ -207,7 +204,6 @@
   stroke: var(--green);
 }
 
-/* User Menu */
 .user-menu-wrapper {
   position: relative;
 }
@@ -349,9 +345,7 @@
   }
 }
 
-/* ==========================================================================
-   PAGE CONTENT & CONTAINER
-   ========================================================================== */
+
 .page-content {
   flex: 1;
   width: 100%;
@@ -366,9 +360,7 @@
   gap: 36px;
 }
 
-/* ==========================================================================
-   HERO / WELCOME SECTION
-   ========================================================================== */
+
 .welcome-hero {
   display: flex;
   align-items: flex-start;
@@ -523,9 +515,6 @@
   border-radius: 100px;
 }
 
-/* ==========================================================================
-   PETS SECTION & CARDS (The Principal Focus)
-   ========================================================================== */
 .pets-section {
   display: flex;
   flex-direction: column;
@@ -978,7 +967,7 @@
 /* ==========================================================================
    MODAL DIALOG (Adding a pet)
    ========================================================================== */
-.modal-backdrop {
+.pet-modal-backdrop {
   position: fixed;
   inset: 0;
   background: rgba(20, 40, 30, 0.45);
@@ -991,7 +980,7 @@
   animation: backdropFade 0.2s ease-out;
 }
 
-.modal-dialog {
+.pet-modal-dialog {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -1005,13 +994,13 @@
   animation: modalSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.modal-header {
+.pet-modal-header {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.modal-header-icon {
+.pet-modal-header-icon {
   width: 44px;
   height: 44px;
   border-radius: 12px;
@@ -1022,19 +1011,19 @@
   flex-shrink: 0;
 }
 
-.modal-header-icon img {
+.pet-modal-header-icon img {
   width: 24px;
   height: 24px;
 }
 
-.modal-title {
+.pet-modal-title {
   color: var(--green-dark);
   font-size: 20px;
   font-weight: 700;
   margin: 0;
 }
 
-.modal-subtitle {
+.pet-modal-subtitle {
   color: var(--muted);
   font-size: 13px;
   margin: 2px 0 0 0;
@@ -1106,7 +1095,7 @@
   flex-shrink: 0;
 }
 
-.modal-actions {
+.pet-modal-actions {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -1139,9 +1128,6 @@
   }
 }
 
-/* ==========================================================================
-   RESPONSIVE DESIGN
-   ========================================================================== */
 @media (max-width: 768px) {
   .nav-container {
     padding: 14px 18px;

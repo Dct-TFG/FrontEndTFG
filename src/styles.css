@@ -40,9 +40,6 @@
   box-sizing: border-box;
 }
 
-/* Bootstrap's reboot adds margin-bottom: 1rem to these elements, and an element
-   selector beats "*", so the reset above did not remove it. That margin pushed
-   every text up 16px next to its icon (navbar, "Crear cuenta", captions...). */
 p,
 h1, h2, h3, h4, h5, h6,
 ul, ol, dl,
@@ -258,7 +255,6 @@ a.prototype-link {
   width: 100%;
   border-bottom: 1px solid rgba(220, 226, 217, 1);
 }
-
 
 .text-18 {
   flex-grow: 0;
@@ -992,7 +988,6 @@ a.prototype-link {
   flex-basis: auto;
 }
 
-
 .text-83 {
   flex-grow: 0;
   flex-shrink: 1;
@@ -1361,7 +1356,6 @@ a.prototype-link {
   flex-basis: auto;
 }
 
-
 .text-113 {
   flex-grow: 0;
   flex-shrink: 1;
@@ -1726,7 +1720,6 @@ a.prototype-link {
   flex-basis: auto;
 }
 
-
 .text-143 {
   flex-grow: 0;
   flex-shrink: 1;
@@ -1834,7 +1827,6 @@ a.prototype-link {
   flex-shrink: 1;
   width: 100%;
 }
-
 
 .text-153 {
   flex-grow: 0;
@@ -2222,7 +2214,6 @@ a.prototype-link {
   width: 100%;
   background-color: rgba(244, 246, 240, 1);
 }
-
 
 .text-190 {
   flex-grow: 0;

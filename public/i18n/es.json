@@ -9,7 +9,6 @@
     "createAccount": "Crear cuenta"
   },
   "hero": {
-    "tag": "SU HISTORIA, SIEMPRE CERCA",
     "title": "Toda una vida juntos.\nSu salud, en un\nmismo lugar.",
     "subtitle": "El historial de tu mascota, contigo. Organiza sus cuidados y comparte su información con quienes la cuidan.",
     "footer": "Para todo lo que os queda por vivir."
@@ -43,7 +42,12 @@
     "confirmPasswordPlaceholder": "Repite tu contraseña",
     "submit": "Crear mi cuenta",
     "haveAccount": "¿Ya tienes una cuenta?",
-    "loginLink": "Inicia sesión"
+    "loginLink": "Inicia sesión",
+    "emailTaken": "Ya existe una cuenta con este correo.",
+    "licenseLabel": "Número de colegiado",
+    "licensePlaceholder": "Ej. 08/1234",
+    "specialtyLabel": "Especialidad",
+    "specialtyPlaceholder": "Ej. Medicina general"
   },
   "forgot": {
     "title": "¿Olvidaste tu contraseña?",
@@ -76,7 +80,10 @@
       "missingPassword": "Introduce tu contraseña.",
       "tooManyRequests": "Demasiados intentos fallidos. Por favor, espera un momento.",
       "network": "Error de conexión. Comprueba tu conexión a internet.",
-      "generic": "Ha ocurrido un error inesperado."
+      "generic": "Ha ocurrido un error inesperado.",
+      "profileNotFound": "No hemos encontrado el perfil de esta cuenta. Contacta con soporte para recuperarla.",
+      "licenseInUse": "Ya existe una cuenta con este número de colegiado.",
+      "userDisabled": "Esta cuenta está desactivada."
     }
   },
   "pets": {
@@ -125,13 +132,13 @@
     "q1": "¿Quién puede ver el historial de mi mascota?",
     "a1": "Tú y los veterinarios o centros a los que hayas dado permiso. Como propietario, decides quién puede solo consultarlo y quién puede añadir o actualizar información. Puedes revocar ese acceso cuando lo necesites.",
     "q2": "¿Puedo registrar más de una mascota?",
-    "a2": "Sí, puedes registrar a todos tus compañeros (perros, gatos, aves, pequeños mamíferos, etc.) desde una sola cuenta y gestionar el historial de cada uno de forma individual.",
+    "a2": "Sí. Desde una sola cuenta puedes registrar perros, gatos, aves y pequeños mamíferos, y cada uno tendrá su propio historial.",
     "q3": "¿Quién añade la información clínica al historial?",
-    "a3": "Tanto los propietarios como los profesionales veterinarios autorizados pueden añadir información. Cada entrada clínica incluye la firma y verificación del profesional.",
-    "q4": "¿Se conecta con el sistema de mi clínica?",
-    "a4": "Los profesionales pueden consultar y actualizar fichas de pacientes autorizados directamente desde la plataforma web sin necesidad de instalaciones complejas.",
+    "a3": "Los veterinarios a los que hayas dado permiso de edición. Cada entrada queda registrada con el nombre del profesional que la creó o la modificó, para que siempre sepas quién ha escrito qué.",
+    "q4": "¿Se conecta con el programa de mi clínica?",
+    "a4": "Por ahora no se integra con los programas de gestión de las clínicas. Los profesionales trabajan directamente desde la web, y la plataforma ofrece una API documentada para que otros sistemas puedan conectarse en el futuro.",
     "q5": "¿Qué información encontraré sobre los centros?",
-    "a5": "Información detallada sobre especialidades, servicios, localización, datos de contacto y acreditaciones para que elijas siempre el mejor cuidado."
+    "a5": "Su especialidad, su ubicación y las valoraciones de otros usuarios, para que puedas compararlos. Es un directorio revisado a mano, así que no muestra la disponibilidad en tiempo real."
   },
   "footer": {
     "ctaTitle": "Un lugar para su salud.\nMás tiempo para estar juntos.",
@@ -162,7 +169,8 @@
     "topbar": {
       "ownerSpace": "Tu espacio de propietario",
       "proSpace": "Tu espacio profesional",
-      "defaultUserName": "Clara Ruiz"
+      "defaultUserName": "Clara Ruiz",
+      "backHome": "Volver al inicio"
     },
     "lang": {
       "label": "Idioma",
@@ -207,7 +215,8 @@
     },
     "recent": {
       "title": "Lo último en sus historiales",
-      "empty": "Todavía no hay entradas en sus historiales."
+      "empty": "Todavía no hay entradas en sus historiales.",
+      "loadError": "No se han podido cargar las últimas entradas."
     },
     "quick": {
       "permTitle": "Tú decides quién accede",
@@ -236,7 +245,8 @@
     "state": {
       "loading": "Cargando...",
       "loadError": "No se han podido cargar los datos.",
-      "retry": "Reintentar"
+      "retry": "Reintentar",
+      "offline": "No se puede conectar con el servidor. Comprueba tu conexión."
     },
     "petForm": {
       "title": "Añadir mascota",
@@ -249,11 +259,69 @@
       "cancel": "Cancelar",
       "save": "Guardar mascota",
       "saving": "Guardando...",
-      "errorRequired": "Completa todos los campos."
+      "errorRequired": "Completa todos los campos.",
+      "errorSave": "No se ha podido guardar la mascota. Inténtalo de nuevo.",
+      "subtitle": "Crea su ficha para empezar su historial."
     },
     "pro": {
       "title": "Espacio profesional",
       "text": "Aquí verás las mascotas que los propietarios compartan contigo. Estamos trabajando en ello."
+    },
+    "photo": {
+      "label": "Foto (opcional)",
+      "hint": "JPG, PNG o WebP. Máximo 5 MB.",
+      "choose": "Elegir foto",
+      "change": "Cambiar foto",
+      "remove": "Quitar",
+      "dismiss": "Cerrar aviso",
+      "errorType": "Formato no admitido. Usa una foto JPG, PNG o WebP.",
+      "errorSize": "La foto pesa demasiado. El máximo es 5 MB.",
+      "errorUpload": "No se ha podido subir la foto. Inténtalo de nuevo.",
+      "errorAfterCreate": "La mascota se ha creado, pero no se ha podido subir la foto. Puedes añadirla pulsando sobre su icono."
+    },
+    "workplace": {
+      "title": "Lugar de trabajo",
+      "atCenter": "Trabajas en",
+      "independent": "Trabajas por tu cuenta (independiente).",
+      "hint": "Si un propietario comparte una mascota con tu centro, podrás acceder a ella.",
+      "change": "Cambiar",
+      "save": "Guardar",
+      "selectLabel": "¿Dónde trabajas?",
+      "optionIndependent": "Por mi cuenta (independiente)",
+      "centersError": "No se ha podido cargar la lista de centros.",
+      "saved": "Lugar de trabajo actualizado.",
+      "errorSave": "No se ha podido guardar el lugar de trabajo."
+    },
+    "access": {
+      "open": "Accesos",
+      "title": "Quién puede acceder a {{pet}}",
+      "close": "Cerrar",
+      "levelView": "Consulta",
+      "levelViewHelp": "puede ver su ficha y su historial.",
+      "levelEdit": "Edición",
+      "levelEditHelp": "además puede añadir y modificar entradas del historial.",
+      "currentTitle": "Con acceso ahora",
+      "empty": "Nadie más tiene acceso a {{pet}}. Solo tú puedes verla.",
+      "loadError": "No se han podido cargar los accesos.",
+      "typeCenter": "Centro",
+      "typeVet": "Veterinario/a",
+      "levelFor": "Nivel de acceso de {{name}}",
+      "revoke": "Quitar acceso",
+      "confirmRevoke": "¿Quitar el acceso de {{name}}?",
+      "confirmRevokeShort": "¿Seguro?",
+      "yesRevoke": "Sí, quitar",
+      "addTitle": "Dar acceso a un centro o veterinario",
+      "searchPlaceholder": "Busca por nombre de clínica o de veterinario",
+      "searchError": "No se ha podido hacer la búsqueda.",
+      "noResults": "No hay resultados.",
+      "alreadyGranted": "Ya tiene acceso",
+      "grant": "Dar acceso",
+      "errorSave": "No se ha podido guardar el cambio. Inténtalo de nuevo.",
+      "grantedView": "{{name}} ya puede consultar la información de {{pet}}.",
+      "grantedEdit": "{{name}} ya puede consultar y editar el historial de {{pet}}.",
+      "changedView": "{{name}} ahora solo puede consultar la información de {{pet}}.",
+      "changedEdit": "{{name}} ahora también puede editar el historial de {{pet}}.",
+      "revoked": "{{name}} ya no tiene acceso a {{pet}}."
     }
   }
 }

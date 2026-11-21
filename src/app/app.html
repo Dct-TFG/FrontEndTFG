@@ -104,10 +104,16 @@
           }
         </div>
 
-        @if (statusMessage) {
-          <div class="auth-alert" [ngClass]="statusMessage.type === 'success' ? 'auth-alert-success' : 'auth-alert-error'">
-            <span>{{ statusMessage.text }}</span>
-          </div>
+        <ng-template #authAlert>
+          @if (statusMessage) {
+            <div class="auth-alert" role="alert" [ngClass]="statusMessage.type === 'success' ? 'auth-alert-success' : 'auth-alert-error'">
+              <span>{{ statusMessage.text }}</span>
+            </div>
+          }
+        </ng-template>
+
+        @if (currentUser) {
+          <ng-container *ngTemplateOutlet="authAlert"></ng-container>
         }
 
         @if (currentUser) {
@@ -228,6 +234,8 @@
                 </button>
               </div>
 
+              <ng-container *ngTemplateOutlet="authAlert"></ng-container>
+
               <button type="submit" [disabled]="isLoading" class="acci-n-principal-51">
                 @if (isLoading) {
                   <span class="spinner-border-sm"></span>
@@ -298,25 +306,35 @@
                         class="form-input-field"
                       />
                     </div>
-                  </div>
-                }
+                  </div>                }
 
                 <div class="campo-de-acceso-40">
                   <label for="regEmail" class="text-41">
                     <span class="text-rgb-32-62-52">{{ 'register.emailLabel' | translate }}</span>
                   </label>
-                  <div class="entrada-42">
+                  <div class="entrada-42" [class.has-error]="emailTaken">
                     <input
                       id="regEmail"
                       type="email"
                       name="regEmail"
                       [(ngModel)]="emailInput"
+                      (ngModelChange)="onEmailChange()"
                       [placeholder]="'register.emailPlaceholder' | translate"
                       required
                       autocomplete="email"
                       class="form-input-field"
+                      [attr.aria-invalid]="emailTaken"
+                      [attr.aria-describedby]="emailTaken ? 'regEmailError' : null"
                     />
                   </div>
+                  @if (emailTaken) {
+                    <p class="field-error" id="regEmailError" role="alert">
+                      {{ 'register.emailTaken' | translate }}
+                      <button type="button" class="link-action field-error-link" (click)="setAuthMode('login')">
+                        {{ 'register.loginLink' | translate }}
+                      </button>
+                    </p>
+                  }
                 </div>
 
                 <div class="campo-de-acceso-44">
@@ -388,6 +406,8 @@
                 </div>
               </div>
 
+              <ng-container *ngTemplateOutlet="authAlert"></ng-container>
+
               <button type="submit" [disabled]="isLoading" class="acci-n-principal-51">
                 @if (isLoading) {
                   <span class="spinner-border-sm"></span>
@@ -428,6 +448,8 @@
                   </div>
                 </div>
               </div>
+
+              <ng-container *ngTemplateOutlet="authAlert"></ng-container>
 
               <button type="submit" [disabled]="isLoading" class="acci-n-principal-51">
                 @if (isLoading) {

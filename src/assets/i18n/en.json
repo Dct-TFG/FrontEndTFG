@@ -9,7 +9,6 @@
     "createAccount": "Create account"
   },
   "hero": {
-    "tag": "THEIR STORY, ALWAYS CLOSE",
     "title": "A lifetime together.\nTheir health, all in\none place.",
     "subtitle": "Your pet's medical history, with you. Organize their care and share their information with caregivers.",
     "footer": "For everything you have left to live."
@@ -43,7 +42,12 @@
     "confirmPasswordPlaceholder": "Repeat your password",
     "submit": "Create my account",
     "haveAccount": "Already have an account?",
-    "loginLink": "Log in"
+    "loginLink": "Log in",
+    "emailTaken": "An account with this email already exists.",
+    "licenseLabel": "Licence number",
+    "licensePlaceholder": "e.g. 08/1234",
+    "specialtyLabel": "Specialty",
+    "specialtyPlaceholder": "e.g. General practice"
   },
   "forgot": {
     "title": "Forgot your password?",
@@ -76,7 +80,10 @@
       "missingPassword": "Please enter your password.",
       "tooManyRequests": "Too many attempts. Please try again later.",
       "network": "Network error. Please check your internet connection.",
-      "generic": "An unexpected error occurred."
+      "generic": "An unexpected error occurred.",
+      "profileNotFound": "We could not find the profile for this account. Please contact support to recover it.",
+      "licenseInUse": "An account with this licence number already exists.",
+      "userDisabled": "This account has been disabled."
     }
   },
   "pets": {
@@ -125,13 +132,13 @@
     "q1": "Who can see my pet's medical records?",
     "a1": "Only you and the veterinary clinics or specialists you have authorized. As the owner, you choose whether they have read-only or editing permissions, and can revoke access anytime.",
     "q2": "Can I register more than one pet?",
-    "a2": "Yes, you can register all your companion animals (dogs, cats, birds, small mammals, etc.) under one account and manage each profile separately.",
-    "q3": "Who adds clinical records to the history?",
-    "a3": "Both owners and authorized vets can add information. Official medical notes and diagnoses are digitally signed and verified by the veterinarian.",
-    "q4": "Does it connect to clinic software?",
-    "a4": "Veterinary professionals can consult and update patient records securely through the web application without requiring complicated software installations.",
-    "q5": "What clinic information will I find?",
-    "a5": "Verified details including specialties, services, location, contact channels, and certifications to help you make informed decisions."
+    "a2": "Yes. From a single account you can register dogs, cats, birds and small mammals, and each one gets its own record.",
+    "q3": "Who adds clinical information to the record?",
+    "a3": "The vets you have given edit permission to. Every entry is stored with the name of the professional who created or changed it, so you always know who wrote what.",
+    "q4": "Does it connect to my clinic's software?",
+    "a4": "Not for now: it does not integrate with clinic management software. Professionals work directly on the website, and the platform offers a documented API so other systems can connect to it in the future.",
+    "q5": "What information will I find about clinics?",
+    "a5": "Their specialty, location and ratings from other users, so you can compare them. The directory is curated by hand, so it does not show real-time availability."
   },
   "footer": {
     "ctaTitle": "A place for their health.\nMore quality time together.",
@@ -162,7 +169,8 @@
     "topbar": {
       "ownerSpace": "Your owner space",
       "proSpace": "Your professional space",
-      "defaultUserName": "Clara Ruiz"
+      "defaultUserName": "Clara Ruiz",
+      "backHome": "Back to home"
     },
     "lang": {
       "label": "Language",
@@ -207,7 +215,8 @@
     },
     "recent": {
       "title": "Latest in their medical records",
-      "empty": "There are no entries in their records yet."
+      "empty": "There are no entries in their records yet.",
+      "loadError": "The latest entries could not be loaded."
     },
     "quick": {
       "permTitle": "You decide who has access",
@@ -236,7 +245,8 @@
     "state": {
       "loading": "Loading...",
       "loadError": "We could not load your data.",
-      "retry": "Try again"
+      "retry": "Try again",
+      "offline": "Cannot reach the server. Please check your connection."
     },
     "petForm": {
       "title": "Add pet",
@@ -249,11 +259,69 @@
       "cancel": "Cancel",
       "save": "Save pet",
       "saving": "Saving...",
-      "errorRequired": "Please fill in all fields."
+      "errorRequired": "Please fill in all fields.",
+      "errorSave": "The pet could not be saved. Please try again.",
+      "subtitle": "Create their profile to start their record."
     },
     "pro": {
       "title": "Professional space",
       "text": "Here you will see the pets that owners share with you. We are working on it."
+    },
+    "photo": {
+      "label": "Photo (optional)",
+      "hint": "JPG, PNG or WebP. Max 5 MB.",
+      "choose": "Choose photo",
+      "change": "Change photo",
+      "remove": "Remove",
+      "dismiss": "Dismiss",
+      "errorType": "Unsupported format. Please use a JPG, PNG or WebP photo.",
+      "errorSize": "The photo is too large. The maximum is 5 MB.",
+      "errorUpload": "The photo could not be uploaded. Please try again.",
+      "errorAfterCreate": "The pet was created, but the photo could not be uploaded. You can add it by clicking its icon."
+    },
+    "workplace": {
+      "title": "Workplace",
+      "atCenter": "You work at",
+      "independent": "You work on your own (independent).",
+      "hint": "If an owner shares a pet with your clinic, you will be able to access it.",
+      "change": "Change",
+      "save": "Save",
+      "selectLabel": "Where do you work?",
+      "optionIndependent": "On my own (independent)",
+      "centersError": "The list of clinics could not be loaded.",
+      "saved": "Workplace updated.",
+      "errorSave": "The workplace could not be saved."
+    },
+    "access": {
+      "open": "Access",
+      "title": "Who can access {{pet}}",
+      "close": "Close",
+      "levelView": "View",
+      "levelViewHelp": "can see their profile and record.",
+      "levelEdit": "Edit",
+      "levelEditHelp": "can also add and change entries in the record.",
+      "currentTitle": "With access now",
+      "empty": "Nobody else has access to {{pet}}. Only you can see it.",
+      "loadError": "The access list could not be loaded.",
+      "typeCenter": "Clinic",
+      "typeVet": "Vet",
+      "levelFor": "Access level for {{name}}",
+      "revoke": "Remove access",
+      "confirmRevoke": "Remove access for {{name}}?",
+      "confirmRevokeShort": "Are you sure?",
+      "yesRevoke": "Yes, remove",
+      "addTitle": "Give access to a clinic or vet",
+      "searchPlaceholder": "Search by clinic or vet name",
+      "searchError": "The search could not be completed.",
+      "noResults": "No results.",
+      "alreadyGranted": "Already has access",
+      "grant": "Give access",
+      "errorSave": "The change could not be saved. Please try again.",
+      "grantedView": "{{name}} can now view {{pet}}’s information.",
+      "grantedEdit": "{{name}} can now view and edit {{pet}}’s record.",
+      "changedView": "{{name}} can now only view {{pet}}’s information.",
+      "changedEdit": "{{name}} can now also edit {{pet}}’s record.",
+      "revoked": "{{name}} no longer has access to {{pet}}."
     }
   }
 }
