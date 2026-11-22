@@ -1,0 +1,231 @@
+<section class="pet-page">
+  <button type="button" class="back-link" (click)="back.emit()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    {{ 'dashboard.petPage.back' | translate }}
+  </button>
+
+  @if (loading()) {
+    <div class="pp-card pp-state">{{ 'dashboard.state.loading' | translate }}</div>
+  } @else if (loadError()) {
+    <div class="pp-card pp-state pp-error" role="alert">
+      {{ 'dashboard.petPage.loadError' | translate }}
+      <button type="button" class="pp-link" (click)="load()">{{ 'dashboard.state.retry' | translate }}</button>
+    </div>
+  } @else if (pet(); as p) {
+    @let a = age(p);
+
+    <header class="pp-card pp-hero">
+      <div class="pp-avatar">
+        @if (photoUrl(); as url) {
+          <img class="pp-photo" [src]="url" [alt]="p.name" />
+        } @else {
+          <img class="pp-icon" [src]="icon(p)" [alt]="'dashboard.pets.species.' + p.species | translate" />
+        }
+      </div>
+
+      <div class="pp-info">
+        <h1 class="pp-name">{{ p.name }}</h1>
+        <p class="pp-sub">
+          {{ 'dashboard.pets.species.' + p.species | translate }} · {{ a.key | translate: { count: a.count } }}
+        </p>
+        <dl class="pp-facts">
+          <div>
+            <dt>{{ 'dashboard.petForm.breed' | translate }}</dt>
+            <dd>{{ p.breed }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'dashboard.petForm.birthDate' | translate }}</dt>
+            <dd>{{ date(p.birthDate) }}</dd>
+          </div>
+          @if (!isOwner() && p.ownerName) {
+            <div>
+              <dt>{{ 'dashboard.petPage.owner' | translate }}</dt>
+              <dd>{{ p.ownerName }}</dd>
+            </div>
+          }
+          @if (!isOwner()) {
+            <div>
+              <dt>{{ 'dashboard.petPage.yourAccess' | translate }}</dt>
+              <dd>
+                <span class="pp-level" [class.is-edit]="p.accessLevel === 'EDIT'">
+                  {{ (p.accessLevel === 'EDIT' ? 'dashboard.access.levelEdit' : 'dashboard.access.levelView') | translate }}
+                </span>
+              </dd>
+            </div>
+          }
+        </dl>
+      </div>
+
+      @if (isOwner()) {
+        <button type="button" class="pp-btn" (click)="accessOpen.set(true)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          {{ 'dashboard.access.open' | translate }}
+        </button>
+      }
+    </header>
+
+    <section class="pp-card pp-history" aria-labelledby="history-title">
+      <div class="pp-history-header">
+        <h2 id="history-title" class="pp-title">{{ 'dashboard.petPage.historyTitle' | translate }}</h2>
+        @if (canWrite() && !formOpen()) {
+          <button type="button" class="pp-btn primary" (click)="openForm()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            {{ 'dashboard.petPage.addEntry' | translate }}
+          </button>
+        }
+      </div>
+
+      @if (feedback(); as fb) {
+        <p class="pp-feedback" [class.is-error]="fb.type === 'error'" role="status">{{ fb.text }}</p>
+      }
+
+      @if (formOpen()) {
+        <form class="pp-form" (ngSubmit)="submit($event)">
+          <div class="pp-form-row">
+            <div class="pp-field">
+              <label for="entryType">{{ 'dashboard.petPage.type' | translate }}</label>
+              <select id="entryType" name="type" [(ngModel)]="form.type">
+                @for (t of entryTypes; track t) {
+                  <option [value]="t">{{ 'dashboard.entryTypes.' + t | translate }}</option>
+                }
+              </select>
+            </div>
+            <div class="pp-field">
+              <label for="entryDate">{{ 'dashboard.petPage.date' | translate }}</label>
+              <input id="entryDate" name="date" type="date" [(ngModel)]="form.date" [max]="maxDate" required />
+            </div>
+          </div>
+
+          <div class="pp-field">
+            <label for="entryTitle">{{ 'dashboard.petPage.title' | translate }}</label>
+            <input
+              id="entryTitle"
+              name="title"
+              type="text"
+              maxlength="120"
+              [(ngModel)]="form.title"
+              [placeholder]="'dashboard.petPage.titlePlaceholder' | translate"
+              required
+            />
+          </div>
+
+          <div class="pp-field">
+            <label for="entryDescription">{{ 'dashboard.petPage.description' | translate }}</label>
+            <textarea
+              id="entryDescription"
+              name="description"
+              rows="4"
+              maxlength="5000"
+              [(ngModel)]="form.description"
+              [placeholder]="'dashboard.petPage.descriptionPlaceholder' | translate"
+              required
+            ></textarea>
+          </div>
+
+          <div class="pp-field">
+            <span class="pp-label">{{ 'dashboard.petPage.files' | translate }}</span>
+            <span class="pp-hint">{{ 'dashboard.petPage.filesHint' | translate: { max: maxFiles } }}</span>
+            @if (files().length > 0) {
+              <ul class="pp-file-list">
+                @for (f of files(); track $index) {
+                  <li>
+                    <span class="pp-file-name">{{ f.name }}</span>
+                    <span class="pp-file-size">{{ fileSize(f.size) }}</span>
+                    <button type="button" class="pp-link" (click)="removeFile($index)">
+                      {{ 'dashboard.photo.remove' | translate }}
+                    </button>
+                  </li>
+                }
+              </ul>
+            }
+            @if (files().length < maxFiles) {
+              <label class="pp-btn pp-file-pick">
+                <input type="file" class="pp-hidden-input" multiple [accept]="acceptedFiles" (change)="onFilesSelected($event)" />
+                {{ 'dashboard.petPage.addFiles' | translate }}
+              </label>
+            }
+          </div>
+
+          @if (formError()) {
+            <p class="pp-feedback is-error" role="alert">{{ formError() }}</p>
+          }
+
+          <div class="pp-form-actions">
+            <button type="button" class="pp-btn" (click)="cancelForm()" [disabled]="saving()">
+              {{ 'dashboard.petForm.cancel' | translate }}
+            </button>
+            <button type="submit" class="pp-btn primary" [disabled]="saving()">
+              {{ (saving() ? 'dashboard.petForm.saving' : 'dashboard.petPage.save') | translate }}
+            </button>
+          </div>
+        </form>
+      }
+
+      @if (entriesLoading()) {
+        <p class="pp-muted">{{ 'dashboard.state.loading' | translate }}</p>
+      } @else if (entriesError()) {
+        <p class="pp-error" role="alert">
+          {{ 'dashboard.petPage.entriesError' | translate }}
+          <button type="button" class="pp-link" (click)="loadEntries()">{{ 'dashboard.state.retry' | translate }}</button>
+        </p>
+      } @else if (entries().length === 0) {
+        <p class="pp-muted">
+          {{ (canWrite() ? 'dashboard.petPage.emptyHistoryVet' : 'dashboard.petPage.emptyHistory') | translate: { pet: p.name } }}
+        </p>
+      } @else {
+        <ol class="pp-timeline">
+          @for (e of entries(); track e.id) {
+            <li class="pp-entry">
+              <div class="pp-entry-marker" aria-hidden="true"></div>
+              <div class="pp-entry-body">
+                <div class="pp-entry-head">
+                  <time class="pp-entry-date" [attr.datetime]="e.date">{{ date(e.date) }}</time>
+                  <span class="pp-entry-type">{{ 'dashboard.entryTypes.' + e.type | translate }}</span>
+                </div>
+                <h3 class="pp-entry-title">{{ e.title }}</h3>
+                <p class="pp-entry-desc">{{ e.description }}</p>
+
+                @if (e.attachments.length > 0) {
+                  <ul class="pp-attachments">
+                    @for (att of e.attachments; track att.id) {
+                      <li>
+                        <button
+                          type="button"
+                          class="pp-attachment"
+                          (click)="openAttachment(e, att)"
+                          [disabled]="openingAttachment() === att.id"
+                        >
+                          <span class="pp-attachment-kind">{{ isPdf(att) ? 'PDF' : 'IMG' }}</span>
+                          <span class="pp-attachment-name">{{ att.fileName }}</span>
+                          <span class="pp-file-size">{{ fileSize(att.size) }}</span>
+                        </button>
+                      </li>
+                    }
+                  </ul>
+                }
+
+                <p class="pp-entry-author">
+                  {{ 'dashboard.petPage.by' | translate }} <strong>{{ e.veterinarianName }}</strong>
+                  @if (e.centerName) {
+                    · {{ e.centerName }}
+                  }
+                </p>
+              </div>
+            </li>
+          }
+        </ol>
+      }
+    </section>
+
+    @if (accessOpen()) {
+      <app-pet-access-dialog [petId]="p.id" [petName]="p.name" (closed)="accessOpen.set(false)"></app-pet-access-dialog>
+    }
+  }
+</section>

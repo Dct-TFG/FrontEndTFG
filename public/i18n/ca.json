@@ -240,7 +240,8 @@
       "TREATMENT": "Tractament",
       "VACCINATION": "Vacunació",
       "VISIT": "Visita",
-      "LAB_RESULT": "Resultat de laboratori"
+      "LAB_RESULT": "Resultat de laboratori",
+      "IMAGING": "Prova d'imatge"
     },
     "state": {
       "loading": "Carregant...",
@@ -322,6 +323,44 @@
       "changedView": "{{name}} ara només pot consultar la informació de {{pet}}.",
       "changedEdit": "{{name}} ara també pot editar l'historial de {{pet}}.",
       "revoked": "{{name}} ja no té accés a {{pet}}."
+    },
+    "petPage": {
+      "back": "Tornar",
+      "loadError": "No s'ha pogut carregar la fitxa de la mascota.",
+      "owner": "Propietari/ària",
+      "yourAccess": "El teu accés",
+      "historyTitle": "Historial clínic",
+      "addEntry": "Afegir entrada",
+      "entriesError": "No s'ha pogut carregar l'historial.",
+      "emptyHistory": "Encara no hi ha entrades a l'historial de {{pet}}.",
+      "emptyHistoryVet": "Encara no hi ha entrades. Afegeix la primera per a {{pet}}.",
+      "by": "Registrat per",
+      "type": "Tipus",
+      "date": "Data",
+      "title": "Títol",
+      "titlePlaceholder": "Ex. Vacuna antiràbica",
+      "description": "Descripció",
+      "descriptionPlaceholder": "Detalls, resultats, dosi, observacions...",
+      "files": "Arxius (opcional)",
+      "filesHint": "Radiografies, informes o anàlisis. JPG, PNG, WebP o PDF, màxim 10 MB cadascun i {{max}} per entrada.",
+      "addFiles": "Afegir arxius",
+      "save": "Desar entrada",
+      "errorRequired": "Completa la data, el títol i la descripció.",
+      "errorFileType": "«{{name}}» no té un format admès (JPG, PNG, WebP o PDF).",
+      "errorFileSize": "«{{name}}» pesa més de 10 MB.",
+      "errorTooManyFiles": "Pots adjuntar com a màxim {{max}} arxius per entrada.",
+      "errorSave": "No s'ha pogut desar l'entrada. Torna-ho a provar.",
+      "errorForbidden": "No tens permís d'edició sobre aquesta mascota.",
+      "saved": "Entrada afegida a l'historial.",
+      "savedPartially": "L'entrada s'ha desat, però {{count}} arxiu(s) no s'han pogut pujar.",
+      "errorAttachment": "No s'ha pogut obrir l'arxiu."
+    },
+    "shared": {
+      "title": "Mascotes al teu càrrec",
+      "emptyTitle": "Encara no tens mascotes al teu càrrec",
+      "emptyText": "Quan un propietari comparteixi una mascota amb tu o amb el teu centre, apareixerà aquí.",
+      "owner": "Propietari/ària:",
+      "open": "Veure fitxa"
     }
   }
 }

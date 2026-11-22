@@ -1,5 +1,4 @@
 <div class="dashboard-page">
-  <!-- Top Navigation Header -->
   <header class="top-nav">
     <div class="nav-container">
       <div
@@ -20,7 +19,6 @@
       </div>
 
       <div class="nav-actions">
-        <!-- Language Switcher Popup Trigger & Dropdown -->
         <div class="lang-switcher-wrapper">
           <button 
             class="lang-popup-trigger" 
@@ -70,7 +68,6 @@
           }
         </div>
 
-        <!-- User Profile Menu -->
         <div class="user-menu-wrapper">
           <button 
             class="user-menu-btn" 
@@ -117,11 +114,12 @@
     </div>
   </header>
 
-  <!-- Main Content Flow (Natural scrolling, one unified canvas) -->
   <main class="page-content">
     <div class="content-container">
+      @if (selectedPetId(); as petId) {
+        <app-pet-page [petId]="petId" (back)="closePetPage()"></app-pet-page>
+      } @else {
 
-      <!-- Hero Welcome Section -->
       <section class="welcome-hero">
         <div class="welcome-info">
           <h1 class="welcome-title">{{ 'dashboard.welcome.greeting' | translate:{ name: userName } }}</h1>
@@ -146,7 +144,6 @@
         </div>
       </section>
 
-      <!-- Principal Section: The User's Pets -->
       @if (isOwner()) {
         <section class="pets-section" aria-labelledby="pets-section-title">
           <div class="section-header">
@@ -165,14 +162,12 @@
             </button>
           </div>
 
-          <!-- Loading State -->
           @if (loading()) {
             <div class="state-card loading-state">
               <div class="spinner"></div>
               <p>{{ 'dashboard.state.loading' | translate }}</p>
             </div>
           }
-          <!-- Error State -->
           @else if (loadError()) {
             <div class="state-card error-state" role="alert">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -186,7 +181,6 @@
               </button>
             </div>
           }
-          <!-- Empty State (No pets registered yet) -->
           @else if (pets().length === 0) {
             <div class="empty-pets-card">
               <div class="empty-pets-icon">
@@ -203,7 +197,6 @@
               </button>
             </div>
           }
-          <!-- Pet Cards Grid -->
           @else {
             @if (photoNotice()) {
               <div class="photo-notice" role="alert">
@@ -293,7 +286,6 @@
           }
         </section>
 
-        <!-- Recent Entries Timeline Section (Lo último en sus historiales) -->
         <section class="recent-section" aria-labelledby="recent-section-title">
           <div class="section-header">
             <h2 id="recent-section-title" class="section-title">{{ 'dashboard.recent.title' | translate }}</h2>
@@ -335,7 +327,7 @@
                         <span class="entry-pet">{{ entry.petName }}</span>
                         <span class="entry-type-pill">{{ 'dashboard.entryTypes.' + entry.type | translate }}</span>
                       </div>
-                      <p class="entry-desc">{{ entry.description }}</p>
+                      <p class="entry-desc">{{ entry.title }}</p>
                       <p class="entry-vet-meta">
                         {{ entry.veterinarianName }}@if (entry.centerName) { · {{ entry.centerName }} }
                       </p>
@@ -347,9 +339,91 @@
           </div>
         </section>
       } @else {
-        <section class="pro-welcome-card" aria-labelledby="pro-title">
-          <h2 id="pro-title" class="section-title">{{ 'dashboard.pro.title' | translate }}</h2>
-          <p class="pro-text">{{ 'dashboard.pro.text' | translate }}</p>
+        <section class="pets-section" aria-labelledby="shared-section-title">
+          <div class="section-header">
+            <div class="header-title-wrap">
+              <h2 id="shared-section-title" class="section-title">{{ 'dashboard.shared.title' | translate }}</h2>
+              @if (sharedPets().length > 0) {
+                <span class="count-badge">{{ sharedPets().length }}</span>
+              }
+            </div>
+          </div>
+
+          @if (loading()) {
+            <div class="state-card loading-state">
+              <div class="spinner"></div>
+              <p>{{ 'dashboard.state.loading' | translate }}</p>
+            </div>
+          } @else if (loadError()) {
+            <div class="state-card error-state" role="alert">
+              <span>{{ 'dashboard.state.loadError' | translate }}</span>
+              <button class="btn btn-secondary" type="button" (click)="loadSharedPets()">
+                {{ 'dashboard.state.retry' | translate }}
+              </button>
+            </div>
+          } @else if (sharedPets().length === 0) {
+            <div class="empty-pets-card">
+              <div class="empty-pets-icon">
+                <img src="images/vector-7.svg" alt="" />
+              </div>
+              <h3 class="empty-pets-title">{{ 'dashboard.shared.emptyTitle' | translate }}</h3>
+              <p class="empty-pets-desc">{{ 'dashboard.shared.emptyText' | translate }}</p>
+            </div>
+          } @else {
+            <div class="pets-grid">
+              @for (pet of sharedPets(); track pet.id) {
+                @let age = ageOf(pet);
+                <article class="pet-card">
+                  <div class="pet-card-top">
+                    <div class="pet-avatar-wrap">
+                      @if (photoUrls()[pet.id]; as url) {
+                        <img class="pet-photo" [src]="url" [alt]="pet.name" />
+                      } @else {
+                        <div class="pet-species-icon">
+                          <img [src]="getPetImage(pet)" [alt]="'dashboard.pets.species.' + pet.species | translate" />
+                        </div>
+                      }
+                    </div>
+                    <div class="pet-info-wrap">
+                      <div class="pet-title-row">
+                        <h3 class="pet-name">{{ pet.name }}</h3>
+                        <span class="breed-badge">{{ pet.breed }}</span>
+                      </div>
+                      <p class="pet-species-age">
+                        {{ 'dashboard.pets.species.' + pet.species | translate }} · {{ age.key | translate: { count: age.count } }}
+                      </p>
+                      <p class="pet-species-age">
+                        {{ 'dashboard.shared.owner' | translate }} {{ pet.ownerName }} ·
+                        <strong>{{ (pet.accessLevel === 'EDIT' ? 'dashboard.access.levelEdit' : 'dashboard.access.levelView') | translate }}</strong>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="pet-card-divider"></div>
+
+                  <div class="pet-card-bottom">
+                    <div class="last-entry-info">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      @if (pet.lastEntryDate) {
+                        <span>{{ 'dashboard.pets.lastEntry' | translate }} <strong>{{ formatDate(pet.lastEntryDate) }}</strong></span>
+                      } @else {
+                        <span class="text-muted">{{ 'dashboard.pets.noEntries' | translate }}</span>
+                      }
+                    </div>
+                    <button class="pet-action-btn" type="button" (click)="viewHistory(pet)">
+                      <span>{{ 'dashboard.shared.open' | translate }}</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </article>
+              }
+            </div>
+          }
         </section>
 
         <section class="workplace-card" aria-labelledby="workplace-title">
@@ -421,11 +495,11 @@
           </div>
         </section>
       }
+      }
 
     </div>
   </main>
 
-  <!-- Clean Footer -->
   <footer class="main-footer">
     <div class="footer-container">
       <p class="footer-tagline">{{ 'dashboard.footer.tagline' | translate }}</p>
@@ -438,7 +512,6 @@
   </footer>
 </div>
 
-<!-- Modal for Adding a New Pet -->
 @if (isPetModalOpen()) {
   <div class="pet-modal-backdrop" (click)="closePetModal()">
     <div

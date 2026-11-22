@@ -240,7 +240,8 @@
       "TREATMENT": "Tratamiento",
       "VACCINATION": "Vacunación",
       "VISIT": "Visita",
-      "LAB_RESULT": "Resultado de laboratorio"
+      "LAB_RESULT": "Resultado de laboratorio",
+      "IMAGING": "Prueba de imagen"
     },
     "state": {
       "loading": "Cargando...",
@@ -322,6 +323,44 @@
       "changedView": "{{name}} ahora solo puede consultar la información de {{pet}}.",
       "changedEdit": "{{name}} ahora también puede editar el historial de {{pet}}.",
       "revoked": "{{name}} ya no tiene acceso a {{pet}}."
+    },
+    "petPage": {
+      "back": "Volver",
+      "loadError": "No se ha podido cargar la ficha de la mascota.",
+      "owner": "Propietario/a",
+      "yourAccess": "Tu acceso",
+      "historyTitle": "Historial clínico",
+      "addEntry": "Añadir entrada",
+      "entriesError": "No se ha podido cargar el historial.",
+      "emptyHistory": "Todavía no hay entradas en el historial de {{pet}}.",
+      "emptyHistoryVet": "Todavía no hay entradas. Añade la primera para {{pet}}.",
+      "by": "Registrado por",
+      "type": "Tipo",
+      "date": "Fecha",
+      "title": "Título",
+      "titlePlaceholder": "Ej. Vacuna antirrábica",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Detalles, resultados, dosis, observaciones...",
+      "files": "Archivos (opcional)",
+      "filesHint": "Radiografías, informes o análisis. JPG, PNG, WebP o PDF, máximo 10 MB cada uno y {{max}} por entrada.",
+      "addFiles": "Añadir archivos",
+      "save": "Guardar entrada",
+      "errorRequired": "Completa la fecha, el título y la descripción.",
+      "errorFileType": "«{{name}}» no tiene un formato admitido (JPG, PNG, WebP o PDF).",
+      "errorFileSize": "«{{name}}» pesa más de 10 MB.",
+      "errorTooManyFiles": "Puedes adjuntar como máximo {{max}} archivos por entrada.",
+      "errorSave": "No se ha podido guardar la entrada. Inténtalo de nuevo.",
+      "errorForbidden": "No tienes permiso de edición sobre esta mascota.",
+      "saved": "Entrada añadida al historial.",
+      "savedPartially": "La entrada se ha guardado, pero {{count}} archivo(s) no se han podido subir.",
+      "errorAttachment": "No se ha podido abrir el archivo."
+    },
+    "shared": {
+      "title": "Mascotas a tu cargo",
+      "emptyTitle": "Todavía no tienes mascotas a tu cargo",
+      "emptyText": "Cuando un propietario comparta una mascota contigo o con tu centro, aparecerá aquí.",
+      "owner": "Propietario/a:",
+      "open": "Ver ficha"
     }
   }
 }

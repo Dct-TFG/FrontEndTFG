@@ -240,7 +240,8 @@
       "TREATMENT": "Treatment",
       "VACCINATION": "Vaccination",
       "VISIT": "Visit",
-      "LAB_RESULT": "Lab result"
+      "LAB_RESULT": "Lab result",
+      "IMAGING": "Imaging"
     },
     "state": {
       "loading": "Loading...",
@@ -322,6 +323,44 @@
       "changedView": "{{name}} can now only view {{pet}}’s information.",
       "changedEdit": "{{name}} can now also edit {{pet}}’s record.",
       "revoked": "{{name}} no longer has access to {{pet}}."
+    },
+    "petPage": {
+      "back": "Back",
+      "loadError": "The pet profile could not be loaded.",
+      "owner": "Owner",
+      "yourAccess": "Your access",
+      "historyTitle": "Clinical record",
+      "addEntry": "Add entry",
+      "entriesError": "The record could not be loaded.",
+      "emptyHistory": "There are no entries in {{pet}}'s record yet.",
+      "emptyHistoryVet": "No entries yet. Add the first one for {{pet}}.",
+      "by": "Recorded by",
+      "type": "Type",
+      "date": "Date",
+      "title": "Title",
+      "titlePlaceholder": "e.g. Rabies vaccine",
+      "description": "Description",
+      "descriptionPlaceholder": "Details, results, dosage, notes...",
+      "files": "Files (optional)",
+      "filesHint": "X-rays, reports or lab results. JPG, PNG, WebP or PDF, up to 10 MB each and {{max}} per entry.",
+      "addFiles": "Add files",
+      "save": "Save entry",
+      "errorRequired": "Please fill in the date, title and description.",
+      "errorFileType": "\"{{name}}\" is not a supported format (JPG, PNG, WebP or PDF).",
+      "errorFileSize": "\"{{name}}\" is larger than 10 MB.",
+      "errorTooManyFiles": "You can attach up to {{max}} files per entry.",
+      "errorSave": "The entry could not be saved. Please try again.",
+      "errorForbidden": "You do not have edit permission for this pet.",
+      "saved": "Entry added to the record.",
+      "savedPartially": "The entry was saved, but {{count}} file(s) could not be uploaded.",
+      "errorAttachment": "The file could not be opened."
+    },
+    "shared": {
+      "title": "Pets in your care",
+      "emptyTitle": "No pets in your care yet",
+      "emptyText": "When an owner shares a pet with you or your clinic, it will appear here.",
+      "owner": "Owner:",
+      "open": "View profile"
     }
   }
 }

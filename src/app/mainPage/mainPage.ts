@@ -7,6 +7,7 @@ import { AuthService, UserRole } from '../services/auth.service';
 import {
   PetsService,
   Pet,
+  SharedPet,
   RecentEntry,
   Species,
   SPECIES,
@@ -15,11 +16,13 @@ import {
 } from '../services/pets.service';
 import { CentersService, CenterSummary } from '../services/centers.service';
 import { PetAccessDialog } from './pet-access/pet-access-dialog';
+import { PetPage } from './pet-page/pet-page';
+import { formatLongDate, localIsoDate, localeFor, petAge, speciesIcon } from '../shared/pet-utils';
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslatePipe, PetAccessDialog],
+  imports: [CommonModule, FormsModule, TranslatePipe, PetAccessDialog, PetPage],
   templateUrl: './mainPage.html',
   styleUrl: './mainPage.css'
 })
@@ -63,6 +66,8 @@ export class MainPage implements OnInit, OnDestroy {
   readonly newPetPhotoPreview = signal<string | null>(null);
 
   readonly accessPet = signal<Pet | null>(null);
+  readonly selectedPetId = signal<string | null>(null);
+  readonly sharedPets = signal<SharedPet[]>([]);
 
   readonly workplace = computed(() => this.authService.profile()?.centers?.[0] ?? null);
   readonly centers = signal<CenterSummary[]>([]);
@@ -84,7 +89,7 @@ export class MainPage implements OnInit, OnDestroy {
     if (this.isOwner()) {
       void this.loadData();
     } else {
-      this.loading.set(false);
+      void this.loadSharedPets();
     }
   }
 
@@ -281,28 +286,11 @@ export class MainPage implements OnInit, OnDestroy {
   }
 
   ageOf(pet: Pet): { key: string; count: number } {
-    const birth = new Date(pet.birthDate);
-    const now = new Date();
-    let months =
-      (now.getUTCFullYear() - birth.getUTCFullYear()) * 12 +
-      (now.getUTCMonth() - birth.getUTCMonth());
-    if (now.getUTCDate() < birth.getUTCDate()) months--;
-
-    if (months < 1) return { key: 'dashboard.pets.age.newborn', count: 0 };
-    if (months < 12) {
-      return { key: months === 1 ? 'dashboard.pets.age.month' : 'dashboard.pets.age.months', count: months };
-    }
-    const years = Math.floor(months / 12);
-    return { key: years === 1 ? 'dashboard.pets.age.year' : 'dashboard.pets.age.years', count: years };
+    return petAge(pet.birthDate);
   }
 
   formatDate(iso: string): string {
-    return new Intl.DateTimeFormat(this.locale(), {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-      timeZone: 'UTC'
-    }).format(new Date(iso));
+    return formatLongDate(iso, this.currentLang);
   }
 
   formatDay(iso: string): string {
@@ -451,33 +439,43 @@ export class MainPage implements OnInit, OnDestroy {
   }
 
   viewHistory(pet: Pet): void {
-    console.log(`Ver historial de ${pet.name} (${pet.id})`);
+    this.selectedPetId.set(pet.id);
+    window.scrollTo({ top: 0 });
   }
 
-  getPetImage(pet: Pet): string {
-    switch (pet.species) {
-      case 'DOG':
-        return 'images/vector-65.svg';
-      case 'CAT':
-        return 'images/vector-69.svg';
-      case 'BIRD':
-        return 'images/vector-73.svg';
-      case 'SMALL_MAMMAL':
-        return 'images/vector-77.svg';
-      default:
-        return 'images/vector-35.svg';
+  closePetPage(): void {
+    this.selectedPetId.set(null);
+    if (this.isOwner()) {
+      void this.loadData();
+    } else {
+      void this.loadSharedPets();
     }
   }
 
+  async loadSharedPets(): Promise<void> {
+    this.loading.set(true);
+    this.loadError.set(false);
+    try {
+      const pets = await this.petsService.sharedWithMe();
+      this.sharedPets.set(pets);
+      void this.loadPhotos(pets);
+    } catch {
+      this.loadError.set(true);
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
+  getPetImage(pet: Pet): string {
+    return speciesIcon(pet.species);
+  }
+
   private locale(): string {
-    return this.currentLang === 'ca' ? 'ca-ES' : this.currentLang === 'en' ? 'en-GB' : 'es-ES';
+    return localeFor(this.currentLang);
   }
 
   private localIsoDate(date: Date): string {
-    const y = date.getFullYear();
-    const m = String(date.getMonth() + 1).padStart(2, '0');
-    const d = String(date.getDate()).padStart(2, '0');
-    return `${y}-${m}-${d}`;
+    return localIsoDate(date);
   }
 
   private updateFormattedDate(): void {
