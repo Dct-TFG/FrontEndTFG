@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, HostListener, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
@@ -44,8 +44,20 @@ export class App {
     { code: 'en', short: 'EN', name: 'English' }
   ];
   isLangMenuOpen = false;
+  private enteredDashboard = false;
 
   constructor() {
+    effect(() => {
+      if (!this.authService.profile()) {
+        this.enteredDashboard = false;
+      } else if (!this.enteredDashboard) {
+        this.enteredDashboard = true;
+        this.statusMessage = null;
+        this.currentView = 'main';
+        this.cdr.markForCheck();
+      }
+    });
+
     this.translate.addLangs(['es', 'ca', 'en']);
 
     // Recupera el idioma elegido la última vez (si lo hay)

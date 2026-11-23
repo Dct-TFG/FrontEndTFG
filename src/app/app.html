@@ -275,7 +275,8 @@
                   </div>
                 </div>
 
-                @if (selectedRole === 'professional') {
+                <div class="pro-fields" [class.open]="selectedRole === 'professional'" [attr.inert]="selectedRole === 'professional' ? null : ''">
+                  <div class="pro-fields-inner">
                   <div class="campo-de-acceso-40">
                     <label for="regLicense" class="text-41">
                       <span class="text-rgb-32-62-52">{{ 'register.licenseLabel' | translate }}</span>
@@ -306,7 +307,9 @@
                         class="form-input-field"
                       />
                     </div>
-                  </div>                }
+                  </div>
+                  </div>
+                </div>
 
                 <div class="campo-de-acceso-40">
                   <label for="regEmail" class="text-41">

@@ -640,6 +640,32 @@ html {
   background: rgba(36, 91, 70, 0.18);
 }
 
+.pro-fields {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-top: -18px;
+  opacity: 0;
+  transition: grid-template-rows 0.35s ease, margin-top 0.35s ease, opacity 0.25s ease;
+}
+
+.pro-fields.open {
+  grid-template-rows: 1fr;
+  margin-top: 0;
+  opacity: 1;
+  transition: grid-template-rows 0.35s ease, margin-top 0.35s ease, opacity 0.3s ease 0.1s;
+}
+
+.pro-fields-inner {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 3px;
+  margin: -3px;
+}
+
 /* Respeta a quien prefiere menos movimiento */
 @media (prefers-reduced-motion: reduce) {
   .faq-panel,
@@ -651,7 +677,8 @@ html {
   .node-94,
   .node-102,
   .arrow-right-53,
-  .arrow-right-194 {
+  .arrow-right-194,
+  .pro-fields {
     transition: none !important;
   }
 }
